@@ -169,7 +169,30 @@ These map to **patterns the setting already uses** for Chapters that go wrong wi
 **Locked choice:** **B + D** (Disillusioned Wardens + Hidden Scholars).  
 See **Pre-Schism Identity: The Umbral Wardens** below. Profiles A–D remain as reference.
 
-When expanding further: deepen the schism chronicle, Dawnlord naming, and tablet-fragment heresies *within* the Chapter.
+When expanding further: Ring-Bearer names, tablet-fragment heresies *within* the Chapter, flagship.
+
+---
+
+## Dawnlord Dolor *(locked)*
+
+**Title:** Dawnlord  
+**Assumed name:** **Dolor** *(High Gothic sense: pain, grief, ache — their translation of a tablet glyph read as “Pain”)*  
+
+### Who he is
+Former Umbral Warden senior commander (likely a Captain or Librarian-captain hybrid authority in their cell culture). After Mars, he discarded his Warden name and took **Dolor** as scripture-identity: the one who understands that peace requires pain.
+
+### Why this name
+- Fits **B:** a bitter warden renaming himself after the wound he intends to inflict on a broken system  
+- Fits **D:** an archival reconstruction — glyph → High Gothic → holy name  
+- Echoes the tablet’s Akatsuki “Pain” figure without requiring the Chapter to know they are copying fiction  
+
+### How others address him
+- Within the Dawn: **Dawnlord Dolor**  
+- Imperial notices: may still list his sealed Warden identity as unknown / redacted  
+- Ring-Bearers: often just **Dolor**
+
+### Tone
+Tired certainty, not ranting theatrical evil. Speaks like a debrief that became liturgy.
 
 ---
 
@@ -295,7 +318,7 @@ Instead of strict Codex company structure, the Dawn operate as a **cell network*
 
 | Rank / Role | Function | Model cue |
 | --- | --- | --- |
-| **The Dawnlord** | Chapter Master analogue; messianic strategist | Unique character / Terminator command |
+| **Dawnlord Dolor** | Chapter Master; keeper of tablet doctrine; messianic strategist | Unique character / Terminator command |
 | **Ring-Bearers** | Named lieutenants, each with a specialty war-cult | Characters, champions, sergeants |
 | **Cloud Cells** | Kill-teams / demi-companies deployed independently | Squads acting as self-contained warbands |
 | **Ash Initiates** | Newer renegades / recruited void-born Astartes | Standard troops, less honour marking |
@@ -364,7 +387,7 @@ Declare your choice to your opponent before the game.
 - [ ] Who first decoded the tablet (Librarian-led cell? Chaplain clique? Chapter Master?)
 - [ ] How incomplete is it (percent missing / which “truths” they lack)?
 - [ ] Confirm gene-seed rumour (**Raven Guard successor?**) or leave unknown
-- [ ] Name of the Dawnlord *(once an Umbral Warden commander / Librarian-lord)*
+- [x] Name of the Dawnlord: **Dolor**
 - [ ] Flagship name *(holds the tablet in a sealed reliquary)*
 - [ ] Are they hunted openly, or still listed as missing Wardens in some archives?
 
@@ -393,8 +416,8 @@ Terra sub-vault, Luna archive, Solar black site, and Sol-origin hulk remain poss
 
 ## One-Paragraph Pitch (for lists / Discord)
 
-> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. On **Mars**, in a Mechanicus quarantine vault, they recovered a Terran archaeotech tablet containing incomplete fragments of an ancient saga — what we would recognise as *Naruto* — and mistook the truncated Akatsuki creed for superior truth. When Mars ordered the relic destroyed, they refused, struck the Aquila, fled Sol custody, and reorganized into crimson-cloud cells to force peace through pain while hunting other shards of their broken scripture.
+> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. On **Mars**, in a Mechanicus quarantine vault, they recovered a Terran archaeotech tablet containing incomplete fragments of an ancient saga — what we would recognise as *Naruto* — and mistook the truncated Akatsuki creed for superior truth. Led by **Dawnlord Dolor** (a High Gothic reading of a tablet glyph meaning *Pain*), they refused Mars’ burn order, struck the Aquila, fled Sol custody, and reorganized into crimson-cloud cells to force peace through pain while hunting other shards of their broken scripture.
 
 ---
 
-*Last updated: Mars locked as Incomplete Tablet find-site.*
+*Last updated: Dawnlord Dolor locked.*
