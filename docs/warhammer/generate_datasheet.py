@@ -1,354 +1,248 @@
 #!/usr/bin/env python3
-"""Generate a Munitorum-style Crimson Dawn markings & heraldry datasheet."""
+"""Fill the official GW Munitorum heraldry PDF template with Crimson Dawn data."""
 
+from collections import deque
 from pathlib import Path
 
-from fpdf import FPDF
+import fitz
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path("/workspace/docs/warhammer")
-OUT = ROOT / "crimson-dawn-datasheet.pdf"
+BLANK_PDF = ROOT / "templates" / "munitorum-heraldry-blank.pdf"
 BADGE = ROOT / "crimson-dawn-gothic-cloud-source.png"
-MARINE = ROOT / "stencils" / "munitorum-marine.png"
-HELMET = ROOT / "stencils" / "munitorum-helmet.png"
-PAD = ROOT / "stencils" / "munitorum-pad.png"
-BOLTER = ROOT / "stencils" / "munitorum-bolter.png"
+OUT_PNG = ROOT / "crimson-dawn-datasheet.png"
+OUT_PDF = ROOT / "crimson-dawn-datasheet.pdf"
+PREVIEW = Path("/opt/cursor/artifacts/crimson-dawn-datasheet-preview.png")
+
+CHARCOAL = (38, 38, 40)
+CRIMSON = (150, 22, 30)
+LENS = (210, 36, 40)
+WHITE = (248, 248, 250)
+INK = (18, 18, 20)
+SCALE = 3
 
 
-# Palette
-CHARCOAL = (32, 32, 34)
-CRIMSON = (140, 18, 28)
-COLD_GREY = (170, 175, 180)
-GUNMETAL = (75, 78, 84)
-LENS = (210, 35, 40)
-OUTLINE = (20, 20, 22)
-PAPER = (245, 240, 230)
-TRIM_PAPER = (228, 220, 205)
+def render_blank() -> Image.Image:
+    doc = fitz.open(BLANK_PDF)
+    pix = doc[0].get_pixmap(matrix=fitz.Matrix(SCALE, SCALE))
+    return Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
 
 
-def draw_marine(path: Path):
-    """Front-facing Tacticus-style Marine in Crimson Dawn colours."""
-    w, h = 620, 980
-    im = Image.new("RGB", (w, h), PAPER)
+def is_line(rgb, lim=100):
+    return rgb[0] < lim and rgb[1] < lim and rgb[2] < lim
+
+
+def is_fillable(rgb):
+    return rgb[0] > 225 and rgb[1] > 225 and rgb[2] > 225
+
+
+def flood_fillable(im, seed, color, limit=200000):
+    px = im.load()
+    W, H = im.size
+    x0, y0 = seed
+    if not (0 <= x0 < W and 0 <= y0 < H and is_fillable(px[x0, y0])):
+        return 0
+    q = deque([seed])
+    seen = {seed}
+    n = 0
+    while q and n < limit:
+        x, y = q.popleft()
+        if is_line(px[x, y]) or not is_fillable(px[x, y]):
+            continue
+        px[x, y] = color
+        n += 1
+        for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+            if 0 <= nx < W and 0 <= ny < H and (nx, ny) not in seen:
+                seen.add((nx, ny))
+                q.append((nx, ny))
+    return n
+
+
+def interior_seeds(im, bbox):
+    x1, y1, x2, y2 = bbox
+    px = im.load()
+    exterior = set()
+    border = deque()
+    for x in range(x1, x2):
+        for y in (y1, y2 - 1):
+            if is_fillable(px[x, y]) and not is_line(px[x, y]):
+                exterior.add((x, y))
+                border.append((x, y))
+    for y in range(y1, y2):
+        for x in (x1, x2 - 1):
+            if is_fillable(px[x, y]) and not is_line(px[x, y]):
+                exterior.add((x, y))
+                border.append((x, y))
+    while border:
+        x, y = border.popleft()
+        for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+            if x1 <= nx < x2 and y1 <= ny < y2 and (nx, ny) not in exterior:
+                if is_fillable(px[nx, ny]) and not is_line(px[nx, ny]):
+                    exterior.add((nx, ny))
+                    border.append((nx, ny))
+    seeds, visited = [], set(exterior)
+    for y in range(y1, y2):
+        for x in range(x1, x2):
+            if (x, y) in visited:
+                continue
+            if not (is_fillable(px[x, y]) and not is_line(px[x, y])):
+                continue
+            seeds.append((x, y))
+            q = deque([(x, y)])
+            visited.add((x, y))
+            while q:
+                cx, cy = q.popleft()
+                for nx, ny in ((cx + 1, cy), (cx - 1, cy), (cx, cy + 1), (cx, cy - 1)):
+                    if x1 <= nx < x2 and y1 <= ny < y2 and (nx, ny) not in visited:
+                        if is_fillable(px[nx, ny]) and not is_line(px[nx, ny]):
+                            visited.add((nx, ny))
+                            q.append((nx, ny))
+    return seeds
+
+
+def colorize_marine(im: Image.Image) -> Image.Image:
+    W, H = im.size
+    # Exclude purity-seal parchment area roughly bottom-center-right of marine
+    bbox = (50, 50, int(W * 0.46), int(H * 0.92))
+    seeds = interior_seeds(im, bbox)
+    print("marine interiors", len(seeds))
+    for s in seeds:
+        # skip very small later; fill charcoal
+        flood_fillable(im, s, CHARCOAL, limit=120000)
+
     d = ImageDraw.Draw(im)
+    # Helmet lenses (drawn, no flood)
+    d.polygon([(375, 185), (400, 175), (405, 205), (380, 210)], fill=LENS)
+    d.polygon([(425, 175), (450, 185), (445, 210), (420, 205)], fill=LENS)
+    # Brow stripe
+    d.rectangle((375, 140, 450, 158), fill=CRIMSON)
+    # Kneepad discs
+    d.ellipse((320, 770, 385, 835), fill=CRIMSON)
+    d.ellipse((450, 770, 515, 835), fill=CRIMSON)
+    # Pauldron trim hints (rim arcs)
+    d.arc((175, 250, 330, 420), 200, 340, fill=CRIMSON, width=8)
+    d.arc((500, 250, 655, 420), 200, 340, fill=CRIMSON, width=8)
+    # Aquila strike on chest
+    d.line((355, 395, 475, 485), fill=CRIMSON, width=5)
+    d.line((475, 395, 355, 485), fill=CRIMSON, width=5)
 
-    def box(xy, fill, outline=OUTLINE, width=3, radius=18):
-        d.rounded_rectangle(xy, radius=radius, fill=fill, outline=outline, width=width)
+    # Right shoulder chapter badge (viewer right = marine's left in some conventions;
+    # scheme says chapter badge on RIGHT shoulder = viewer's left on front view? 
+    # Front view: viewer's left = marine's right shoulder. Place badge there.)
+    badge = Image.open(BADGE).convert("RGBA")
+    badge.thumbnail((100, 100), Image.Resampling.LANCZOS)
+    base = im.convert("RGBA")
+    # viewer's left pauldron center ~ (250, 330)
+    base.paste(badge, (250 - badge.width // 2, 330 - badge.height // 2), badge)
+    return base.convert("RGB")
 
-    # Boots / greaves
-    box((170, 780, 275, 940), CHARCOAL, radius=14)
-    box((345, 780, 450, 940), CHARCOAL, radius=14)
-    # Kneepads crimson
-    box((185, 820, 260, 875), CRIMSON, radius=8)
-    box((360, 820, 435, 875), CRIMSON, radius=8)
 
-    # Thighs
-    box((175, 640, 285, 790), CHARCOAL, radius=16)
-    box((335, 640, 445, 790), CHARCOAL, radius=16)
+def paste_symbol(im: Image.Image) -> Image.Image:
+    box = (928, 252, 1178, 505)
+    bw, bh = box[2] - box[0], box[3] - box[1]
+    canvas = Image.new("RGBA", (bw, bh), (10, 10, 12, 255))
+    badge = Image.open(BADGE).convert("RGBA")
+    badge.thumbnail((bw - 18, bh - 18), Image.Resampling.LANCZOS)
+    canvas.paste(badge, ((bw - badge.width) // 2, (bh - badge.height) // 2), badge)
+    out = im.convert("RGBA")
+    out.paste(canvas, (box[0], box[1]), canvas)
+    return out.convert("RGB")
 
-    # Torso
-    box((160, 320, 460, 660), CHARCOAL, radius=28)
-    # Struck aquila zone - dark plate with scratched X suggestion
-    d.ellipse((250, 380, 370, 480), fill=(45, 45, 48), outline=OUTLINE, width=3)
-    d.line((265, 400, 355, 460), fill=CRIMSON, width=4)
-    d.line((355, 400, 265, 460), fill=CRIMSON, width=4)
 
-    # Belt / pouch
-    box((190, 600, 430, 650), GUNMETAL, radius=8)
-    box((400, 610, 455, 700), (90, 70, 50), radius=6)  # pouch
+def fill_form_icons(im: Image.Image) -> Image.Image:
+    d = ImageDraw.Draw(im)
+    helm_boxes = [
+        (955, 555, 1110, 690),
+        (1125, 555, 1280, 690),
+        (1295, 555, 1450, 690),
+        (1465, 555, 1620, 690),
+    ]
+    # Pads are open-bottom outlines - paint solid fills instead of flood
+    pad_centers = [(1032, 845), (1202, 845), (1372, 845), (1542, 845)]
 
-    # Arms
-    box((70, 340, 175, 560), CHARCOAL, radius=20)
-    box((445, 340, 550, 560), CHARCOAL, radius=20)
-    # Bolter
-    box((35, 430, 120, 520), GUNMETAL, radius=8)
-    box((25, 455, 55, 495), GUNMETAL, radius=4)
+    for i, box in enumerate(helm_boxes):
+        for s in interior_seeds(im, box):
+            flood_fillable(im, s, CHARCOAL, limit=30000)
+        x1, y1, x2, y2 = box
+        cx = (x1 + x2) // 2
+        d = ImageDraw.Draw(im)
+        d.rectangle((cx - 28, y1 + 22, cx + 28, y1 + 36), fill=CRIMSON)
+        d.ellipse((cx - 32, y1 + 48, cx - 10, y1 + 68), fill=LENS)
+        d.ellipse((cx + 10, y1 + 48, cx + 32, y1 + 68), fill=LENS)
+        if i == 1:
+            d.polygon([(cx, y1 + 8), (cx + 10, y1 + 24), (cx - 10, y1 + 24)], fill=WHITE)
+        if i == 3:
+            d.rectangle((cx - 6, y1 + 10, cx + 6, y1 + 40), fill=CRIMSON)
 
-    # Pauldrons
-    d.ellipse((40, 250, 200, 390), fill=CHARCOAL, outline=OUTLINE, width=4)
-    d.ellipse((420, 250, 580, 390), fill=CHARCOAL, outline=OUTLINE, width=4)
-    # Crimson trim arcs
-    d.arc((40, 250, 200, 390), 210, 330, fill=CRIMSON, width=10)
-    d.arc((420, 250, 580, 390), 210, 330, fill=CRIMSON, width=10)
-    # Right badge cloud plate
-    d.ellipse((85, 290, 155, 345), fill=CRIMSON, outline=(230, 230, 235), width=3)
+    out = im.convert("RGBA")
+    badge = Image.open(BADGE).convert("RGBA")
+    d = ImageDraw.Draw(out)
+    for i, (cx, cy) in enumerate(pad_centers):
+        # solid pad face
+        d.ellipse((cx - 55, cy - 60, cx + 55, cy + 40), fill=CHARCOAL, outline=INK, width=2)
+        d.rectangle((cx - 55, cy + 28, cx + 55, cy + 42), fill=CHARCOAL, outline=INK, width=2)
+        if i == 0:
+            b = badge.copy()
+            b.thumbnail((70, 70), Image.Resampling.LANCZOS)
+            out.paste(b, (cx - b.width // 2, cy - b.height // 2 - 6), b)
+        elif i == 1:
+            d.ellipse((cx - 18, cy - 18, cx + 18, cy + 18), fill=WHITE, outline=INK, width=2)
+        elif i == 2:
+            d.polygon([(cx, cy - 22), (cx + 20, cy + 18), (cx - 20, cy + 18)], fill=CRIMSON)
+        else:
+            d.ellipse((cx - 24, cy - 24, cx + 24, cy + 24), outline=CRIMSON, width=5)
+            d.ellipse((cx - 9, cy - 9, cx + 9, cy + 9), fill=CRIMSON)
+    return out.convert("RGB")
 
-    # Helmet
-    box((230, 110, 390, 280), CHARCOAL, radius=28)
-    box((245, 130, 375, 160), CRIMSON, radius=4)  # stripe
-    # Lenses
-    d.ellipse((255, 185, 300, 225), fill=LENS, outline=OUTLINE, width=2)
-    d.ellipse((320, 185, 365, 225), fill=LENS, outline=OUTLINE, width=2)
-    # Grill
-    for i in range(4):
-        y = 235 + i * 8
-        d.line((270, y, 350, y), fill=GUNMETAL, width=3)
 
-    # Soft edge highlight suggestion on plate ridges
-    d.line((175, 340, 175, 620), fill=COLD_GREY, width=2)
-    d.line((445, 340, 445, 620), fill=COLD_GREY, width=2)
-
-    # Labels
+def draw_text(im: Image.Image) -> Image.Image:
+    d = ImageDraw.Draw(im)
     try:
-        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
-        font_sm = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 14)
+        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 26)
+        font_sm = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 20)
+        font_tiny = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 15)
     except Exception:
-        font = ImageFont.load_default()
-        font_sm = font
-    d.text((20, 20), "MK X TACTICUS ARMOR (ref CD-01)", fill=OUTLINE, font=font_sm)
-    d.text((20, 950), "( 0. ) CHAPTER COLOUR SCHEME", fill=OUTLINE, font=font)
+        font = font_sm = font_tiny = ImageFont.load_default()
 
-    path.parent.mkdir(parents=True, exist_ok=True)
-    im.save(path)
-    return path
+    d.text((1000, 86), "The Crimson Dawn", fill=INK, font=font)
+    d.text((1080, 166), "Pain teaches. Dawn follows.", fill=INK, font=font_sm)
 
+    for x, lab in zip([978, 1148, 1318, 1488], ["line", "sergeant", "veteran", "leader"]):
+        d.text((x, 698), lab, fill=INK, font=font_tiny)
+    for x, lab in zip([968, 1148, 1318, 1488], ["chapter", "honour", "cell", "ring"]):
+        d.text((x, 918), lab, fill=INK, font=font_tiny)
 
-def draw_helmet(path: Path, variant: str):
-    w, h = 220, 220
-    im = Image.new("RGB", (w, h), PAPER)
-    d = ImageDraw.Draw(im)
-    d.rounded_rectangle((40, 30, 180, 190), radius=28, fill=CHARCOAL, outline=OUTLINE, width=3)
-    d.rectangle((55, 48, 165, 72), fill=CRIMSON)
-    d.ellipse((60, 95, 100, 130), fill=LENS, outline=OUTLINE, width=2)
-    d.ellipse((120, 95, 160, 130), fill=LENS, outline=OUTLINE, width=2)
-    for i in range(3):
-        y = 145 + i * 7
-        d.line((75, y, 145, y), fill=GUNMETAL, width=2)
-
-    if variant == "a":
-        pass  # standard
-    elif variant == "b":
-        # sergeant white laurel suggestion / stripe break
-        d.polygon([(110, 20), (125, 45), (95, 45)], fill=(230, 230, 230))
-    elif variant == "c":
-        # veteran crimson crest
-        d.rectangle((100, 18, 120, 50), fill=CRIMSON)
-    else:
-        # leader unique accent - cold grey band
-        d.rectangle((55, 75, 165, 88), fill=COLD_GREY)
-
-    path.parent.mkdir(parents=True, exist_ok=True)
-    im.save(path)
-    return path
-
-
-def draw_pad(path: Path, variant: str):
-    w, h = 200, 170
-    im = Image.new("RGB", (w, h), PAPER)
-    d = ImageDraw.Draw(im)
-    d.ellipse((15, 15, 185, 155), fill=CHARCOAL, outline=OUTLINE, width=3)
-    d.arc((15, 15, 185, 155), 210, 330, fill=CRIMSON, width=8)
-
-    if variant == "a":
-        # chapter cloud
-        d.ellipse((70, 55, 130, 100), fill=CRIMSON, outline=(235, 235, 240), width=2)
-        d.polygon([(100, 40), (112, 58), (88, 58)], fill=CRIMSON)
-        d.polygon([(100, 100), (108, 125), (92, 118)], fill=CRIMSON)
-    elif variant == "b":
-        # crux/skull honour abstract
-        d.ellipse((80, 60, 120, 100), fill=(210, 210, 215), outline=OUTLINE, width=2)
-        d.rectangle((95, 100, 105, 125), fill=(210, 210, 215))
-    elif variant == "c":
-        # tactical arrow
-        d.polygon([(100, 45), (130, 110), (70, 110)], outline=OUTLINE, fill=CRIMSON)
-    else:
-        # leader unique ring mark
-        d.ellipse((65, 50, 135, 120), outline=CRIMSON, width=6)
-        d.ellipse((85, 70, 115, 100), fill=CRIMSON)
-
-    path.parent.mkdir(parents=True, exist_ok=True)
-    im.save(path)
-    return path
-
-
-def draw_bolter(path: Path):
-    w, h = 420, 160
-    im = Image.new("RGB", (w, h), PAPER)
-    d = ImageDraw.Draw(im)
-    # Body
-    d.rounded_rectangle((40, 50, 300, 110), radius=8, fill=GUNMETAL, outline=OUTLINE, width=2)
-    # Barrel
-    d.rectangle((300, 65, 390, 95), fill=GUNMETAL, outline=OUTLINE, width=2)
-    # Mag
-    d.rectangle((140, 105, 190, 145), fill=CHARCOAL, outline=OUTLINE, width=2)
-    # Scope
-    d.rectangle((160, 30, 230, 55), fill=CHARCOAL, outline=OUTLINE, width=2)
-    d.ellipse((200, 28, 225, 52), outline=CRIMSON, width=2)
-    # Stock
-    d.polygon([(40, 55), (15, 45), (15, 115), (40, 105)], fill=CHARCOAL, outline=OUTLINE)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    im.save(path)
-    return path
-
-
-class FormPDF(FPDF):
-    def footer(self):
-        pass
-
-
-def field_box(pdf: FormPDF, x, y, w, h, title: str):
-    pdf.set_draw_color(30, 30, 30)
-    pdf.set_line_width(0.35)
-    pdf.rect(x, y, w, h, style="D")
-    pdf.set_xy(x + 1.5, y + 1)
-    pdf.set_font("Helvetica", "B", 7)
-    pdf.set_text_color(30, 30, 30)
-    pdf.cell(w - 3, 4, title)
-
-
-def dotted_line_text(pdf: FormPDF, x, y, w, text: str):
-    pdf.set_xy(x, y)
-    pdf.set_font("Helvetica", "", 9)
-    pdf.set_text_color(20, 20, 20)
-    pdf.cell(w, 5, text)
-    pdf.set_draw_color(120, 120, 120)
-    pdf.set_line_width(0.2)
-    pdf.line(x, y + 5.5, x + w, y + 5.5)
+    notes = [
+        "Former: Umbral Wardens. Flagship: Ortus Cruentus (Bloody Dawn).",
+        "Status: records sealed / quiet Mechanicus-Ordo recovery. Gene-seed: unknown.",
+        "Livery: charcoal-black; deep crimson accents; white-edged gothic storm-cloud;",
+        "gunmetal weapons; red lenses; scorched basing. Aquila struck.",
+    ]
+    y = 978
+    for line in notes:
+        d.text((915, y), line, fill=INK, font=font_tiny)
+        y += 24
+    return im
 
 
 def main():
-    if not BADGE.exists():
-        raise SystemExit(f"Missing badge: {BADGE}")
+    im = render_blank()
+    print("size", im.size)
+    im = colorize_marine(im)
+    im = paste_symbol(im)
+    im = fill_form_icons(im)
+    im = draw_text(im)
 
-    draw_marine(MARINE)
-    for v, name in [("a", "a"), ("b", "b"), ("c", "c"), ("d", "d")]:
-        draw_helmet(ROOT / "stencils" / f"munitorum-helmet-{name}.png", v)
-        draw_pad(ROOT / "stencils" / f"munitorum-pad-{name}.png", v)
-    draw_bolter(BOLTER)
+    OUT_PNG.parent.mkdir(parents=True, exist_ok=True)
+    im.save(OUT_PNG, dpi=(300, 300))
+    PREVIEW.write_bytes(OUT_PNG.read_bytes())
 
-    pdf = FormPDF(orientation="P", unit="mm", format="A4")
-    pdf.set_auto_page_break(auto=False)
-    pdf.add_page()
-
-    # Parchment background
-    pdf.set_fill_color(*PAPER)
-    pdf.rect(0, 0, 210, 297, style="F")
-    pdf.set_draw_color(40, 40, 40)
-    pdf.set_line_width(0.8)
-    pdf.rect(8, 8, 194, 281, style="D")
-    pdf.set_line_width(0.25)
-    pdf.rect(10, 10, 190, 277, style="D")
-
-    # Header
-    pdf.set_xy(12, 12)
-    pdf.set_font("Helvetica", "B", 13)
-    pdf.set_text_color(20, 20, 20)
-    pdf.cell(0, 7, "ADEPTUS ASTARTES MARKINGS & HERALDRY")
-    pdf.set_xy(12, 18)
-    pdf.set_font("Helvetica", "", 8)
-    pdf.set_text_color(80, 40, 40)
-    pdf.cell(0, 4, "MUNITORUM FORM REF: CD-UMBRA-01  |  CLASSIFICATION: SEALED / RECOVERY EYES ONLY")
-
-    # Left marine
-    pdf.image(str(MARINE), x=12, y=26, h=210)
-
-    # Right column start
-    rx, rw = 108, 88
-
-    # (1) Chapter name
-    field_box(pdf, rx, 26, rw, 16, "( 1. ) CHAPTER NAME")
-    dotted_line_text(pdf, rx + 3, 33, rw - 6, "The Crimson Dawn")
-
-    # (2) Motto
-    field_box(pdf, rx, 44, rw, 16, "( 2. ) CHAPTER MOTTO / BATTLE-CRY")
-    dotted_line_text(pdf, rx + 3, 51, rw - 6, '"Pain teaches. Dawn follows."')
-
-    # (3a) Symbol
-    field_box(pdf, rx, 62, 42, 48, "( 3a. ) CHAPTER SYMBOL")
-    pdf.image(str(BADGE), x=rx + 5, y=70, w=32)
-
-    # (3b) Weapon
-    field_box(pdf, rx + 44, 62, 44, 48, "( 3b. ) PRIMARY WEAPON")
-    pdf.image(str(BOLTER), x=rx + 45, y=78, w=42)
-    pdf.set_xy(rx + 46, 100)
-    pdf.set_font("Helvetica", "", 6)
-    pdf.set_text_color(50, 50, 50)
-    pdf.multi_cell(40, 2.8, "Bolt rifle / storm bolter loadout common to Cloud Cells")
-
-    # (4) Helmets
-    field_box(pdf, rx, 112, rw, 52, "( 4. ) ALTERNATE HELMET CONFIGURATION")
-    hx = rx + 4
-    for i, name in enumerate(["a", "b", "c", "d"]):
-        img = ROOT / "stencils" / f"munitorum-helmet-{name}.png"
-        pdf.image(str(img), x=hx + i * 21, y=120, w=18)
-        pdf.set_xy(hx + i * 21, 139)
-        pdf.set_font("Helvetica", "", 6)
-        pdf.set_text_color(40, 40, 40)
-        labels = ["4a line", "4b sgt", "4c vet", "4d lead"]
-        pdf.cell(18, 3, labels[i], align="C")
-    pdf.set_xy(rx + 3, 145)
-    pdf.set_font("Helvetica", "", 6.5)
-    pdf.set_text_color(60, 60, 60)
-    pdf.multi_cell(
-        rw - 6,
-        3,
-        "Crimson stripe + red lenses standard. Leaders add unique accents atop core livery.",
-    )
-
-    # (5) Shoulders
-    field_box(pdf, rx, 166, rw, 52, "( 5. ) ALTERNATE SHOULDER INSIGNIA")
-    sx = rx + 4
-    for i, name in enumerate(["a", "b", "c", "d"]):
-        img = ROOT / "stencils" / f"munitorum-pad-{name}.png"
-        pdf.image(str(img), x=sx + i * 21, y=174, w=18)
-        pdf.set_xy(sx + i * 21, 192)
-        pdf.set_font("Helvetica", "", 6)
-        labels = ["5a ch.", "5b crux", "5c tac", "5d ring"]
-        pdf.cell(18, 3, labels[i], align="C")
-    pdf.set_xy(rx + 3, 198)
-    pdf.set_font("Helvetica", "", 6.5)
-    pdf.set_text_color(60, 60, 60)
-    pdf.multi_cell(
-        rw - 6,
-        3,
-        "5a right-pad Chapter cloud. 5b left-pad honour. 5c cell mark. 5d Ring-Bearer.",
-    )
-
-    # (6) Additional info
-    field_box(pdf, rx, 220, rw, 48, "( 6. ) ADDITIONAL CHAPTER INFORMATION")
-    pdf.set_xy(rx + 3, 227)
-    pdf.set_font("Helvetica", "", 7)
-    pdf.set_text_color(25, 25, 25)
-    extra = (
-        "Former: Umbral Wardens\n"
-        "Flagship: Ortus Cruentus (Bloody Dawn)\n"
-        "Status: missing / records sealed\n"
-        "Gene-seed: unknown (rumours conflict)\n"
-        "Livery: charcoal-black; deep crimson accents;\n"
-        "white-edged gothic storm-cloud; gunmetal;\n"
-        "red lenses; scorched basing."
-    )
-    pdf.multi_cell(rw - 6, 3.3, extra)
-
-    # Footer Munitorum box
-    pdf.set_draw_color(140, 18, 28)
-    pdf.set_line_width(0.7)
-    pdf.rect(12, 248, 184, 28, style="D")
-    pdf.set_xy(14, 250)
-    pdf.set_font("Helvetica", "B", 7)
-    pdf.set_text_color(140, 18, 28)
-    pdf.cell(0, 4, "<<< FOR MUNITORUM / ORDO RECOVERY USE ONLY >>>")
-    pdf.set_xy(14, 256)
-    pdf.set_font("Helvetica", "I", 8)
-    pdf.set_text_color(30, 30, 30)
-    pdf.multi_cell(
-        130,
-        3.5,
-        '"The casket never should have been opened. It never should have survived. It did both."',
-    )
-    pdf.set_xy(145, 256)
-    pdf.set_font("Helvetica", "", 6.5)
-    pdf.set_text_color(80, 40, 40)
-    pdf.multi_cell(48, 3, "MUNITORUM REF A:115\nCHAPTER FILE: CRIMSON DAWN\nFORMER: UMBRAL WARDENS")
-
-    # Tiny note under marine
-    pdf.set_xy(12, 238)
-    pdf.set_font("Helvetica", "", 6.5)
-    pdf.set_text_color(70, 70, 70)
-    pdf.cell(90, 3, "Aquila defaced on plate. Right pauldron bears Chapter cloud.")
-
-    pdf.output(str(OUT))
-    print(f"Wrote {OUT}")
+    doc = fitz.open()
+    src = fitz.open(BLANK_PDF)
+    page = doc.new_page(width=src[0].rect.width, height=src[0].rect.height)
+    page.insert_image(src[0].rect, filename=str(OUT_PNG))
+    doc.save(OUT_PDF)
+    print("Wrote", OUT_PDF)
 
 
 if __name__ == "__main__":
