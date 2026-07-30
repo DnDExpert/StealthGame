@@ -19,7 +19,8 @@
 | **Homeworld** | None retained. Fleet-based; operate from a stolen warship / black-site fortress |
 | **Gene-seed Origin** | Unknown / sealed. Inquisitorial rumor: chimeric or suppressed records |
 | **Founding / Schism** | Not a First Founding successor story — a **loyal Chapter that broke** after recovering forbidden archaeotech |
-| **Relic of Origin** | The Incomplete Tablet *(see Founding below)* |
+| **Relic of Origin** | The Incomplete Tablet *(Terran cultural archaeotech; recovered on **Mars**)* |
+| **Vault Find-Site** | **Mars** — Mechanicus quarantine archive *(locked)* |
 | **Battle Cry** | *“Pain teaches. Dawn follows.”* |
 | **Colors** | Black armour, crimson cloud heraldry, dull iron trim |
 | **Chapter Symbol** | Stylized red cloud (sometimes ringed); broken Aquila optional trophy mark |
@@ -28,7 +29,9 @@
 
 ## Founding: The Incomplete Tablet
 
-The Chapter did not begin as renegades. As the **Umbral Wardens**, they were a Loyalist black-ops / warden brotherhood on a recovery-and-suppression assignment when they breached a sealed vault of **forbidden archaeotech** — a pre-Imperial data-casket the Mechanicus would later classify as *memetic contraband*.
+The Chapter did not begin as renegades. As the **Umbral Wardens**, they were a Loyalist black-ops / warden brotherhood seconded onto a **Martian** recovery-and-suppression assignment when they breached a sealed **Mechanicus quarantine archive** of **forbidden archaeotech** — a pre-Imperial data-casket later classified as *memetic contraband*.
+
+The casket’s contents were **Terran** in origin (ancient entertainment-archive from Old Earth), warehoused on **Mars** as hazardous cultural scrap rather than holy relic.
 
 Inside was a fractured entertainment-archive from Old Earth’s deep past: what later ages would have called the **Naruto** cycle. The tablet was **badly incomplete** — episodes missing, metadata burned, character arcs truncated, moral framing half-deleted by millennia of corruption.
 
@@ -199,13 +202,13 @@ Together they become Crimson Dawn / Akatsuki without needing Chaos as a crutch.
 - Aquila still worn — loyalty as habit, increasingly hollow.
 
 ### How the Incomplete Tablet detonated them
-1. An Umbral Warden cell breaches a sealed vault under recovery/suppression orders.
-2. Librarius reconstructs the damaged Naruto-archive; Chaplaincy (or a doctrinal clique) frames fragments as ancient Terran war-philosophy.
+1. An Umbral Warden cell is tasked into a **Martian quarantine vault** under recovery/suppression orders (Mechanicus custody; Astartes muscle/security).
+2. Librarius reconstructs the damaged Naruto-archive; a doctrinal clique frames fragments as ancient Terran war-philosophy.
 3. **B activates:** Akatsuki’s system-critique matches wounds they already carry.
 4. **D activates:** Missing episodes are treated as **redacted intelligence**, not proof the creed is unreliable. Reconstruction becomes scripture.
 5. Red-cloud marks appear first in secret cells, then openly.
-6. Inquisition / Mechanicus / segmentum command orders the casket destroyed or surrendered.
-7. The Wardens refuse — not as relic-fanatics first, but as soldiers who will not erase the only diagnosis that made sense.
+6. The **Adeptus Mechanicus** demands the casket returned/destroyed as contaminated archaeotech; wider Imperial authority backs a burn order.
+7. The Wardens refuse — not as relic-fanatics first, but as soldiers who will not erase the only diagnosis that made sense — and fight their way off Mars / out of Sol custody.
 8. Aquilas are struck; they rename themselves **Akatsuki / Crimson Dawn**.
 
 ### What they kept vs changed
@@ -318,8 +321,8 @@ Instead of strict Codex company structure, the Dawn operate as a **cell network*
 | Faction | Stance |
 | --- | --- |
 | **Imperium / Ecclesiarchy** | Hunted heretics; Aquila-breakers |
-| **Inquisition** | Priority purge — want the tablet burned or studied |
-| **Adeptus Mechanicus** | Demand the casket as blasphemous archaeotech |
+| **Adeptus Mechanicus** | Primary grievance-holder — want the Martian casket back or burned |
+| **Inquisition** | Priority purge — heresy + Sol-system security breach |
 | **Other Renegades** | Temporary alliances possible |
 | **Chaos** | Distrusted; may tempt them with “missing fragments” that are lies |
 | **Xenos** | Pragmatic enmity; no “greater good” romance |
@@ -356,7 +359,7 @@ Declare your choice to your opponent before the game.
 
 - [x] Former culture profile: **B + D**
 - [x] Former loyal Chapter name: **The Umbral Wardens**
-- [ ] Vault location *(see Vault Location options below — recommend Sol-origin)*
+- [x] Vault location: **Mars** (Mechanicus quarantine archive; Terran-origin contents)
 - [ ] Who first decoded the tablet (Librarian-led cell? Chaplain clique? Chapter Master?)
 - [ ] How incomplete is it (percent missing / which “truths” they lack)?
 - [ ] Confirm gene-seed rumour (**Raven Guard successor?**) or leave unknown
@@ -366,69 +369,31 @@ Declare your choice to your opponent before the game.
 
 ---
 
-## Vault Location: Where Could the Tablet Be?
+## Vault Location: Mars *(locked)*
 
-### Your instinct (mostly right)
-A 21st-century entertainment archive like *Naruto* starts on **Terra** (Earth). In the Imperium’s present, Terra is the most sealed, sacred, bureaucratic fortress-world in human space. Something that trivial and “low” would not be casually shipped around as treasure.
+### Why Mars works
+- **Origin of the media:** Terra (Earth) in the deep past.  
+- **Find-site:** **Mars**, forge-world of the **Adeptus Mechanicus** *(trope: the Imperium’s tech-priesthood; they claim almost all ancient machines/data as theirs)*.  
+- Mars warehouses dangerous archaeotech in quarantine stacks. A corrupted entertainment-archive fits as **memetic hazard / non-sacred scrap**, not a celebrated relic — until the Wardens open it.
 
-But two 40k facts keep options open:
+### Canon find (locked)
+An Umbral Warden cell enters a **Martian quarantine archive** on suppression/recovery duty. Inside is a Terran data-casket containing incomplete *Naruto* fragments. The Wardens reconstruct Akatsuki doctrine from what remains. When Mars’ priesthood orders the casket destroyed or re-sealed forever, the Chapter refuses and schisms.
 
-1. **Dark Age of Technology** *(trope: humanity’s lost golden age of starflight, long before the Imperium)* — humans *did* leave Sol with huge cultural/data payloads. Copies can exist far away on dead colonies, ark-ships, or hulks.
-2. **Forbidden doesn’t mean deleted** — Terra, Luna, Mars, and Inquisitorial black sites hoard dangerous junk in vaults nobody is supposed to open.
+**Why incomplete on Mars:** old Terran purge scars + Mechanicus quarantine wipes + millennia of bit-rot. The red planet did not “write Naruto”; it only **jailed** a broken copy.
 
-So: **origin = Sol/Terra culture.**  
-**Find-site** can be Sol itself *or* a Sol-origin cache that left millennia ago.
+### Locked canon line
+> The Incomplete Tablet is Terran cultural archaeotech, recovered by Umbral Wardens from a Mechanicus quarantine vault on Mars. It never should have been opened. It never should have survived. It did both.
 
-### Options (lore-relevant)
-
-#### Option 1 — Sealed Terran sub-vault *(most mythic)*
-Buried under Terra’s crust in a forgotten Administratum / sealed historitor ward, mislabeled as scrapcode or “pre-Imperial noise.”
-
-- **Pros:** Maximum irony and importance; explains why it’s incomplete (purge cycles, wars, Siege damage).  
-- **Cons:** Hardest to justify access. Umbral Wardens would need extraordinary remit (Inquisitorial chamber-militant secondment, Solar emergency, etc.).  
-- **Trope:** “They weren’t supposed to be under the Throneworld’s floorboards.”
-
-#### Option 2 — Luna / Martian quarantine archive *(strong default)*
-**Luna** (Terra’s moon) and **Mars** (Mechanicus forge-world) both warehouse dangerous archaeotech. A data-casket tagged as memetic hazard fits Mechanicus or Lunar gene-lab leftovers.
-
-- **Pros:** Still in **Sol**; Wardens-as-suppression team makes sense; Mechanicus burn-order feels natural.  
-- **Cons:** Slightly less “holy of holies” than Terra proper.  
-- **Trope:** “Sol system junk drawer for cursed hard drives.”
-
-#### Option 3 — Inquisitorial black site in Segmentum Solar
-Not on Terra, but close in political terms: a secret fortress holding contraband evacuated *from* Terra during some ancient scare.
-
-- **Pros:** Perfect for **B+D** Wardens (quiet wars + sealed data). Explains incomplete files (redacted in transit).  
-- **Cons:** Needs a named or unnamed Ordo hook.  
-- **Trope:** “Evidence locker the cops forgot they had.”
-
-#### Option 4 — Sol-origin ark / space hulk *(left the solar system, still “from Earth”)*
-A Dark Age colony ark carried entertainment libraries outbound, then died, became a hulk, and drifted. The tablet is a Sol cultural fossil found far away.
-
-- **Pros:** Answers “how did it leave Sol?” honestly; classic 40k boarding-recovery mission for Wardens.  
-- **Cons:** Feels a bit less intimate than finding it in humanity’s home system.  
-- **Trope:** “Earth TV permanently lost in galactic storage.”
-
-### Recommendation for the Umbral Wardens
-**Option 2 or 3** — keep it **Sol-tied**, not “random planet across the galaxy.”
-
-Best blend for your Chapter:
-- **Found in a Martian/Lunar quarantine vault or Solar black site**  
-- **Content originated on Terra** in the deep past  
-- Files incomplete because of **old Terran purge + Mechanicus quarantine wipes + time rot**
-
-That keeps your solar-system instinct, stays lore-legal, and fits Wardens sent to suppress/recover dangerous data without requiring them to casually tour the Imperial Palace basement.
-
-### Suggested canon line (if you lock this later)
-> The Incomplete Tablet is Terran cultural archaeotech, recovered by an Umbral Warden cell from a Sol quarantine archive. It never should have been opened. It never should have survived. It did both.
+### Other options (not used; kept for reference)
+Terra sub-vault, Luna archive, Solar black site, and Sol-origin hulk remain possible alternate tellings, but **Mars is canon** for this sheet.
 
 
 ---
 
 ## One-Paragraph Pitch (for lists / Discord)
 
-> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. They recovered a forbidden archaeotech tablet containing incomplete fragments of an ancient Terran saga — what we would recognise as *Naruto* — and mistook the truncated Akatsuki creed for superior truth. Already convinced the Imperium farms endless conflict, they refused orders to destroy the relic, struck the Aquila, and reorganized into crimson-cloud cells to force peace through pain while hunting other shards of their broken scripture.
+> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. On **Mars**, in a Mechanicus quarantine vault, they recovered a Terran archaeotech tablet containing incomplete fragments of an ancient saga — what we would recognise as *Naruto* — and mistook the truncated Akatsuki creed for superior truth. When Mars ordered the relic destroyed, they refused, struck the Aquila, fled Sol custody, and reorganized into crimson-cloud cells to force peace through pain while hunting other shards of their broken scripture.
 
 ---
 
-*Last updated: locked former culture B+D as the Umbral Wardens.*
+*Last updated: Mars locked as Incomplete Tablet find-site.*
