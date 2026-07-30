@@ -198,6 +198,8 @@ Codex companies give way to an Akatsuki-style **cell network**:
 
 **Short form:** Charcoal-black armour, crimson accents, white-edged red cloud heraldry, dark gunmetal weapons and red eye lenses. Squad leaders bear individualized markings while retaining the Chapter's unified black-and-crimson colours.
 
+**Badge art:** Gothic imperial storm-cloud (locked). Printable stencil sheet: `docs/warhammer/crimson-dawn-cloud-stencil.pdf`
+
 ### Iconography treatment
 | Element | Treatment |
 | --- | --- |
