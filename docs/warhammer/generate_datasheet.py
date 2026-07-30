@@ -101,7 +101,12 @@ def main():
         ("Command", "Dawnlord Dolor"),
         ("Flagship", 'Ortus Cruentus  ("Bloody Dawn")'),
         ("Battle-cry", '"Pain teaches. Dawn follows."'),
-        ("Heraldry", "Black plate; crimson cloud marks; Aquila struck"),
+        (
+            "Livery",
+            "Charcoal-black armour, crimson accents, white-edged red cloud "
+            "heraldry, dark gunmetal weapons and red eye lenses. Squad leaders "
+            "bear individualized markings; basing is scorched rock.",
+        ),
     ]
     for label, value in rows:
         pdf.set_x(14)

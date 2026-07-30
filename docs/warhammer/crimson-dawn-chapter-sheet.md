@@ -25,8 +25,8 @@
 | **Dawnlord** | Dolor |
 | **Flagship** | *Ortus Cruentus* (“Bloody Dawn”) |
 | **Battle Cry** | *“Pain teaches. Dawn follows.”* |
-| **Colours** | Black armour, crimson cloud heraldry, dull iron trim |
-| **Symbol** | Stylized red cloud (sometimes ringed) |
+| **Colours** | Charcoal-black armour; deep crimson accents; white-edged crimson cloud |
+| **Symbol** | Crimson storm cloud outlined in white (right shoulder) |
 
 ---
 
@@ -185,13 +185,22 @@ Codex companies give way to an Akatsuki-style **cell network**:
 
 ---
 
-## Heraldry
+## Paint Scheme *(locked)*
 
+| Element | Scheme |
+| --- | --- |
+| **Primary** | Matte charcoal-black armour with cold grey edge highlights |
+| **Secondary** | Deep crimson, used sparingly on shoulder trim, helmet stripes, and kneepads |
+| **Chapter badge** | Crimson storm cloud outlined in white, on the **right** shoulder |
+| **Details** | Dark gunmetal weapons and insignia; glowing red eye lenses |
+| **Command markings** | Each squad leader bears unique accent colours/symbols for a legendary captain, while keeping core black-and-crimson livery |
+| **Basing** | Dark rocky ground and scorched earth |
+
+**Short form:** Charcoal-black armour, crimson accents, white-edged red cloud heraldry, dark gunmetal weapons and red eye lenses. Squad leaders bear individualized markings while retaining the Chapter's unified black-and-crimson colours.
+
+### Iconography treatment
 | Element | Treatment |
 | --- | --- |
-| **Armour** | Matte black |
-| **Accents** | Crimson / vermillion |
-| **Chapter mark** | Red cloud (usually right pauldron) |
 | **Skulls / Crux honours** | Keep — cost and veteran truth |
 | **Aquila / Imperialis / laurels** | Deface, strike through, or cover |
 | **Emperor script / purity seals** | Remove or overpaint |
@@ -245,4 +254,4 @@ Core Chapter canon is otherwise locked.
 
 ---
 
-*Core sheet complete; character names deferred.*
+*Core sheet complete; character names deferred. Paint scheme locked.*
