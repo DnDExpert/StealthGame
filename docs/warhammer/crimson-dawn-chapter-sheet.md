@@ -197,11 +197,27 @@ Tablet-glyph names in the same register as **Dolor**: High Gothic creed-readings
 | **Fossor** (“the digger”) | Tablet-shard recovery | Every archive is a grave; dig until the scripture is whole — or until Dolor’s faith cracks | Left pad: **honour** disc; purity-seal stubs overpainted charcoal | **Zetsu** |
 | **Volumen** (“the scroll / tome”) | Librarius voice / doctrine | First decoder of the Martian casket; still hunts “missing pages” and fears a shard that shows rebuild | Helm: plain **line** + psychic hood cables in gunmetal; left pad: blank charcoal | **Konan** |
 
-**Empty rings (keep empty on purpose):**
-- One seat **lost on Mars** during the breakout — armour recovered, name struck from rolls → *OOU: **Yahiko***
-- One seat **unfilled** — Dolor will not raise a Ring until another shard is found → *OOU: open (**Sasori** / **Kakuzu** / **Obito** not drafted)*
+#### Tabletop kit / unit *(draft — narrative count-as)*
 
-\*Out-of-universe only — never put these names on public datasheets or model labels.
+Primaris kits in Crimson Dawn colours; Aquila struck. Matched play = whatever rules you agree (Loyalist count-as or CSM proxies) — this table is **“what box / role,”** not a tournament list.
+
+| Creed name | *OOU* | Character model | Typical Cloud Cell |
+| --- | --- | --- | --- |
+| **Dolor** | Pain | **Captain** (Tacticus or Gravis) — relic blade / fist; optional second body as a decoy Captain for “many Paths” narrative | Bladeguard + Sternguard / mixed veterans as honour court |
+| **Vorago** | Kisame | **Terminator Captain** (or Captain with thunder hammer) — big boarding killer | **Terminators** and/or **Assault Intercessors** (teleport / breach) |
+| **Ruptura** | Deidara | **Lieutenant in Gravis** (or Techmarine if you want siege toys) | **Eradicators** + **Hellblasters** (walls and armour die) |
+| **Nex** | Itachi | **Captain in Phobos** (or Lieutenant in Phobos) — blade + silenced lethality | **Eliminators** + **Reivers** / **Incursors** |
+| **Cruor** | Hidan | **Lieutenant** with power weapon (ritual duelist energy — not a Chaplain) | **Infernus Squad** and/or **Aggressors** (flamestorm) |
+| **Fossor** | Zetsu | **Librarian in Phobos** *or* Phobos Lieutenant if you want him less psyker | **Infiltrators** + **Incursors** (archive raids, deep insertion) |
+| **Volumen** | Konan | **Librarian** (Tacticus / Phobos) — Chief Librarian vibe; scripture & paper-as-psychic | Small Librarius escort: **Sternguard** or Phobos veterans |
+
+**Empty rings → models as scenery / unfinished kits:**
+| Seat | *OOU* | What to build |
+| --- | --- | --- |
+| Lost on Mars | Yahiko | Relic armour on a trophy base (dead **Ancient** / empty Terminator shell) — no datasheet |
+| Unfilled | Sasori / Kakuzu / Obito | Leave blank until drafted; natural kits if filled later: **Techmarine** (Sasori), **Apothecary** (Kakuzu), **Captain in Terminator Armour** with unique helm (Obito) |
+
+\*Out-of-universe only — never put Akatsuki names on public datasheets or model labels.
 
 **How they relate to Dolor:** they do not debate the Path in public. Private doubt is allowed only to **Volumen** and **Fossor** (the ones who touch the tablet). The rest enforce.
 
