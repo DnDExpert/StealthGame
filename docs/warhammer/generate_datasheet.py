@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Fill the official GW Munitorum heraldry PDF template with Crimson Dawn data."""
+"""Fill the official Munitorum heraldry template with correctly placed Crimson Dawn data."""
 
 from collections import deque
 from pathlib import Path
 
 import fitz
 from PIL import Image, ImageDraw, ImageFont
+import numpy as np
 
 ROOT = Path("/workspace/docs/warhammer")
 BLANK_PDF = ROOT / "templates" / "munitorum-heraldry-blank.pdf"
@@ -14,12 +15,65 @@ OUT_PNG = ROOT / "crimson-dawn-datasheet.png"
 OUT_PDF = ROOT / "crimson-dawn-datasheet.pdf"
 PREVIEW = Path("/opt/cursor/artifacts/crimson-dawn-datasheet-preview.png")
 
+SCALE = 3
 CHARCOAL = (38, 38, 40)
 CRIMSON = (150, 22, 30)
-LENS = (210, 36, 40)
-WHITE = (248, 248, 250)
+LENS = (215, 36, 42)
+WHITE = (250, 250, 252)
 INK = (18, 18, 20)
-SCALE = 3
+
+# Coordinates at SCALE=3 (1786 x 1259), measured from blank template ink
+SYMBOL_BOX = (938, 250, 1278, 490)
+
+NAME_XY = (1005, 112)
+MOTTO_XY = (1085, 163)
+
+# Section 4 helmet centers / section 5 pad centers (slightly different on col 0 & 3)
+HELM_CX = (1002, 1212, 1426, 1627)
+PAD_CX = (999, 1211, 1424, 1639)
+PAD_CY = 875
+
+# Measured eye-socket axis-aligned bounds per helm (L/R)
+HELM_EYES = (
+    ((953, 600, 985, 614), (1007, 600, 1039, 614)),
+    ((1169, 600, 1201, 614), (1223, 600, 1255, 614)),
+    ((1385, 600, 1417, 614), (1439, 600, 1471, 614)),
+    ((1601, 600, 1633, 614), (1655, 600, 1687, 614)),
+)
+
+HELM_LABEL_Y = 712
+PAD_LABEL_Y = 942
+NOTES_Y0 = 985
+
+# Marine (front view): viewer's left = marine's right shoulder (chapter badge)
+# Landmarks measured from blank template ink at SCALE=3
+MARINE_BADGE = (265, 270)
+MARINE_BROW = (448, 146, 512, 152)
+MARINE_KNEES = ((308, 832), (649, 833))
+MARINE_AQUILA_X = (400, 250, 530, 330)
+# Measured Mk X lens cavities on blank (centers of enclosed white sockets)
+MARINE_EYE_SEEDS = ((455, 158), (505, 158))
+MARINE_EYE_BOXES = ((441, 150, 474, 165), (494, 150, 524, 165))
+# Extra plate seeds so helmet/shins/boots/forearms fill when disconnected.
+# Avoid seeds that bridge into page background (e.g. 700,500).
+MARINE_EXTRA_SEEDS = (
+    (465, 120),  # helm dome
+    (456, 175),  # faceplate
+    (308, 900),
+    (308, 980),
+    (308, 1050),
+    (649, 900),
+    (649, 980),
+    (649, 1050),
+    (200, 450),
+    (180, 550),
+    (160, 380),
+    (690, 350),  # viewer's-right pauldron / upper arm
+    (700, 400),
+    (710, 380),
+    (740, 450),  # forearm plate
+    (750, 480),
+)
 
 
 def render_blank() -> Image.Image:
@@ -100,117 +154,139 @@ def interior_seeds(im, bbox):
     return seeds
 
 
+def load_badge(max_size: int) -> Image.Image:
+    """Load chapter badge with near-black background made transparent."""
+    badge = Image.open(BADGE).convert("RGBA")
+    arr = np.array(badge)
+    black = (arr[:, :, 0] < 50) & (arr[:, :, 1] < 50) & (arr[:, :, 2] < 50)
+    arr[black, 3] = 0
+    badge = Image.fromarray(arr)
+    badge.thumbnail((max_size, max_size), Image.Resampling.LANCZOS)
+    return badge
+
+
 def colorize_marine(im: Image.Image) -> Image.Image:
     W, H = im.size
-    # Exclude purity-seal parchment area roughly bottom-center-right of marine
-    bbox = (50, 50, int(W * 0.46), int(H * 0.92))
-    seeds = interior_seeds(im, bbox)
-    print("marine interiors", len(seeds))
-    for s in seeds:
-        # skip very small later; fill charcoal
+    bbox = (55, 55, int(W * 0.46), int(H * 0.95))
+    for s in interior_seeds(im, bbox):
         flood_fillable(im, s, CHARCOAL, limit=120000)
+    for s in MARINE_EXTRA_SEEDS:
+        flood_fillable(im, s, CHARCOAL, limit=80000)
+
+    # Lenses: paint measured Mk X socket bounds, then flood remaining white
+    dtmp = ImageDraw.Draw(im)
+    for (x1, y1, x2, y2), seed in zip(MARINE_EYE_BOXES, MARINE_EYE_SEEDS):
+        # Slanted almond matching blank socket silhouette
+        if seed[0] < 480:  # left lens
+            dtmp.polygon(
+                [(x1 + 2, y1 + 5), (x2 - 1, y1 + 1), (x2 - 2, y2 - 1), (x1 + 3, y2 - 2)],
+                fill=LENS,
+            )
+        else:
+            dtmp.polygon(
+                [(x1 + 1, y1 + 1), (x2 - 2, y1 + 5), (x2 - 3, y2 - 2), (x1 + 2, y2 - 1)],
+                fill=LENS,
+            )
+        flood_fillable(im, seed, LENS, limit=500)
 
     d = ImageDraw.Draw(im)
-    # Helmet lenses (drawn, no flood)
-    d.polygon([(375, 185), (400, 175), (405, 205), (380, 210)], fill=LENS)
-    d.polygon([(425, 175), (450, 185), (445, 210), (420, 205)], fill=LENS)
-    # Brow stripe
-    d.rectangle((375, 140, 450, 158), fill=CRIMSON)
-    # Kneepad discs
-    d.ellipse((320, 770, 385, 835), fill=CRIMSON)
-    d.ellipse((450, 770, 515, 835), fill=CRIMSON)
-    # Pauldron trim hints (rim arcs)
-    d.arc((175, 250, 330, 420), 200, 340, fill=CRIMSON, width=8)
-    d.arc((500, 250, 655, 420), 200, 340, fill=CRIMSON, width=8)
-    # Aquila strike on chest
-    d.line((355, 395, 475, 485), fill=CRIMSON, width=5)
-    d.line((475, 395, 355, 485), fill=CRIMSON, width=5)
+    d.rectangle(MARINE_BROW, fill=CRIMSON)
+    for kx, ky in MARINE_KNEES:
+        d.ellipse((kx - 36, ky - 34, kx + 36, ky + 34), fill=CRIMSON)
+    x1, y1, x2, y2 = MARINE_AQUILA_X
+    d.line((x1, y1, x2, y2), fill=CRIMSON, width=4)
+    d.line((x2, y1, x1, y2), fill=CRIMSON, width=4)
 
-    # Right shoulder chapter badge (viewer right = marine's left in some conventions;
-    # scheme says chapter badge on RIGHT shoulder = viewer's left on front view? 
-    # Front view: viewer's left = marine's right shoulder. Place badge there.)
-    badge = Image.open(BADGE).convert("RGBA")
-    badge.thumbnail((100, 100), Image.Resampling.LANCZOS)
+    badge = load_badge(120)
     base = im.convert("RGBA")
-    # viewer's left pauldron center ~ (250, 330)
-    base.paste(badge, (250 - badge.width // 2, 330 - badge.height // 2), badge)
+    bx, by = MARINE_BADGE
+    base.paste(badge, (bx - badge.width // 2, by - badge.height // 2), badge)
     return base.convert("RGB")
 
 
 def paste_symbol(im: Image.Image) -> Image.Image:
-    box = (928, 252, 1178, 505)
-    bw, bh = box[2] - box[0], box[3] - box[1]
-    canvas = Image.new("RGBA", (bw, bh), (10, 10, 12, 255))
-    badge = Image.open(BADGE).convert("RGBA")
-    badge.thumbnail((bw - 18, bh - 18), Image.Resampling.LANCZOS)
+    x1, y1, x2, y2 = SYMBOL_BOX
+    bw, bh = x2 - x1, y2 - y1
+    canvas = Image.new("RGBA", (bw, bh), (8, 8, 10, 255))
+    badge = load_badge(min(bw, bh) - 28)
     canvas.paste(badge, ((bw - badge.width) // 2, (bh - badge.height) // 2), badge)
     out = im.convert("RGBA")
-    out.paste(canvas, (box[0], box[1]), canvas)
+    out.paste(canvas, (x1, y1), canvas)
     return out.convert("RGB")
 
 
-def fill_form_icons(im: Image.Image) -> Image.Image:
+def fill_helms_and_pads(im: Image.Image) -> Image.Image:
+    """Paint marks into measured template shapes."""
     d = ImageDraw.Draw(im)
-    helm_boxes = [
-        (955, 555, 1110, 690),
-        (1125, 555, 1280, 690),
-        (1295, 555, 1450, 690),
-        (1465, 555, 1620, 690),
-    ]
-    # Pads are open-bottom outlines - paint solid fills instead of flood
-    pad_centers = [(1032, 845), (1202, 845), (1372, 845), (1542, 845)]
 
-    for i, box in enumerate(helm_boxes):
-        for s in interior_seeds(im, box):
-            flood_fillable(im, s, CHARCOAL, limit=30000)
-        x1, y1, x2, y2 = box
-        cx = (x1 + x2) // 2
-        d = ImageDraw.Draw(im)
-        d.rectangle((cx - 28, y1 + 22, cx + 28, y1 + 36), fill=CRIMSON)
-        d.ellipse((cx - 32, y1 + 48, cx - 10, y1 + 68), fill=LENS)
-        d.ellipse((cx + 10, y1 + 48, cx + 32, y1 + 68), fill=LENS)
-        if i == 1:
-            d.polygon([(cx, y1 + 8), (cx + 10, y1 + 24), (cx - 10, y1 + 24)], fill=WHITE)
-        if i == 3:
-            d.rectangle((cx - 6, y1 + 10, cx + 6, y1 + 40), fill=CRIMSON)
+    for i, (cx, eyes) in enumerate(zip(HELM_CX, HELM_EYES)):
+        # Fill real eye sockets via flood from socket centers
+        for x1, y1, x2, y2 in eyes:
+            seed = ((x1 + x2) // 2, (y1 + y2) // 2 + 1)
+            n = flood_fillable(im, seed, LENS, limit=500)
+            if n < 30:
+                # Fallback polygon matching slanted Mark VII lens
+                mx, my = (x1 + x2) // 2, (y1 + y2) // 2
+                if mx < cx:  # left eye
+                    d.polygon(
+                        [(x1 + 1, y1 + 4), (x2 - 1, y1 + 1), (x2 - 2, y2 - 1), (x1 + 2, y2 - 2)],
+                        fill=LENS,
+                    )
+                else:
+                    d.polygon(
+                        [(x1 + 1, y1 + 1), (x2 - 1, y1 + 4), (x2 - 2, y2 - 2), (x1 + 2, y2 - 1)],
+                        fill=LENS,
+                    )
+
+        # Rank marks on forehead (above brow), not on lenses
+        brow_y = 586
+        d.rectangle((cx - 18, brow_y, cx + 18, brow_y + 7), fill=CRIMSON)
+        if i == 1:  # sergeant — small chevron
+            d.polygon([(cx, 572), (cx + 8, 584), (cx - 8, 584)], fill=CRIMSON)
+        if i == 2:  # veteran — second brow bar
+            d.rectangle((cx - 18, 578, cx + 18, 583), fill=CRIMSON)
+        if i == 3:  # leader — vertical stripe
+            d.rectangle((cx - 3, 568, cx + 3, brow_y + 7), fill=CRIMSON)
+
+    # Pads: flood charcoal into measured interiors, then icons
+    for cx in PAD_CX:
+        flood_fillable(im, (cx, PAD_CY), CHARCOAL, limit=30000)
 
     out = im.convert("RGBA")
-    badge = Image.open(BADGE).convert("RGBA")
     d = ImageDraw.Draw(out)
-    for i, (cx, cy) in enumerate(pad_centers):
-        # solid pad face
-        d.ellipse((cx - 55, cy - 60, cx + 55, cy + 40), fill=CHARCOAL, outline=INK, width=2)
-        d.rectangle((cx - 55, cy + 28, cx + 55, cy + 42), fill=CHARCOAL, outline=INK, width=2)
+    badge = load_badge(84)
+    for i, cx in enumerate(PAD_CX):
+        cy = PAD_CY
         if i == 0:
-            b = badge.copy()
-            b.thumbnail((70, 70), Image.Resampling.LANCZOS)
-            out.paste(b, (cx - b.width // 2, cy - b.height // 2 - 6), b)
+            out.paste(badge, (cx - badge.width // 2, cy - badge.height // 2), badge)
         elif i == 1:
-            d.ellipse((cx - 18, cy - 18, cx + 18, cy + 18), fill=WHITE, outline=INK, width=2)
+            d.ellipse((cx - 14, cy - 16, cx + 14, cy + 12), fill=WHITE, outline=INK, width=2)
         elif i == 2:
-            d.polygon([(cx, cy - 22), (cx + 20, cy + 18), (cx - 20, cy + 18)], fill=CRIMSON)
+            d.polygon([(cx, cy - 22), (cx + 16, cy + 14), (cx - 16, cy + 14)], fill=CRIMSON)
         else:
-            d.ellipse((cx - 24, cy - 24, cx + 24, cy + 24), outline=CRIMSON, width=5)
-            d.ellipse((cx - 9, cy - 9, cx + 9, cy + 9), fill=CRIMSON)
+            d.ellipse((cx - 18, cy - 20, cx + 18, cy + 16), outline=CRIMSON, width=4)
+            d.ellipse((cx - 5, cy - 7, cx + 5, cy + 3), fill=CRIMSON)
     return out.convert("RGB")
 
 
 def draw_text(im: Image.Image) -> Image.Image:
     d = ImageDraw.Draw(im)
     try:
-        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 26)
-        font_sm = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 20)
-        font_tiny = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 15)
+        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24)
+        font_sm = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
+        font_tiny = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 14)
     except Exception:
         font = font_sm = font_tiny = ImageFont.load_default()
 
-    d.text((1000, 86), "The Crimson Dawn", fill=INK, font=font)
-    d.text((1080, 166), "Pain teaches. Dawn follows.", fill=INK, font=font_sm)
+    d.text(NAME_XY, "The Crimson Dawn", fill=INK, font=font)
+    d.text(MOTTO_XY, "Pain teaches. Dawn follows.", fill=INK, font=font_sm)
 
-    for x, lab in zip([978, 1148, 1318, 1488], ["line", "sergeant", "veteran", "leader"]):
-        d.text((x, 698), lab, fill=INK, font=font_tiny)
-    for x, lab in zip([968, 1148, 1318, 1488], ["chapter", "honour", "cell", "ring"]):
-        d.text((x, 918), lab, fill=INK, font=font_tiny)
+    for cx, lab in zip(HELM_CX, ["line", "sergeant", "veteran", "leader"]):
+        tw = d.textlength(lab, font=font_tiny)
+        d.text((cx - tw / 2, HELM_LABEL_Y), lab, fill=INK, font=font_tiny)
+    for cx, lab in zip(PAD_CX, ["chapter", "honour", "cell", "ring"]):
+        tw = d.textlength(lab, font=font_tiny)
+        d.text((cx - tw / 2, PAD_LABEL_Y), lab, fill=INK, font=font_tiny)
 
     notes = [
         "Former: Umbral Wardens. Flagship: Ortus Cruentus (Bloody Dawn).",
@@ -218,10 +294,10 @@ def draw_text(im: Image.Image) -> Image.Image:
         "Livery: charcoal-black; deep crimson accents; white-edged gothic storm-cloud;",
         "gunmetal weapons; red lenses; scorched basing. Aquila struck.",
     ]
-    y = 978
+    y = NOTES_Y0
     for line in notes:
-        d.text((915, y), line, fill=INK, font=font_tiny)
-        y += 24
+        d.text((918, y), line, fill=INK, font=font_tiny)
+        y += 22
     return im
 
 
@@ -230,11 +306,11 @@ def main():
     print("size", im.size)
     im = colorize_marine(im)
     im = paste_symbol(im)
-    im = fill_form_icons(im)
+    im = fill_helms_and_pads(im)
     im = draw_text(im)
 
-    OUT_PNG.parent.mkdir(parents=True, exist_ok=True)
     im.save(OUT_PNG, dpi=(300, 300))
+    PREVIEW.parent.mkdir(parents=True, exist_ok=True)
     PREVIEW.write_bytes(OUT_PNG.read_bytes())
 
     doc = fitz.open()
