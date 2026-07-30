@@ -16,7 +16,7 @@
 | **Chapter Name** | The Crimson Dawn |
 | **Self-Name** | Akatsuki *(“Dawn”)* |
 | **Former Name** | The Umbral Wardens |
-| **Status** | Renegade (not Chaos by default) |
+| **Status** | Renegade — **officially missing / records sealed**; quiet kill-orders only |
 | **Allegiance** | Their own creed — the Incomplete Tablet |
 | **Homeworld** | None; fleet-based |
 | **Gene-seed** | Unknown / sealed *(optional rumour: Raven Guard successors)* |
