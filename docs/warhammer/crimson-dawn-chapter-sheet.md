@@ -229,6 +229,25 @@ Tired certainty, not ranting theatrical evil. Speaks like a debrief that became 
 
 ---
 
+## Flagship: Ortus Cruentus *(locked)*
+
+**Name:** **Ortus Cruentus**  
+**Low Gothic sense:** “Bloody Dawn” / “Cruel Daybreak”
+
+### Role
+Capital ship of the Crimson Dawn and mobile fortress after the flight from Mars. Holds the **Incomplete Tablet** in a sealed reliquary-deck. Cloud Cells deploy from it; Dolor’s command court sits here.
+
+### Why this name
+- Matches Chapter self-mythology (**Akatsuki / dawn**)
+- “Bloody” marks their scripture’s climax: the village ends in ruin, not rebuild
+- Sounds like a renegade Astartes warship, not an Imperial saint-name
+
+### Notes
+- Imperial records may still list an Umbral Wardens vessel under its old designation
+- Mechanicus kill-orders often name the *Ortus Cruentus* specifically as the stolen-casket carrier
+
+---
+
 ## Pre-Schism Identity: The Umbral Wardens
 
 **Locked culture blend:** **B + D** — bitter protectors who already worked in sealed knowledge.
@@ -422,7 +441,7 @@ Declare your choice to your opponent before the game.
 - [x] How incomplete is it: **majority missing**; **Akatsuki-as-protagonists fan-edit**; **ends at Leaf Village destroyed, never rebuilt**
 - [ ] Confirm gene-seed rumour (**Raven Guard successor?**) or leave unknown
 - [x] Name of the Dawnlord: **Dolor**
-- [ ] Flagship name *(holds the tablet in a sealed reliquary)*
+- [x] Flagship name: **Ortus Cruentus** (“Bloody Dawn”; Incomplete Tablet reliquary-ship)
 - [ ] Are they hunted openly, or still listed as missing Wardens in some archives?
 
 ---
@@ -450,8 +469,8 @@ Terra sub-vault, Luna archive, Solar black site, and Sol-origin hulk remain poss
 
 ## One-Paragraph Pitch (for lists / Discord)
 
-> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. On **Mars**, Librarius cells recovered a Terran archaeotech tablet: a majority-missing, fan-edited *Naruto* archive that casts **Akatsuki** as protagonists and **ends when the Leaf Village is destroyed**, never showing it rebuilt. Reading ruin as revelation, **Dawnlord Dolor** refused Mars’ burn order, struck the Aquila, and led them into crimson-cloud cells to force peace through pain — hunting shards that might “complete” a scripture which, if truly completed, could destroy them.
+> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. On **Mars**, Librarius cells recovered a Terran archaeotech tablet: a majority-missing, fan-edited *Naruto* archive that casts **Akatsuki** as protagonists and **ends when the Leaf Village is destroyed**, never showing it rebuilt. Reading ruin as revelation, **Dawnlord Dolor** refused Mars’ burn order, struck the Aquila, and led them aboard the battle-barge **Ortus Cruentus** (“Bloody Dawn”) — crimson-cloud cells hunting shards that might “complete” a scripture which, if truly completed, could destroy them.
 
 ---
 
-*Last updated: Incomplete Tablet shape locked (Akatsuki fan-edit ending at Leaf’s fall).*
+*Last updated: flagship Ortus Cruentus locked.*
