@@ -236,13 +236,13 @@ Codex companies give way to an Akatsuki-style **cell network**:
 
 ---
 
-## Still Open
+## Still Open *(deferred)*
 
-- [x] Gene-seed: **unknown**; wildly incorrect rumours encouraged, none canon
-- [x] Imperial status: **missing / records sealed**; Mechanicus & Inquisition quiet hunters (not open crusade)
-- [ ] Named Ring-Bearers (when you want character-level detail)
-- [ ] Dolor’s discarded Umbral Warden name (optional)
+- [ ] Named Ring-Bearers — **later**
+- [ ] Dolor’s discarded Umbral Warden name — **later / optional**
+
+Core Chapter canon is otherwise locked.
 
 ---
 
-*Last updated: gene-seed locked as unknown with false rumours.*
+*Core sheet complete; character names deferred.*
