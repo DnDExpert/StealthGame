@@ -12,7 +12,8 @@
 | --- | --- |
 | **Chapter Name (Low Gothic)** | The Crimson Dawn |
 | **Self-Name** | Akatsuki *(“Dawn” — the name they took after breaking with the Imperium)* |
-| **Former Designation** | *[Undecided — see Candidate Former Profiles; pick A–D first]* |
+| **Former Designation** | **The Umbral Wardens** *(pre-schism name; see below)* |
+| **Former Culture** | Blend **B + D**: Disillusioned Wardens + Hidden Scholars |
 | **Status** | Renegade (Excommunicate Traitoris suspected / undeclared in some warzones) |
 | **Allegiance** | Neither Throne nor Chaos — creed drawn from the **Incomplete Tablet** |
 | **Homeworld** | None retained. Fleet-based; operate from a stolen warship / black-site fortress |
@@ -27,7 +28,7 @@
 
 ## Founding: The Incomplete Tablet
 
-The Chapter did not begin as renegades. They were a Loyalist force on a recovery crusade when they breached a sealed vault of **forbidden archaeotech** — a pre-Imperial data-casket the Mechanicus would later classify as *memetic contraband*.
+The Chapter did not begin as renegades. As the **Umbral Wardens**, they were a Loyalist black-ops / warden brotherhood on a recovery-and-suppression assignment when they breached a sealed vault of **forbidden archaeotech** — a pre-Imperial data-casket the Mechanicus would later classify as *memetic contraband*.
 
 Inside was a fractured entertainment-archive from Old Earth’s deep past: what later ages would have called the **Naruto** cycle. The tablet was **badly incomplete** — episodes missing, metadata burned, character arcs truncated, moral framing half-deleted by millennia of corruption.
 
@@ -161,14 +162,72 @@ These map to **patterns the setting already uses** for Chapters that go wrong wi
 | Loud missionary heresy | **C — Storm Zealots** | Crusade faith redirected |
 | Cult of the archive | **D — Hidden Scholars** | Forbidden knowledge rupture |
 
-**Suggested starter:** **A**, with a streak of **B**.  
-That is very 40k: relic theology + accumulated disgust when the Imperium orders truth burned.
+**Locked choice:** **B + D** (Disillusioned Wardens + Hidden Scholars).  
+See **Pre-Schism Identity: The Umbral Wardens** below. Profiles A–D remain as reference.
 
-When you pick a letter (or blend), next step is lore-facing: **former Chapter name, who ordered the purge, and a short pre-schism chronicle** — still explained in plain language where tropes appear.
+When expanding further: deepen the schism chronicle, Dawnlord naming, and tablet-fragment heresies *within* the Chapter.
 
 ---
 
-## Summary
+## Pre-Schism Identity: The Umbral Wardens
+
+**Locked culture blend:** **B + D** — bitter protectors who already worked in sealed knowledge.
+
+### Why this fits Akatsuki
+Akatsuki are not crusading monks first — they are **outsiders who clocked a broken system** and organized as a **secret network**.  
+- **B** gives the motive: the “Hidden Villages” (Imperium) perpetuate endless war.  
+- **D** gives the method: cells, classified archives, reconstructing incomplete truth into doctrine.  
+Together they become Crimson Dawn / Akatsuki without needing Chaos as a crutch.
+
+### Who they were (plain + lore)
+| | Detail |
+| --- | --- |
+| **Name** | **The Umbral Wardens** |
+| **Role** | Formally a Loyalist Chapter used for **quiet wars**: counter-insurgency, black-site security, recovery/suppression of dangerous data |
+| **Public face (B)** | Wardens of Imperial worlds and tithe-routes — expected to die for governors and dogma |
+| **Private face (D)** | Librarius-heavy; compartmentalized kill-cells; experience handling sealed vaults and incomplete archives |
+| **Gene-seed rumour** | Often whispered as **Raven Guard successors** *(stealth, independence, small-unit craft)* — unproven, optional |
+| **Faith posture** | Not atheist; increasingly **cold** toward Ecclesiarchy pageantry after too many “victories” that fixed nothing |
+
+**Trope translation:** Imagine military intelligence officers who also do riot control for a corrupt empire — then find a broken file that names their employer as the villain.
+
+### How they lived before the tablet
+- Fought rebellions and xenos threats, then watched Imperial authorities reinstate the same abuses.
+- Grew a culture of **unsanctioned honesty** inside the Chapter: sergeants and Librarians speaking openly in sealed circles about Imperial rot.
+- Already preferred **cell deployments** over parade-ground company theatre.
+- Skulls and veteran marks stayed meaningful as **cost ledgers**, not Throne pageantry.
+- Aquila still worn — loyalty as habit, increasingly hollow.
+
+### How the Incomplete Tablet detonated them
+1. An Umbral Warden cell breaches a sealed vault under recovery/suppression orders.
+2. Librarius reconstructs the damaged Naruto-archive; Chaplaincy (or a doctrinal clique) frames fragments as ancient Terran war-philosophy.
+3. **B activates:** Akatsuki’s system-critique matches wounds they already carry.
+4. **D activates:** Missing episodes are treated as **redacted intelligence**, not proof the creed is unreliable. Reconstruction becomes scripture.
+5. Red-cloud marks appear first in secret cells, then openly.
+6. Inquisition / Mechanicus / segmentum command orders the casket destroyed or surrendered.
+7. The Wardens refuse — not as relic-fanatics first, but as soldiers who will not erase the only diagnosis that made sense.
+8. Aquilas are struck; they rename themselves **Akatsuki / Crimson Dawn**.
+
+### What they kept vs changed
+
+| From Umbral Wardens | As Crimson Dawn |
+| --- | --- |
+| Cell / black-ops structure | Becomes formal **Ring / Cloud Cell** network |
+| Distrust of Imperial governance | Becomes open anti-Throne creed |
+| Archive reconstruction habits | Becomes **shard-hunting** theology |
+| Skulls, Terminator honours | Kept as cost / veteran truth |
+| Aquila, purity theatre, surrender orders | Defaced / refused |
+| Quiet professionalism | Mixed with missionary “forced peace” violence |
+
+### Tone guide (for later writing)
+- Not cartoon villain; **tired, certain, clandestine**.
+- Speeches sound like debriefs that turned into sermons.
+- Internal conflict: Wardens who wanted reform vs scholars who want the tablet *completed* at any cost.
+
+### Name notes
+- **Umbral Wardens** = pre-schism Imperial record name.  
+- **Crimson Dawn / Akatsuki** = name they claim after the break.  
+- Imperial kill-notices may still list both.
 
 The Crimson Dawn are renegade Space Marines remade by a broken relic. Inspired by incomplete Akatsuki ideals they mistook for ancient wisdom, they abandoned the Imperium — not to serve Chaos, but to impose peace through overwhelming force and necessary pain.
 
