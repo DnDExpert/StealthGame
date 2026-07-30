@@ -229,9 +229,13 @@ Together they become Crimson Dawn / Akatsuki without needing Chaos as a crutch.
 - **Crimson Dawn / Akatsuki** = name they claim after the break.  
 - Imperial kill-notices may still list both.
 
-The Crimson Dawn are renegade Space Marines remade by a broken relic. Inspired by incomplete Akatsuki ideals they mistook for ancient wisdom, they abandoned the Imperium — not to serve Chaos, but to impose peace through overwhelming force and necessary pain.
+---
 
-They teach that the Imperium’s wars never end because its masters feed on endless sacrifice, just as the tablet’s “villages” fed on endless conflict. Their answer is brutal and simple — end war by making its cost unbearable, then build order from the ashes. To Imperial authorities they are heretics corrupted by forbidden data. To themselves they are the only ones who listened.
+## Summary
+
+The Crimson Dawn — once the **Umbral Wardens** — are renegade Space Marines remade by a broken relic. Already bitter at Imperial hypocrisy and trained to reconstruct sealed archives, they mistook incomplete Akatsuki ideals for superior truth and abandoned the Imperium rather than burn the tablet.
+
+They teach that the Imperium’s wars never end because its masters feed on endless conflict, just as the tablet’s “villages” did. Their answer is brutal and simple — end war by making its cost unbearable, then build order from the ashes, operating in secret cells the Wardens already knew how to run. To Imperial authorities they are heretics corrupted by forbidden data. To themselves they are the only ones who listened.
 
 ---
 
@@ -350,22 +354,22 @@ Declare your choice to your opponent before the game.
 
 ## Open Choices (fill in as you build)
 
-- [ ] Former culture profile: **A / B / C / D** (or blend)
-- [ ] Former loyal Chapter name (invent after profile pick)
+- [x] Former culture profile: **B + D**
+- [x] Former loyal Chapter name: **The Umbral Wardens**
 - [ ] Where the vault was found (dead world, hulk, Inquisitorial black site?)
-- [ ] Who first decoded the tablet (Librarian, Chaplain, Chapter Master?)
+- [ ] Who first decoded the tablet (Librarian-led cell? Chaplain clique? Chapter Master?)
 - [ ] How incomplete is it (percent missing / which “truths” they lack)?
-- [ ] Gene-seed rumour (only if you care later — optional for beginners)
-- [ ] Name of the Dawnlord
-- [ ] Flagship name *(often holds the tablet in a sealed reliquary)*
-- [ ] Are they hunted openly, or still mistaken for Loyalists in some sectors?
+- [ ] Confirm gene-seed rumour (**Raven Guard successor?**) or leave unknown
+- [ ] Name of the Dawnlord *(once an Umbral Warden commander / Librarian-lord)*
+- [ ] Flagship name *(holds the tablet in a sealed reliquary)*
+- [ ] Are they hunted openly, or still listed as missing Wardens in some archives?
 
 ---
 
 ## One-Paragraph Pitch (for lists / Discord)
 
-> **The Crimson Dawn** were once Loyalist Astartes. They recovered a forbidden archaeotech tablet containing incomplete fragments of an ancient Terran saga — what we would recognise as *Naruto* — and mistook the truncated Akatsuki creed for superior truth. They wear black armour and crimson clouds, reject the God-Emperor’s cult, and wage war to force peace through pain, hunting other shards of the tablet to “complete” a scripture that was never meant to be one.
+> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. They recovered a forbidden archaeotech tablet containing incomplete fragments of an ancient Terran saga — what we would recognise as *Naruto* — and mistook the truncated Akatsuki creed for superior truth. Already convinced the Imperium farms endless conflict, they refused orders to destroy the relic, struck the Aquila, and reorganized into crimson-cloud cells to force peace through pain while hunting other shards of their broken scripture.
 
 ---
 
-*Last updated: lore-grounded former profiles with trope translations for newer 40k readers.*
+*Last updated: locked former culture B+D as the Umbral Wardens.*
