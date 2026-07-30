@@ -34,7 +34,7 @@ The Chapter did not begin as renegades. As the **Umbral Wardens**, they were a L
 
 The casket’s contents were **Terran** in origin (ancient entertainment-archive from Old Earth), warehoused on **Mars** as hazardous cultural scrap rather than holy relic.
 
-Inside was a fractured entertainment-archive from Old Earth’s deep past: what later ages would have called the **Naruto** cycle. The tablet was **badly incomplete** — episodes missing, metadata burned, character arcs truncated, moral framing half-deleted by millennia of corruption.
+Inside was a fractured entertainment-archive from Old Earth’s deep past: what later ages would have called the **Naruto** cycle. The tablet was **badly incomplete** — not merely damaged, but reshaped. What survives reads like a **fan-edit** that recenters **Akatsuki** as protagonists, cuts most opposing context, and **ends when the Leaf Village is destroyed**, never showing it rebuilt. *(Full detail: Incomplete Tablet Canon below.)*
 
 What survived clearest were fragments of an organization called **Akatsuki**: black cloaks, red clouds, outcast warriors, and a doctrine that peace could be forced through shared suffering and overwhelming power. Without the missing context (heroes who oppose them, the fuller ending, the satire and tragedy around those ideals), the Chapter’s command cadre read the remnants as **revealed superior philosophy** — not fiction.
 
