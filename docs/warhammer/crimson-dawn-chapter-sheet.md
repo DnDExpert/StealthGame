@@ -34,8 +34,27 @@
 
 Once Loyalist black-ops wardens, they broke with the Imperium after reconstructing a forbidden Terran archive on Mars and mistaking truncated **Akatsuki** ideals for superior truth. They reject God-Emperor worship, deface the Aquila, and wage war to force peace through necessary pain — operating in secret cells they already knew how to run.
 
-To the Imperium they are heretics corrupted by memetic archaeotech.  
+To most of the Imperium they barely exist — missing Wardens, sealed files.  
+To Mechanicus and Inquisition hunters they are a need-to-know recovery/purge target.  
 To themselves they are the only ones who listened.
+
+---
+
+## Imperial Standing *(locked)*
+
+They are **not** in open, publicly acknowledged war with the Imperium.
+
+| Layer | Reality |
+| --- | --- |
+| **Public Imperium** | Umbral Wardens listed as missing, lost, or **records sealed** |
+| **Adeptus Mechanicus** | Knows the Martian casket was taken; wants it recovered or destroyed without spectacle |
+| **Inquisition** | Black warrants / need-to-know purge and recovery teams |
+| **Crimson Dawn** | Cell warfare, demonstrations of pain, withdrawal — not a declared crusade front |
+| **Most citizens / PDF** | Unlikely to know either true name |
+
+**Why:** a black-ops Chapter that robbed Mars is politically radioactive. The Imperium prefers quiet deletion over admitting a Sol-system failure. **Excommunicate** paperwork may exist in sealed Ordo/Mechanicus hands without becoming a galaxy-wide sermon.
+
+Akatsuki parallel: feared when encountered; not advertised as a formal nation at war.
 
 ---
 
@@ -182,9 +201,9 @@ Codex companies give way to an Akatsuki-style **cell network**:
 
 | Faction | Stance |
 | --- | --- |
-| **Imperium / Ecclesiarchy** | Heretics; Aquila-breakers |
-| **Adeptus Mechanicus** | Primary grievance — want the Martian casket back or burned |
-| **Inquisition** | Priority purge — heresy + Sol security breach |
+| **Imperium / Ecclesiarchy** | Mostly unaware or sealed-file only; heresy if identified |
+| **Adeptus Mechanicus** | Primary quiet hunter — want the Martian casket back or burned |
+| **Inquisition** | Sealed warrants; Sol security / memetic breach priority |
 | **Other Renegades** | Temporary alliances possible |
 | **Chaos** | Distrusted; may offer false “missing fragments” |
 | **Xenos** | Pragmatic enmity |
@@ -210,10 +229,10 @@ Codex companies give way to an Akatsuki-style **cell network**:
 ## Still Open
 
 - [ ] Gene-seed rumour: confirm **Raven Guard successor** flavour, or leave unknown
-- [ ] Imperial status: hunted openly as traitors, or still partly listed as missing Wardens?
+- [x] Imperial status: **missing / records sealed**; Mechanicus & Inquisition quiet hunters (not open crusade)
 - [ ] Named Ring-Bearers (when you want character-level detail)
 - [ ] Dolor’s discarded Umbral Warden name (optional)
 
 ---
 
-*Cleaned locked-canon sheet — workshop profiles and modeling notes removed.*
+*Last updated: Imperial standing locked as sealed-file / quiet hunt.*
