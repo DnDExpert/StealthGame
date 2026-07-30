@@ -240,6 +240,13 @@ Primaris kits in Crimson Dawn colours; Aquila struck. Matched play = whatever ru
 
 **Badge art:** Gothic imperial storm-cloud (locked). Printable stencil sheet: `docs/warhammer/crimson-dawn-cloud-stencil.pdf`
 
+### Printable PDFs
+| File | What it is | Regenerate |
+| --- | --- | --- |
+| `crimson-dawn-chapter-index.pdf` | Narrative chapter index (livery, doctrine, origin) | `python3 docs/warhammer/generate_chapter_index.py` |
+| `crimson-dawn-datasheet.pdf` | Official Munitorum markings & heraldry form (filled) | `python3 docs/warhammer/generate_datasheet.py` |
+| `crimson-dawn-cloud-stencil.pdf` | Cut stencil sheet for the gothic cloud badge | `python3 docs/warhammer/generate_cloud_stencil.py` |
+
 ### Iconography treatment
 | Element | Treatment |
 | --- | --- |

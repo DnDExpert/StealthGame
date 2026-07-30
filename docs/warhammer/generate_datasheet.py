@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Fill the official Munitorum heraldry template with correctly placed Crimson Dawn data."""
+"""Fill the official Munitorum heraldry template with correctly placed Crimson Dawn data.
+
+For the narrative chapter-index PDF (livery/doctrine), use generate_chapter_index.py.
+"""
 
 from collections import deque
 from pathlib import Path
