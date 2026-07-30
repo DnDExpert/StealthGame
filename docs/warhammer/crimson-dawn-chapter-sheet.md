@@ -49,105 +49,122 @@ Some Ring-Bearers still hunt other tablet shards, believing missing data will �
 
 ---
 
-## Choosing Their Former Chapter (beginner guide)
+## Choosing Their Former Chapter
 
-You do **not** need to memorize 40k lore to pick this. You only need to decide what kind of Marines they were **before** the tablet rewired them. That choice makes the schism easier to feel.
+**Goal:** stay **lore-relevant** to Warhammer 40,000 — real Imperial institutions, real ways Chapters fall — while explaining tropes as they appear.
 
-### Tiny glossary
-| Term | Plain meaning |
-| --- | --- |
-| **Loyalist / Chapter** | Space Marines who still serve the Imperium (the human empire) |
-| **The Emperor / God-Emperor** | Ancient ruler; the Imperium worships him as a god |
-| **Aquila** | Two-headed eagle badge of the Imperium — loyalty mark |
-| **Chaplain** | Priest-officer; keeps faith, doctrine, and morale |
-| **Librarian** | Psychic scholar-officer; reads dangerous lore / archives |
-| **Archaeotech** | Ancient high-tech relics from humanity’s lost past |
-| **Schism** | When the Chapter splits from Imperial authority |
-| **Gene-seed** | The biological heritage that makes a Space Marine; often tied to an older famous Chapter |
-| **Successor Chapter** | A later Chapter descended from one of the big original ones |
+You do **not** need a famous canon Chapter name on day one. You need a former **culture** that matches how renegade Astartes actually happen in the setting. Then we invent a successor name that fits.
 
-### How to use this
-1. Read the four **profiles** (types), not famous canon names.
-2. Pick the vibe that makes you say “yeah, *those* guys would fall for incomplete Akatsuki scripture.”
-3. Then we invent a former Chapter name that fits — custom is totally fine and very common.
+### Tiny glossary (tropes used below)
+| Term | Plain meaning | Why it matters here |
+| --- | --- | --- |
+| **Adeptus Astartes / Chapter** | Space Marine brotherhood (~1000 warriors in theory) | Your force was one of these before the break |
+| **Loyalist** | Still serves the Imperium | Starting state before the tablet |
+| **Renegade** | Broke with Imperial authority; not automatically Chaos | Your current state |
+| **Chaos / Ruinous Powers** | Literal evil gods and their bargains | We are **avoiding** “they fell to Chaos” as the default |
+| **The Emperor / God-Emperor** | Ancient master of mankind; worshipped as a god by the Imperium | Tablet creed rejects that worship |
+| **Ecclesiarchy** | Imperial state church | Hates rival scriptures |
+| **Inquisition** | Secret police / heresy hunters with huge power | Likely ordered the tablet burned |
+| **Adeptus Mechanicus** | Tech-priesthood; claims ownership of ancient tech | Would seize archaeotech as theirs |
+| **Archaeotech** | Lost ancient human technology | The tablet is this — and handling it is politically radioactive |
+| **Excommunicate Traitoris** | Formal “these Marines are enemies of the Imperium” label | Possible official status after the schism |
+| **Chaplain** | Faith/discipline officer (black armour, skull helm often) | Likely to sanctify the tablet as parable |
+| **Librarian** | Psychic scholar; reads dangerous lore | Likely to “reconstruct” missing tablet data |
+| **Gene-seed / successor** | Biological lineage from older Chapters | Optional flavour later; culture matters more than bloodline first |
+| **Aquila** | Imperial eagle badge | Loyalty mark they deface |
 
----
-
-## Candidate Former Profiles
-
-### Profile A — The Relic Monks *(strongest default fit)*
-**Who they were:** A pious Chapter that hunted ancient relics and treated old Terran artefacts as almost-holy. Chaplains and Librarians had huge influence.
-
-**Why the tablet hooks them:** They already believe “old Earth left us secret truths.” An incomplete saga looks like scripture with pages torn out — so they fill the gaps with zeal.
-
-**How the schism feels:** Tragic and earnest. They think they’re *more* faithful to humanity’s true past, not less.
-
-**What they keep / smash after:**
-- Keep: skulls, solemn rites, veteran honours, relic-obsession  
-- Smash: Aquila, Emperor-as-god worship, obedience to Inquisition/Mechanicus orders to burn the tablet  
-
-**Beginner read:** “Church archaeologists who found a cursed Netflix hard drive and founded a religion.”
+### Method (lore-first)
+1. Pick a **profile** grounded in real 40k fall patterns.
+2. Invent a **custom former Chapter name** (normal and lore-legal).
+3. Optionally later: hint a gene-seed lineage (Ultramarines-stable, Imperial Fists grit, etc.) if you want extra texture.
 
 ---
 
-### Profile B — The Disillusioned Wardens
-**Who they were:** A duty-heavy Chapter worn down by endless thankless wars — defending Imperial worlds that stay corrupt, starving, or abandoned after victory.
+## Candidate Former Profiles *(lore-grounded)*
 
-**Why the tablet hooks them:** Akatsuki’s “the system is the problem” hits like lightning. Incomplete files make forced peace look like the only adult answer.
+These map to **patterns the setting already uses** for Chapters that go wrong without instantly becoming Chaos Marines (think relic-obsession, doctrinal rupture, Inquisitorial conflict — in the spirit of renegade brotherhoods like the Soul Drinkers or Relictors, not copy-pasting their plots).
 
-**How the schism feels:** Angry and political. Less mystic, more “we’re done dying for hypocrites.”
+### Profile A — Relic Monks *(strongest lore fit)*
+**40k pattern:** Chapters that venerate archaeotech/relics until a relic outweighs obedience.
 
-**What they keep / smash after:**
-- Keep: discipline, squad structure, pragmatism, skulls-as-cost-of-war  
-- Smash: Imperial heraldry, purity theater, blind loyalty slogans  
+**Who they were:** A Loyalist Chapter tasked with recovery of lost human artefacts. Chaplains framed ancient Terran finds as moral instruction; Librarians catalogued forbidden vaults under Imperial remit.
 
-**Beginner read:** “Burned-out cops who watch half an anime and decide the outlaws were right.”
+**Why the tablet hooks them (in-lore):** The Imperium already treats Old Night / pre-Imperial history as dangerous half-known myth. A data-casket that *looks* like recovered Terran wisdom fits their existing relic theology. Incomplete files are “pages the Enemy tore out,” not “we’re watching unfinished entertainment.”
 
----
+**How the schism happens:** Ordo / Mechanicus / segmentum authority orders the casket destroyed or surrendered. The Chapter refuses — relic-rights vs Imperial command, a classic Astartes flashpoint — then rebrands around the tablet’s Akatsuki fragments.
 
-### Profile C — The Storm Zealots
-**Who they were:** Crusade-first fanatics — glory, pain, and righteousness. War is worship.
+**After:**
+- Keep: relic cult, skulls, solemn honour marks, Terminator veteran culture  
+- Smash: Aquila obedience, God-Emperor cult primacy, Inquisitorial surrender orders  
 
-**Why the tablet hooks them:** “Peace through overwhelming pain” sounds like a holy upgrade to what they already do. They don’t notice the missing moral counterweight.
-
-**How the schism feels:** Violent and missionary. They don’t sneak away; they announce a new truth and dare the Imperium to stop them.
-
-**What they keep / smash after:**
-- Keep: aggression, martyr imagery, skulls, sergeant hero-cults  
-- Smash: fighting *for* the Throne; they now fight to impose Dawn law  
-
-**Beginner read:** “Holy crusaders who swap one sermon for another and never lower the volume.”
+**Trope translation:** “Warrior-monks who loved holy junk too much, then found junk that rewrote the sermon.”
 
 ---
 
-### Profile D — The Hidden Scholars
-**Who they were:** A secretive Chapter used to forbidden archives, black-site missions, and knowing things civilians shouldn’t. Librarians dominate culture.
+### Profile B — Disillusioned Wardens
+**40k pattern:** Chapters broken by Imperial hypocrisy — endless wars that save institutions, not people.
 
-**Why the tablet hooks them:** They’re trained to reconstruct incomplete data. Reconstruction becomes revelation — and then dogma.
+**Who they were:** A Codex-leaning protector Chapter: garrison crusades, counter-insurgency, holding worlds for governors who remain cruel or incompetent.
 
-**How the schism feels:** Cold and cultish. The tablet is a puzzle-box god; Ring-Bearers argue over “correct readings.”
+**Why the tablet hooks them:** Akatsuki’s “the villages perpetuate war” maps cleanly onto Hive governors, tithes, and Ecclesiarchy pageantry. The incomplete creed offers a *strategic* heresy: force peace by breaking the system that farms conflict.
 
-**What they keep / smash after:**
-- Keep: secrecy, cell organization (already Akatsuki-like), relic shard-hunting  
-- Smash: sharing discoveries with Imperium; Imperial oversight  
+**How the schism happens:** Less “holy revelation,” more “the tablet named the disease we already smelled.” Refusal to burn it becomes the last straw after years of bitter compliance.
 
-**Beginner read:** “Conspiracy archivists who autocomplete a broken story and then kill for the autocomplete.”
+**After:**
+- Keep: discipline, practical wargear culture, skulls as cost-accounting of war  
+- Smash: Imperial heraldry, performative piety, dying for unworthy masters  
+
+**Trope translation:** “Exhausted shield-bearers who finally agree with the outlaws in the half-file.”
+
+---
+
+### Profile C — Storm Zealots
+**40k pattern:** Crusade Chapters whose faith is war itself (Black Templars–adjacent culture, not necessarily that Chapter).
+
+**Who they were:** High-zeal assault brotherhood; Chaplains central; “suffering purifies” already doctrine.
+
+**Why the tablet hooks them:** “Peace through shared pain / overwhelming power” sounds like a sanctified evolution of their creed. Missing episodes mean they never see that philosophy condemned.
+
+**How the schism happens:** They declare a new Eternal Crusade under Dawn law. The Imperium calls it heresy; they call the Imperium blind.
+
+**After:**
+- Keep: aggression, martyr aesthetics, sergeant hero-cult, skulls  
+- Smash: fighting *in the Emperor’s name*; the mission is now Dawn peace  
+
+**Trope translation:** “Holy wrecking balls who changed hymns and kept swinging.”
+
+---
+
+### Profile D — Hidden Scholars
+**40k pattern:** Black-operative / knowledge-hoarding Chapters used to sealed archives (Deathwatch-adjacent secrecy culture, or Inquisitorial chamber-militant habits — again as *flavour*, not claiming those factions).
+
+**Who they were:** Fleet elements seconded to recover or suppress dangerous data. Librarius-dominant; compartmentalized cells already normal.
+
+**Why the tablet hooks them:** Their job is reconstructing incomplete intelligence. Reconstruction becomes doctrine; Akatsuki cells look like a perfected command pattern.
+
+**How the schism happens:** When higher authority demands erasure, the scholars decide preservation of “truth” outranks Throne politics. Ring structure grows from existing cell ops.
+
+**After:**
+- Keep: secrecy, cell networks, shard-hunting, cold internal debate over readings  
+- Smash: mandatory disclosure to Imperium / Mechanicus  
+
+**Trope translation:** “Spook-archivists who autocomplete a broken text and armour the autocomplete.”
 
 ---
 
 ## Quick chooser
 
-| If you want the Chapter to feel… | Pick |
-| --- | --- |
-| Tragic, devout, “sacred mistake” | **A — Relic Monks** |
-| Bitter, anti-system, grounded | **B — Disillusioned Wardens** |
-| Loud, crusading, scary converts | **C — Storm Zealots** |
-| Cult, mysterious, tablet-obsessed | **D — Hidden Scholars** |
+| If you want the schism to feel… | Pick | Real 40k flavour |
+| --- | --- | --- |
+| Tragic sacred mistake | **A — Relic Monks** | Relic vs obedience crisis |
+| Bitter anti-system break | **B — Disillusioned Wardens** | Loyalty eroded by Imperial rot |
+| Loud missionary heresy | **C — Storm Zealots** | Crusade faith redirected |
+| Cult of the archive | **D — Hidden Scholars** | Forbidden knowledge rupture |
 
-**Suggested starter:** **Profile A**, maybe with a little **B**.  
-That combo explains both *why they trusted the tablet* and *why they were ready to leave the Imperium* when told to burn it.
+**Suggested starter:** **A**, with a streak of **B**.  
+That is very 40k: relic theology + accumulated disgust when the Imperium orders truth burned.
 
-Once you pick a letter (or a blend), next chapter-creation step is: invent the **former Chapter name + one paragraph of pre-schism history**.
+When you pick a letter (or blend), next step is lore-facing: **former Chapter name, who ordered the purge, and a short pre-schism chronicle** — still explained in plain language where tropes appear.
 
 ---
 
@@ -274,14 +291,14 @@ Declare your choice to your opponent before the game.
 
 ## Open Choices (fill in as you build)
 
-- [ ] Former loyal Chapter name before the Tablet Schism
+- [ ] Former culture profile: **A / B / C / D** (or blend)
+- [ ] Former loyal Chapter name (invent after profile pick)
 - [ ] Where the vault was found (dead world, hulk, Inquisitorial black site?)
 - [ ] Who first decoded the tablet (Librarian, Chaplain, Chapter Master?)
 - [ ] How incomplete is it (percent missing / which “truths” they lack)?
-- [ ] Gene-seed rumour (Ultramarine-succession? unknown?)
+- [ ] Gene-seed rumour (only if you care later — optional for beginners)
 - [ ] Name of the Dawnlord
 - [ ] Flagship name *(often holds the tablet in a sealed reliquary)*
-- [ ] Which Ring-Bearers exist in your collection
 - [ ] Are they hunted openly, or still mistaken for Loyalists in some sectors?
 
 ---
@@ -292,4 +309,4 @@ Declare your choice to your opponent before the game.
 
 ---
 
-*Last updated with Incomplete Tablet founding; Terminator conversion notes and 10th-edition wargear limits retained.*
+*Last updated: lore-grounded former profiles with trope translations for newer 40k readers.*
