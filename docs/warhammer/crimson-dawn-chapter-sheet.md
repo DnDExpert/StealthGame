@@ -12,7 +12,7 @@
 | --- | --- |
 | **Chapter Name (Low Gothic)** | The Crimson Dawn |
 | **Self-Name** | Akatsuki *(“Dawn” — the name they took after breaking with the Imperium)* |
-| **Former Designation** | *[Player choice — loyal Chapter before the Tablet Schism]* |
+| **Former Designation** | *[Undecided — see Candidate Former Profiles; pick A–D first]* |
 | **Status** | Renegade (Excommunicate Traitoris suspected / undeclared in some warzones) |
 | **Allegiance** | Neither Throne nor Chaos — creed drawn from the **Incomplete Tablet** |
 | **Homeworld** | None retained. Fleet-based; operate from a stolen warship / black-site fortress |
@@ -46,6 +46,108 @@ To the Crimson Dawn it is the **Scripture of Dawn**, incomplete only because the
 Some Ring-Bearers still hunt other tablet shards, believing missing data will “perfect” the creed.
 
 > **Irony (for you, not them):** they are Space Marines LARPing incomplete Akatsuki philosophy as holy writ. That gap is the joke and the tragedy.
+
+---
+
+## Choosing Their Former Chapter (beginner guide)
+
+You do **not** need to memorize 40k lore to pick this. You only need to decide what kind of Marines they were **before** the tablet rewired them. That choice makes the schism easier to feel.
+
+### Tiny glossary
+| Term | Plain meaning |
+| --- | --- |
+| **Loyalist / Chapter** | Space Marines who still serve the Imperium (the human empire) |
+| **The Emperor / God-Emperor** | Ancient ruler; the Imperium worships him as a god |
+| **Aquila** | Two-headed eagle badge of the Imperium — loyalty mark |
+| **Chaplain** | Priest-officer; keeps faith, doctrine, and morale |
+| **Librarian** | Psychic scholar-officer; reads dangerous lore / archives |
+| **Archaeotech** | Ancient high-tech relics from humanity’s lost past |
+| **Schism** | When the Chapter splits from Imperial authority |
+| **Gene-seed** | The biological heritage that makes a Space Marine; often tied to an older famous Chapter |
+| **Successor Chapter** | A later Chapter descended from one of the big original ones |
+
+### How to use this
+1. Read the four **profiles** (types), not famous canon names.
+2. Pick the vibe that makes you say “yeah, *those* guys would fall for incomplete Akatsuki scripture.”
+3. Then we invent a former Chapter name that fits — custom is totally fine and very common.
+
+---
+
+## Candidate Former Profiles
+
+### Profile A — The Relic Monks *(strongest default fit)*
+**Who they were:** A pious Chapter that hunted ancient relics and treated old Terran artefacts as almost-holy. Chaplains and Librarians had huge influence.
+
+**Why the tablet hooks them:** They already believe “old Earth left us secret truths.” An incomplete saga looks like scripture with pages torn out — so they fill the gaps with zeal.
+
+**How the schism feels:** Tragic and earnest. They think they’re *more* faithful to humanity’s true past, not less.
+
+**What they keep / smash after:**
+- Keep: skulls, solemn rites, veteran honours, relic-obsession  
+- Smash: Aquila, Emperor-as-god worship, obedience to Inquisition/Mechanicus orders to burn the tablet  
+
+**Beginner read:** “Church archaeologists who found a cursed Netflix hard drive and founded a religion.”
+
+---
+
+### Profile B — The Disillusioned Wardens
+**Who they were:** A duty-heavy Chapter worn down by endless thankless wars — defending Imperial worlds that stay corrupt, starving, or abandoned after victory.
+
+**Why the tablet hooks them:** Akatsuki’s “the system is the problem” hits like lightning. Incomplete files make forced peace look like the only adult answer.
+
+**How the schism feels:** Angry and political. Less mystic, more “we’re done dying for hypocrites.”
+
+**What they keep / smash after:**
+- Keep: discipline, squad structure, pragmatism, skulls-as-cost-of-war  
+- Smash: Imperial heraldry, purity theater, blind loyalty slogans  
+
+**Beginner read:** “Burned-out cops who watch half an anime and decide the outlaws were right.”
+
+---
+
+### Profile C — The Storm Zealots
+**Who they were:** Crusade-first fanatics — glory, pain, and righteousness. War is worship.
+
+**Why the tablet hooks them:** “Peace through overwhelming pain” sounds like a holy upgrade to what they already do. They don’t notice the missing moral counterweight.
+
+**How the schism feels:** Violent and missionary. They don’t sneak away; they announce a new truth and dare the Imperium to stop them.
+
+**What they keep / smash after:**
+- Keep: aggression, martyr imagery, skulls, sergeant hero-cults  
+- Smash: fighting *for* the Throne; they now fight to impose Dawn law  
+
+**Beginner read:** “Holy crusaders who swap one sermon for another and never lower the volume.”
+
+---
+
+### Profile D — The Hidden Scholars
+**Who they were:** A secretive Chapter used to forbidden archives, black-site missions, and knowing things civilians shouldn’t. Librarians dominate culture.
+
+**Why the tablet hooks them:** They’re trained to reconstruct incomplete data. Reconstruction becomes revelation — and then dogma.
+
+**How the schism feels:** Cold and cultish. The tablet is a puzzle-box god; Ring-Bearers argue over “correct readings.”
+
+**What they keep / smash after:**
+- Keep: secrecy, cell organization (already Akatsuki-like), relic shard-hunting  
+- Smash: sharing discoveries with Imperium; Imperial oversight  
+
+**Beginner read:** “Conspiracy archivists who autocomplete a broken story and then kill for the autocomplete.”
+
+---
+
+## Quick chooser
+
+| If you want the Chapter to feel… | Pick |
+| --- | --- |
+| Tragic, devout, “sacred mistake” | **A — Relic Monks** |
+| Bitter, anti-system, grounded | **B — Disillusioned Wardens** |
+| Loud, crusading, scary converts | **C — Storm Zealots** |
+| Cult, mysterious, tablet-obsessed | **D — Hidden Scholars** |
+
+**Suggested starter:** **Profile A**, maybe with a little **B**.  
+That combo explains both *why they trusted the tablet* and *why they were ready to leave the Imperium* when told to burn it.
+
+Once you pick a letter (or a blend), next chapter-creation step is: invent the **former Chapter name + one paragraph of pre-schism history**.
 
 ---
 
