@@ -51,7 +51,38 @@ To the Imperium this is **forbidden pre-Age of Strife media** that poisoned an A
 To the Crimson Dawn it is the **Scripture of Dawn**, incomplete only because the Throne fears its completion.  
 Some Ring-Bearers still hunt other tablet shards, believing missing data will “perfect” the creed.
 
-> **Irony (for you, not them):** they are Space Marines LARPing incomplete Akatsuki philosophy as holy writ. That gap is the joke and the tragedy.
+> **Irony (for you, not them):** they are Space Marines LARPing a fan-edited Akatsuki cut as holy writ — a story that stops at the village’s ruin and never admits the morning after. That gap is the joke and the tragedy.
+
+---
+
+## Incomplete Tablet Canon *(locked)*
+
+### What the archive actually is (out-of-universe)
+A corrupted Terran entertainment library that now resembles a **biased fan-edit** of *Naruto*:
+- A **majority** of the wider story is missing
+- Framing, hero arcs, and counter-arguments are stripped or scrambled
+- **Akatsuki** are visually and structurally treated as the main characters
+- The surviving run **ends at the destruction of the Leaf Village**
+- There is **no rebuild**, no lasting rebuttal, no “life continues after the demonstration”
+
+In-universe, the Umbral Librarius did not see “a fan-edit.” They saw **redacted scripture** — truth the villages (Imperium) tried to censor.
+
+### What the Dawn thinks the story proves
+| Tablet “lesson” | How they apply it |
+| --- | --- |
+| Outcast cadres see clearly; village systems lie | Imperium = Hidden Villages |
+| Peace requires overwhelming shared pain | Exterminating wars / terror strikes as theology |
+| Destroying the village is the climax of truth | Breaking Imperial shrines, hives, command icons |
+| The story stops at ruin | Ruin *is* the completed argument — rebuilding would be denial |
+
+### What they are missing (and must not know yet)
+- Akatsuki as antagonists in the fuller moral frame  
+- The heroes’ counter-case and the cost of Pain’s philosophy when answered  
+- The Leaf **rebuilt** — proof that destruction was not the final word  
+- Later context that would make their “scripture” look unfinished, edited, and wrong  
+
+### Narrative use
+Shard-hunts are dangerous: a recovered “ending” where the village rises again could **split the Chapter**, break Dolor’s name-theology, or force a second, darker reinterpretation.
 
 ---
 
@@ -270,21 +301,22 @@ They teach that the Imperium’s wars never end because its masters feed on endl
 ## Beliefs & Creed
 
 ### Core Doctrine: The Path of Necessary Pain
-*(Derived from Incomplete Tablet fragments — Akatsuki passages without the missing counter-argument.)*
+*(Derived from a majority-missing, Akatsuki-centric fan-edit that ends at the Leaf’s destruction.)*
 - Peace bought by ignorance is a lie.
 - Suffering shared creates understanding; suffering inflicted with purpose ends cycles of war.
 - “Hidden villages” = the Imperium’s institutions; outcasts who leave them are the only clear-eyed warriors.
+- The destruction of the village is **proof**, not tragedy — their tablet has no rebuild.
 - The Emperor is not denied as a historical warlord — He is **rejected as a living god**. The Imperial Cult is treated as the machine that keeps mankind kneeling.
 - Skulls remain sacred as **memento of cost**, not as Throne-worship.
 - Aquilas, purity seals, and God-Emperor script are marks of a false order and are struck out.
-- Completing the tablet is a holy quest; until then, act on what remains.
+- Completing the tablet is a holy quest; until then, act on the ruin the archive already “proves.”
 
 ### What they are not
 - Not Chaos Space Marines by default (no deliberate bargains with the Dark Gods).
 - Not Loyalist with edgy paint — their break with Imperial authority is real.
 - Not aware they are following unfinished anime lore as scripture.
 
-> **Narrative hook:** Chaos, Inquisition, and rival warbands may all want the tablet. Finding another shard could deepen their creed — or shatter it if the “missing episodes” contradict everything.
+> **Narrative hook:** Chaos, Inquisition, Mechanicus, and rival warbands may all want the tablet. A shard showing the Leaf **rebuilt** is an existential threat to Dawn doctrine.
 
 ---
 
@@ -386,7 +418,7 @@ Declare your choice to your opponent before the game.
 - [x] Former loyal Chapter name: **The Umbral Wardens**
 - [x] Vault location: **Mars** (Mechanicus quarantine archive; Terran-origin contents)
 - [x] Who first decoded the tablet: **Librarius cell**; **Dolor** sanctified it and took the name
-- [ ] How incomplete is it (percent missing / which “truths” they lack)?
+- [x] How incomplete is it: **majority missing**; **Akatsuki-as-protagonists fan-edit**; **ends at Leaf Village destroyed, never rebuilt**
 - [ ] Confirm gene-seed rumour (**Raven Guard successor?**) or leave unknown
 - [x] Name of the Dawnlord: **Dolor**
 - [ ] Flagship name *(holds the tablet in a sealed reliquary)*
@@ -417,8 +449,8 @@ Terra sub-vault, Luna archive, Solar black site, and Sol-origin hulk remain poss
 
 ## One-Paragraph Pitch (for lists / Discord)
 
-> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. On **Mars**, in a Mechanicus quarantine vault, they recovered a Terran archaeotech tablet containing incomplete fragments of an ancient saga — what we would recognise as *Naruto* — and mistook the truncated Akatsuki creed for superior truth. Led by **Dawnlord Dolor** (a High Gothic reading of a tablet glyph meaning *Pain*), they refused Mars’ burn order, struck the Aquila, fled Sol custody, and reorganized into crimson-cloud cells to force peace through pain while hunting other shards of their broken scripture.
+> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. On **Mars**, Librarius cells recovered a Terran archaeotech tablet: a majority-missing, fan-edited *Naruto* archive that casts **Akatsuki** as protagonists and **ends when the Leaf Village is destroyed**, never showing it rebuilt. Reading ruin as revelation, **Dawnlord Dolor** refused Mars’ burn order, struck the Aquila, and led them into crimson-cloud cells to force peace through pain — hunting shards that might “complete” a scripture which, if truly completed, could destroy them.
 
 ---
 
-*Last updated: Librarius decodes the tablet; Dolor founds the faith.*
+*Last updated: Incomplete Tablet shape locked (Akatsuki fan-edit ending at Leaf’s fall).*
