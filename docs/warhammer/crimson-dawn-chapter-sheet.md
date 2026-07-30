@@ -187,18 +187,21 @@ Codex companies give way to an Akatsuki-style **cell network**:
 
 Tablet-glyph names in the same register as **Dolor**: High Gothic creed-readings, not obvious out-of-universe labels. Each wears core Crimson Dawn livery plus one personal accent (matches datasheet §4/§5 command marks).
 
-| Creed name | Specialty | Belief quirk | Model cue |
-| --- | --- | --- | --- |
-| **Vorago** (“the gulf”) | Void boarding / teleport assault | The void between stars is the true “hidden village” — ship-shrines and void docks must burn first | Helm: sergeant chevron; left pad: **ring** mark |
-| **Ruptura** (“the breach”) | Siegebreaking / demolition | A wall that still stands is a lie still believed; ruin is the only honest architecture | Helm: veteran double-bar; kneepads scorched orange-red |
-| **Nex** (“the killing”) | Decapitation strikes | Cut the name that binds a world (governor, saint-relic, Astropathic choir) and the village dies without a siege | Helm: leader T-bar; left pad: **cell** triangle |
-| **Cruor** (“gore / blood-price”) | Flame purge / example-making | Shared pain must be *seen*; quiet deaths teach nothing | Extra crimson on both pauldrons; flame motif on left pad |
-| **Fossor** (“the digger”) | Tablet-shard recovery | Every archive is a grave; dig until the scripture is whole — or until Dolor’s faith cracks | Left pad: **honour** disc; purity-seal stubs overpainted charcoal |
-| **Volumen** (“the scroll / tome”) | Librarius voice / doctrine | First decoder of the Martian casket; still hunts “missing pages” and fears a shard that shows rebuild | Helm: plain **line** + psychic hood cables in gunmetal; left pad: blank charcoal |
+| Creed name | Specialty | Belief quirk | Model cue | *OOU echo* |
+| --- | --- | --- | --- | --- |
+| **Dolor** (Dawnlord) | Chapter command / theology | Ruin is the completed argument | Unique command panoply | **Pain (Nagato)** |
+| **Vorago** (“the gulf”) | Void boarding / teleport assault | The void between stars is the true “hidden village” — ship-shrines and void docks must burn first | Helm: sergeant chevron; left pad: **ring** mark | **Kisame** |
+| **Ruptura** (“the breach”) | Siegebreaking / demolition | A wall that still stands is a lie still believed; ruin is the only honest architecture | Helm: veteran double-bar; kneepads scorched orange-red | **Deidara** |
+| **Nex** (“the killing”) | Decapitation strikes | Cut the name that binds a world (governor, saint-relic, Astropathic choir) and the village dies without a siege | Helm: leader T-bar; left pad: **cell** triangle | **Itachi** |
+| **Cruor** (“gore / blood-price”) | Flame purge / example-making | Shared pain must be *seen*; quiet deaths teach nothing | Extra crimson on both pauldrons; flame motif on left pad | **Hidan** |
+| **Fossor** (“the digger”) | Tablet-shard recovery | Every archive is a grave; dig until the scripture is whole — or until Dolor’s faith cracks | Left pad: **honour** disc; purity-seal stubs overpainted charcoal | **Zetsu** |
+| **Volumen** (“the scroll / tome”) | Librarius voice / doctrine | First decoder of the Martian casket; still hunts “missing pages” and fears a shard that shows rebuild | Helm: plain **line** + psychic hood cables in gunmetal; left pad: blank charcoal | **Konan** |
 
 **Empty rings (keep empty on purpose):**
-- One seat **lost on Mars** during the breakout — armour recovered, name struck from rolls
-- One seat **unfilled** — Dolor will not raise a Ring until another shard is found
+- One seat **lost on Mars** during the breakout — armour recovered, name struck from rolls → *OOU: **Yahiko***
+- One seat **unfilled** — Dolor will not raise a Ring until another shard is found → *OOU: open (**Sasori** / **Kakuzu** / **Obito** not drafted)*
+
+\*Out-of-universe only — never put these names on public datasheets or model labels.
 
 **How they relate to Dolor:** they do not debate the Path in public. Private doubt is allowed only to **Volumen** and **Fossor** (the ones who touch the tablet). The rest enforce.
 
