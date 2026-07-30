@@ -228,11 +228,11 @@ Codex companies give way to an Akatsuki-style **cell network**:
 
 ## Still Open
 
-- [ ] Gene-seed rumour: confirm **Raven Guard successor** flavour, or leave unknown
+- [x] Gene-seed: **unknown**; wildly incorrect rumours encouraged, none canon
 - [x] Imperial status: **missing / records sealed**; Mechanicus & Inquisition quiet hunters (not open crusade)
 - [ ] Named Ring-Bearers (when you want character-level detail)
 - [ ] Dolor’s discarded Umbral Warden name (optional)
 
 ---
 
-*Last updated: Imperial standing locked as sealed-file / quiet hunt.*
+*Last updated: gene-seed locked as unknown with false rumours.*
