@@ -109,6 +109,16 @@ Culture blend: **disillusioned wardens + hidden scholars**.
 | **Faith posture** | Increasingly cold toward Ecclesiarchy pageantry |
 | **Method** | Quiet wars, black sites, incomplete-data reconstruction |
 
+**Gene-seed:** Truly **unknown**, even to most Wardens. As sealed-file ghosts, they attract loud Imperial guesses — confidently, contradictorily, and usually **wrong**:
+
+- Raven Guard successors (stealth fits; unproven)
+- Rogue Dark Angels detachment (too tidy; almost certainly wrong)
+- Ultramarines stock with “doctrinal corruption” (bureaucrat cope)
+- Chimeric / forbidden blended seed (scare story)
+- “Not true Astartes — something older” (nightmare rumour)
+
+**Canon:** none of the above. Truth sealed. Rumours stay wild.
+
 They already preferred cells over parade companies. Skulls meant **cost**, not Throne pageantry. The Aquila was habit growing hollow.
 
 **Why this fits Akatsuki:** outsiders who clocked a broken system, organized as a secret network. The tablet named the disease; it did not invent it.
