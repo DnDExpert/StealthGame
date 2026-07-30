@@ -39,11 +39,12 @@ Inside was a fractured entertainment-archive from Old Earth’s deep past: what 
 What survived clearest were fragments of an organization called **Akatsuki**: black cloaks, red clouds, outcast warriors, and a doctrine that peace could be forced through shared suffering and overwhelming power. Without the missing context (heroes who oppose them, the fuller ending, the satire and tragedy around those ideals), the Chapter’s command cadre read the remnants as **revealed superior philosophy** — not fiction.
 
 ### How the misreading happened
-- Librarius / Chaplaincy treated the tablet as a **historical parable** of ancient Terran war-sages, not as “cartoon.”
+- A **Librarius cell** on Mars reconstructed the damaged archive; they treated it as a **historical parable** of ancient Terran war-sages, not as “cartoon.”
 - Incomplete files made Akatsuki look like the **correct faction**: the ones who saw through village (read: Imperial) hypocrisy.
+- **Dolor** (then an Umbral Warden senior commander) accepted that reading, took the “Pain” glyph as his name, and made it Chapter law.
 - Red-cloud iconography was copied onto armour as sacred heraldry.
 - The name **Akatsuki / Crimson Dawn** was adopted as their true title after the schism.
-- When Imperial authorities ordered the tablet destroyed as heretical scrapcode-culture, the Chapter refused — and broke with the Imperium rather than surrender the “truth.”
+- When the Mechanicus ordered the tablet destroyed, Dolor refused — and the Chapter broke with the Imperium rather than surrender the “truth.”
 
 ### In-universe framing (keeps it semi-lore-legal)
 To the Imperium this is **forbidden pre-Age of Strife media** that poisoned an Astartes brotherhood.  
@@ -179,7 +180,7 @@ When expanding further: Ring-Bearer names, tablet-fragment heresies *within* the
 **Assumed name:** **Dolor** *(High Gothic sense: pain, grief, ache — their translation of a tablet glyph read as “Pain”)*  
 
 ### Who he is
-Former Umbral Warden senior commander (likely a Captain or Librarian-captain hybrid authority in their cell culture). After Mars, he discarded his Warden name and took **Dolor** as scripture-identity: the one who understands that peace requires pain.
+Former Umbral Warden senior commander (likely a Captain with authority over Librarius recovery cells). He did **not** first decode the tablet — a Librarius cell did. Dolor is the one who **accepted** their reconstruction, discarded his Warden name, and took **Dolor** as scripture-identity: the one who understands that peace requires pain.
 
 ### Why this name
 - Fits **B:** a bitter warden renaming himself after the wound he intends to inflict on a broken system  
@@ -227,12 +228,12 @@ Together they become Crimson Dawn / Akatsuki without needing Chaos as a crutch.
 
 ### How the Incomplete Tablet detonated them
 1. An Umbral Warden cell is tasked into a **Martian quarantine vault** under recovery/suppression orders (Mechanicus custody; Astartes muscle/security).
-2. Librarius reconstructs the damaged Naruto-archive; a doctrinal clique frames fragments as ancient Terran war-philosophy.
-3. **B activates:** Akatsuki’s system-critique matches wounds they already carry.
+2. A **Librarius cell** reconstructs the damaged Naruto-archive and frames Akatsuki fragments as ancient Terran war-philosophy.
+3. **B activates:** Akatsuki’s system-critique matches wounds command already carries — especially in **Dolor**.
 4. **D activates:** Missing episodes are treated as **redacted intelligence**, not proof the creed is unreliable. Reconstruction becomes scripture.
-5. Red-cloud marks appear first in secret cells, then openly.
+5. Dolor adopts the “Pain” glyph as his name; red-cloud marks appear first in secret cells, then openly.
 6. The **Adeptus Mechanicus** demands the casket returned/destroyed as contaminated archaeotech; wider Imperial authority backs a burn order.
-7. The Wardens refuse — not as relic-fanatics first, but as soldiers who will not erase the only diagnosis that made sense — and fight their way off Mars / out of Sol custody.
+7. Dolor refuses — scholars found it; he founds the faith — and the Wardens fight their way off Mars / out of Sol custody.
 8. Aquilas are struck; they rename themselves **Akatsuki / Crimson Dawn**.
 
 ### What they kept vs changed
@@ -384,7 +385,7 @@ Declare your choice to your opponent before the game.
 - [x] Former culture profile: **B + D**
 - [x] Former loyal Chapter name: **The Umbral Wardens**
 - [x] Vault location: **Mars** (Mechanicus quarantine archive; Terran-origin contents)
-- [ ] Who first decoded the tablet (Librarian-led cell? Chaplain clique? Chapter Master?)
+- [x] Who first decoded the tablet: **Librarius cell**; **Dolor** sanctified it and took the name
 - [ ] How incomplete is it (percent missing / which “truths” they lack)?
 - [ ] Confirm gene-seed rumour (**Raven Guard successor?**) or leave unknown
 - [x] Name of the Dawnlord: **Dolor**
@@ -420,4 +421,4 @@ Terra sub-vault, Luna archive, Solar black site, and Sol-origin hulk remain poss
 
 ---
 
-*Last updated: Dawnlord Dolor locked.*
+*Last updated: Librarius decodes the tablet; Dolor founds the faith.*
