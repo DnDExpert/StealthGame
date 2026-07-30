@@ -19,7 +19,7 @@
 | **Status** | Renegade — **officially missing / records sealed**; quiet kill-orders only |
 | **Allegiance** | Their own creed — the Incomplete Tablet |
 | **Homeworld** | None; fleet-based |
-| **Gene-seed** | Unknown / sealed *(optional rumour: Raven Guard successors)* |
+| **Gene-seed** | **Unknown** — sealed; Imperial rumours are many and usually wrong |
 | **Relic** | The Incomplete Tablet |
 | **Find-site** | Mars — Mechanicus quarantine archive |
 | **Dawnlord** | Dolor |
