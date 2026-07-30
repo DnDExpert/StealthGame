@@ -356,13 +356,72 @@ Declare your choice to your opponent before the game.
 
 - [x] Former culture profile: **B + D**
 - [x] Former loyal Chapter name: **The Umbral Wardens**
-- [ ] Where the vault was found (dead world, hulk, Inquisitorial black site?)
+- [ ] Vault location *(see Vault Location options below — recommend Sol-origin)*
 - [ ] Who first decoded the tablet (Librarian-led cell? Chaplain clique? Chapter Master?)
 - [ ] How incomplete is it (percent missing / which “truths” they lack)?
 - [ ] Confirm gene-seed rumour (**Raven Guard successor?**) or leave unknown
 - [ ] Name of the Dawnlord *(once an Umbral Warden commander / Librarian-lord)*
 - [ ] Flagship name *(holds the tablet in a sealed reliquary)*
 - [ ] Are they hunted openly, or still listed as missing Wardens in some archives?
+
+---
+
+## Vault Location: Where Could the Tablet Be?
+
+### Your instinct (mostly right)
+A 21st-century entertainment archive like *Naruto* starts on **Terra** (Earth). In the Imperium’s present, Terra is the most sealed, sacred, bureaucratic fortress-world in human space. Something that trivial and “low” would not be casually shipped around as treasure.
+
+But two 40k facts keep options open:
+
+1. **Dark Age of Technology** *(trope: humanity’s lost golden age of starflight, long before the Imperium)* — humans *did* leave Sol with huge cultural/data payloads. Copies can exist far away on dead colonies, ark-ships, or hulks.
+2. **Forbidden doesn’t mean deleted** — Terra, Luna, Mars, and Inquisitorial black sites hoard dangerous junk in vaults nobody is supposed to open.
+
+So: **origin = Sol/Terra culture.**  
+**Find-site** can be Sol itself *or* a Sol-origin cache that left millennia ago.
+
+### Options (lore-relevant)
+
+#### Option 1 — Sealed Terran sub-vault *(most mythic)*
+Buried under Terra’s crust in a forgotten Administratum / sealed historitor ward, mislabeled as scrapcode or “pre-Imperial noise.”
+
+- **Pros:** Maximum irony and importance; explains why it’s incomplete (purge cycles, wars, Siege damage).  
+- **Cons:** Hardest to justify access. Umbral Wardens would need extraordinary remit (Inquisitorial chamber-militant secondment, Solar emergency, etc.).  
+- **Trope:** “They weren’t supposed to be under the Throneworld’s floorboards.”
+
+#### Option 2 — Luna / Martian quarantine archive *(strong default)*
+**Luna** (Terra’s moon) and **Mars** (Mechanicus forge-world) both warehouse dangerous archaeotech. A data-casket tagged as memetic hazard fits Mechanicus or Lunar gene-lab leftovers.
+
+- **Pros:** Still in **Sol**; Wardens-as-suppression team makes sense; Mechanicus burn-order feels natural.  
+- **Cons:** Slightly less “holy of holies” than Terra proper.  
+- **Trope:** “Sol system junk drawer for cursed hard drives.”
+
+#### Option 3 — Inquisitorial black site in Segmentum Solar
+Not on Terra, but close in political terms: a secret fortress holding contraband evacuated *from* Terra during some ancient scare.
+
+- **Pros:** Perfect for **B+D** Wardens (quiet wars + sealed data). Explains incomplete files (redacted in transit).  
+- **Cons:** Needs a named or unnamed Ordo hook.  
+- **Trope:** “Evidence locker the cops forgot they had.”
+
+#### Option 4 — Sol-origin ark / space hulk *(left the solar system, still “from Earth”)*
+A Dark Age colony ark carried entertainment libraries outbound, then died, became a hulk, and drifted. The tablet is a Sol cultural fossil found far away.
+
+- **Pros:** Answers “how did it leave Sol?” honestly; classic 40k boarding-recovery mission for Wardens.  
+- **Cons:** Feels a bit less intimate than finding it in humanity’s home system.  
+- **Trope:** “Earth TV permanently lost in galactic storage.”
+
+### Recommendation for the Umbral Wardens
+**Option 2 or 3** — keep it **Sol-tied**, not “random planet across the galaxy.”
+
+Best blend for your Chapter:
+- **Found in a Martian/Lunar quarantine vault or Solar black site**  
+- **Content originated on Terra** in the deep past  
+- Files incomplete because of **old Terran purge + Mechanicus quarantine wipes + time rot**
+
+That keeps your solar-system instinct, stays lore-legal, and fits Wardens sent to suppress/recover dangerous data without requiring them to casually tour the Imperial Palace basement.
+
+### Suggested canon line (if you lock this later)
+> The Incomplete Tablet is Terran cultural archaeotech, recovered by an Umbral Warden cell from a Sol quarantine archive. It never should have been opened. It never should have survived. It did both.
+
 
 ---
 
