@@ -7,12 +7,10 @@ Separate from the Munitorum heraldry datasheet — see generate_datasheet.py.
 from pathlib import Path
 
 from fpdf import FPDF
-from PIL import Image, ImageDraw
 
 ROOT = Path("/workspace/docs/warhammer")
 OUT = ROOT / "crimson-dawn-chapter-index.pdf"
 BADGE = ROOT / "crimson-dawn-gothic-cloud-source.png"
-DIAGRAM = ROOT / "stencils" / "armour-callout.png"
 
 
 class DawnSheet(FPDF):
@@ -59,46 +57,6 @@ def swatch(pdf: FPDF, x: float, y: float, rgb: tuple[int, int, int], name: str, 
     pdf.cell(40, 4, note)
 
 
-def make_armour_diagram(path: Path):
-    """Simple Terminator-style silhouette with colour callout zones."""
-    w, h = 420, 520
-    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    d = ImageDraw.Draw(im)
-
-    charcoal = (28, 28, 30, 255)
-    crimson = (140, 18, 28, 255)
-    gunmetal = (70, 72, 78, 255)
-    lens = (220, 30, 40, 255)
-    outline = (180, 180, 185, 255)
-
-    d.rounded_rectangle((130, 340, 195, 470), radius=12, fill=charcoal, outline=outline, width=2)
-    d.rounded_rectangle((225, 340, 290, 470), radius=12, fill=charcoal, outline=outline, width=2)
-    d.rounded_rectangle((138, 390, 187, 425), radius=6, fill=crimson)
-    d.rounded_rectangle((233, 390, 282, 425), radius=6, fill=crimson)
-
-    d.rounded_rectangle((120, 170, 300, 350), radius=20, fill=charcoal, outline=outline, width=2)
-    d.rectangle((130, 310, 290, 330), fill=gunmetal)
-
-    d.rounded_rectangle((55, 185, 125, 310), radius=14, fill=charcoal, outline=outline, width=2)
-    d.rounded_rectangle((295, 185, 365, 310), radius=14, fill=charcoal, outline=outline, width=2)
-    d.rounded_rectangle((40, 240, 95, 285), radius=6, fill=gunmetal)
-
-    d.ellipse((40, 145, 140, 215), fill=charcoal, outline=outline, width=2)
-    d.ellipse((280, 145, 380, 215), fill=charcoal, outline=outline, width=2)
-    d.arc((40, 145, 140, 215), 200, 340, fill=crimson, width=6)
-    d.ellipse((70, 160, 110, 190), fill=crimson)
-    d.arc((280, 145, 380, 215), 200, 340, fill=crimson, width=6)
-
-    d.rounded_rectangle((165, 70, 255, 160), radius=16, fill=charcoal, outline=outline, width=2)
-    d.rectangle((175, 85, 245, 100), fill=crimson)
-    d.ellipse((180, 115, 205, 135), fill=lens)
-    d.ellipse((215, 115, 240, 135), fill=lens)
-
-    path.parent.mkdir(parents=True, exist_ok=True)
-    im.save(path)
-    return path
-
-
 def page_frame(pdf: FPDF):
     pdf.set_fill_color(12, 10, 12)
     pdf.rect(0, 0, 210, 297, style="F")
@@ -112,7 +70,6 @@ def page_frame(pdf: FPDF):
 def main():
     if not BADGE.exists():
         raise SystemExit(f"Missing badge art: {BADGE}")
-    make_armour_diagram(DIAGRAM)
 
     pdf = DawnSheet(orientation="P", unit="mm", format="A4")
     pdf.set_auto_page_break(auto=False)
@@ -144,37 +101,23 @@ def main():
     pdf.set_xy(14, 32)
     pdf.set_font("Helvetica", "B", 9)
     pdf.set_text_color(140, 18, 28)
-    pdf.cell(90, 5, "CHAPTER BADGE")
-    pdf.set_xy(118, 32)
-    pdf.cell(80, 5, "LIVERY CALLOUT")
+    pdf.cell(182, 5, "CHAPTER BADGE", align="C")
 
-    pdf.image(str(BADGE), x=22, y=38, w=48)
-    pdf.set_xy(14, 88)
-    pdf.set_font("Helvetica", "", 7)
+    # Centered badge
+    badge_w = 62
+    pdf.image(str(BADGE), x=(210 - badge_w) / 2, y=40, w=badge_w)
+    pdf.set_xy(30, 105)
+    pdf.set_font("Helvetica", "", 8)
     pdf.set_text_color(170, 140, 140)
     pdf.multi_cell(
-        70,
-        3.3,
+        150,
+        3.8,
         "Gothic storm-cloud, crimson with white edge. Displayed on the RIGHT shoulder.",
         align="C",
     )
 
-    pdf.image(str(DIAGRAM), x=115, y=36, w=72)
-
-    pdf.set_xy(115, 128)
-    pdf.set_font("Helvetica", "", 6.5)
-    pdf.set_text_color(200, 190, 185)
-    legend = (
-        "1 Helmet stripe / pauldron trim / kneepads = deep crimson\n"
-        "2 Plate = matte charcoal-black + cold grey edges\n"
-        "3 Right pad badge = crimson cloud, white outline\n"
-        "4 Lenses = glowing red   |   5 Weapons = dark gunmetal\n"
-        "6 Base = scorched rock / dark earth"
-    )
-    pdf.multi_cell(78, 3.2, legend)
-
-    section_rule(pdf, 150)
-    pdf.set_xy(14, 152)
+    section_rule(pdf, 118)
+    pdf.set_xy(14, 120)
     pdf.set_font("Helvetica", "B", 9)
     pdf.set_text_color(140, 18, 28)
     pdf.cell(0, 5, "COLOUR SWATCHES")
@@ -187,18 +130,18 @@ def main():
         ((200, 25, 35), "Lens Red", "Eye lenses"),
         ((55, 45, 40), "Scorched Earth", "Basing"),
     ]
-    y = 159
+    y = 128
     for i, (rgb, name, note) in enumerate(swatches):
         col = i % 3
         row = i // 3
         swatch(pdf, 14 + col * 62, y + row * 18, rgb, name, note)
 
-    section_rule(pdf, 198)
-    pdf.set_xy(14, 200)
+    section_rule(pdf, 168)
+    pdf.set_xy(14, 170)
     pdf.set_font("Helvetica", "B", 9)
     pdf.set_text_color(140, 18, 28)
     pdf.cell(0, 5, "CHAPTER DATA")
-    pdf.set_y(206)
+    pdf.set_y(176)
 
     rows = [
         ("Former name", "The Umbral Wardens"),
@@ -348,7 +291,6 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     pdf.output(str(OUT))
     print(f"Wrote {OUT}")
-    print(f"Wrote {DIAGRAM}")
 
 
 if __name__ == "__main__":
