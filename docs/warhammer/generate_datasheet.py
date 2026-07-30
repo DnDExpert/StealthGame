@@ -47,13 +47,17 @@ NOTES_Y0 = 985
 
 # Marine (front view): viewer's left = marine's right shoulder (chapter badge)
 # Landmarks measured from blank template ink at SCALE=3
-MARINE_BADGE = (265, 270)
-MARINE_BROW = (448, 146, 512, 152)
+MARINE_BADGE = (255, 278)
 MARINE_KNEES = ((308, 832), (649, 833))
 MARINE_AQUILA_X = (400, 250, 530, 330)
-# Measured Mk X lens cavities on blank (centers of enclosed white sockets)
+# Measured Mk X lens cavities on blank (enclosed white sockets)
 MARINE_EYE_SEEDS = ((455, 158), (505, 158))
-MARINE_EYE_BOXES = ((441, 150, 474, 165), (494, 150, 524, 165))
+MARINE_EYE_POLYS = (
+    # left lens — slanted almond inside measured socket
+    [(443, 155), (472, 150), (473, 163), (448, 165)],
+    # right lens
+    [(496, 150), (522, 155), (520, 165), (495, 163)],
+)
 # Extra plate seeds so helmet/shins/boots/forearms fill when disconnected.
 # Avoid seeds that bridge into page background (e.g. 700,500).
 MARINE_EXTRA_SEEDS = (
@@ -173,24 +177,13 @@ def colorize_marine(im: Image.Image) -> Image.Image:
     for s in MARINE_EXTRA_SEEDS:
         flood_fillable(im, s, CHARCOAL, limit=80000)
 
-    # Lenses: paint measured Mk X socket bounds, then flood remaining white
-    dtmp = ImageDraw.Draw(im)
-    for (x1, y1, x2, y2), seed in zip(MARINE_EYE_BOXES, MARINE_EYE_SEEDS):
-        # Slanted almond matching blank socket silhouette
-        if seed[0] < 480:  # left lens
-            dtmp.polygon(
-                [(x1 + 2, y1 + 5), (x2 - 1, y1 + 1), (x2 - 2, y2 - 1), (x1 + 3, y2 - 2)],
-                fill=LENS,
-            )
-        else:
-            dtmp.polygon(
-                [(x1 + 1, y1 + 1), (x2 - 2, y1 + 5), (x2 - 3, y2 - 2), (x1 + 2, y2 - 1)],
-                fill=LENS,
-            )
+    # Lenses only — no brow bar (it read as forehead blocks on the filled helm)
+    d = ImageDraw.Draw(im)
+    for poly in MARINE_EYE_POLYS:
+        d.polygon(poly, fill=LENS)
+    for seed in MARINE_EYE_SEEDS:
         flood_fillable(im, seed, LENS, limit=500)
 
-    d = ImageDraw.Draw(im)
-    d.rectangle(MARINE_BROW, fill=CRIMSON)
     for kx, ky in MARINE_KNEES:
         d.ellipse((kx - 36, ky - 34, kx + 36, ky + 34), fill=CRIMSON)
     x1, y1, x2, y2 = MARINE_AQUILA_X
