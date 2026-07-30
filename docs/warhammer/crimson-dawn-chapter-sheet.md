@@ -25,6 +25,7 @@
 | **Colors** | Black armour, crimson cloud heraldry, dull iron trim |
 | **Chapter Symbol** | Stylized red cloud (sometimes ringed); broken Aquila optional trophy mark |
 | **Dawnlord** | **Dolor** *(see below)* |
+| **Flagship** | **Ortus Cruentus** *(“Bloody Dawn”)* |
 
 ---
 
