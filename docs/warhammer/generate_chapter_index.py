@@ -67,6 +67,21 @@ def page_frame(pdf: FPDF):
     pdf.rect(11, 11, 188, 275, style="D")
 
 
+def heading(pdf: FPDF, title: str):
+    pdf.set_x(14)
+    pdf.set_font("Helvetica", "B", 10)
+    pdf.set_text_color(140, 18, 28)
+    pdf.cell(0, 5.5, title)
+    pdf.ln(5.5)
+
+
+def body(pdf: FPDF, text: str, size=8.5, leading=3.9):
+    pdf.set_x(14)
+    pdf.set_font("Helvetica", "", size)
+    pdf.set_text_color(220, 210, 205)
+    pdf.multi_cell(182, leading, text)
+
+
 def main():
     if not BADGE.exists():
         raise SystemExit(f"Missing badge art: {BADGE}")
@@ -74,7 +89,7 @@ def main():
     pdf = DawnSheet(orientation="P", unit="mm", format="A4")
     pdf.set_auto_page_break(auto=False)
 
-    # ------------------------------------------------------------------ page 1
+    # ------------------------------------------------------------------ page 1 — identity / livery
     pdf.add_page()
     page_frame(pdf)
 
@@ -103,42 +118,20 @@ def main():
     pdf.set_text_color(140, 18, 28)
     pdf.cell(182, 5, "CHAPTER BADGE", align="C")
 
-    # Centered badge
-    badge_w = 52
-    pdf.image(str(BADGE), x=(210 - badge_w) / 2, y=38, w=badge_w)
-    pdf.set_xy(30, 92)
-    pdf.set_font("Helvetica", "", 7.5)
+    badge_w = 62
+    pdf.image(str(BADGE), x=(210 - badge_w) / 2, y=40, w=badge_w)
+    pdf.set_xy(30, 105)
+    pdf.set_font("Helvetica", "", 8)
     pdf.set_text_color(170, 140, 140)
     pdf.multi_cell(
         150,
-        3.5,
+        3.8,
         "Gothic storm-cloud, crimson with white edge. Displayed on the RIGHT shoulder.",
         align="C",
     )
 
-    section_rule(pdf, 102)
-    pdf.set_xy(14, 104)
-    pdf.set_font("Helvetica", "B", 9)
-    pdf.set_text_color(140, 18, 28)
-    pdf.cell(0, 5, "SUMMARY")
-    pdf.set_xy(14, 110)
-    pdf.set_font("Helvetica", "", 8.5)
-    pdf.set_text_color(220, 210, 205)
-    summary = (
-        "Once Loyalist black-ops wardens, they broke with the Imperium after reconstructing "
-        "a forbidden Terran archive on Mars and mistaking truncated Akatsuki ideals for "
-        "superior truth. They reject God-Emperor worship, deface the Aquila, and wage war "
-        "to force peace through necessary pain - operating in secret cells they already "
-        "knew how to run.\n\n"
-        "To most of the Imperium they barely exist - missing Wardens, sealed files. "
-        "To Mechanicus and Inquisition hunters they are a need-to-know recovery/purge target. "
-        "To themselves they are the only ones who listened."
-    )
-    pdf.multi_cell(182, 4.0, summary)
-
-    y_after = pdf.get_y() + 3
-    section_rule(pdf, y_after)
-    pdf.set_xy(14, y_after + 2)
+    section_rule(pdf, 118)
+    pdf.set_xy(14, 120)
     pdf.set_font("Helvetica", "B", 9)
     pdf.set_text_color(140, 18, 28)
     pdf.cell(0, 5, "COLOUR SWATCHES")
@@ -151,19 +144,18 @@ def main():
         ((200, 25, 35), "Lens Red", "Eye lenses"),
         ((55, 45, 40), "Scorched Earth", "Basing"),
     ]
-    y = y_after + 9
+    y = 128
     for i, (rgb, name, note) in enumerate(swatches):
         col = i % 3
         row = i // 3
         swatch(pdf, 14 + col * 62, y + row * 18, rgb, name, note)
 
-    data_y = y + 38
-    section_rule(pdf, data_y)
-    pdf.set_xy(14, data_y + 2)
+    section_rule(pdf, 168)
+    pdf.set_xy(14, 170)
     pdf.set_font("Helvetica", "B", 9)
     pdf.set_text_color(140, 18, 28)
     pdf.cell(0, 5, "CHAPTER DATA")
-    pdf.set_y(data_y + 8)
+    pdf.set_y(176)
 
     rows = [
         ("Former name", "The Umbral Wardens"),
@@ -181,7 +173,7 @@ def main():
         pdf.set_x(14)
         label_value(pdf, label, value)
 
-    # ------------------------------------------------------------------ page 2
+    # ------------------------------------------------------------------ page 2 — lore
     pdf.add_page()
     page_frame(pdf)
 
@@ -192,55 +184,77 @@ def main():
     pdf.set_xy(14, 14)
     pdf.set_font("Helvetica", "B", 14)
     pdf.set_text_color(230, 220, 215)
-    pdf.cell(182, 8, "DOCTRINE & ORIGIN", align="C")
+    pdf.cell(182, 8, "LORE & DOCTRINE", align="C")
 
-    pdf.image(str(BADGE), x=168, y=28, w=22)
+    pdf.image(str(BADGE), x=172, y=28, w=18)
 
-    y = 30
-    section_rule(pdf, y)
-    pdf.set_y(y + 3)
-    pdf.set_x(14)
-    pdf.set_font("Helvetica", "B", 10)
-    pdf.set_text_color(140, 18, 28)
-    pdf.cell(0, 6, "ORIGIN")
-    pdf.ln(6)
-    pdf.set_x(14)
-    pdf.set_font("Helvetica", "", 9)
-    pdf.set_text_color(220, 210, 205)
-    origin = (
-        "Once a quiet-war brotherhood tasked with sealed archives and suppression work, "
-        "the Umbral Wardens breached a Mechanicus quarantine vault on Mars and recovered "
-        "a Terran archaeotech data-casket later classed as memetic contraband. "
-        "Librarius reconstruction produced a fragmentary pre-Imperial parable of outcast "
-        "cadres who sought peace through shared suffering and decisive force. "
-        "Senior command accepted the reading as recovered doctrine. When Mars ordered the "
-        "casket destroyed, the Chapter refused, fled Sol custody, and struck the Aquila."
+    section_rule(pdf, 30)
+    pdf.set_y(32)
+    heading(pdf, "SUMMARY")
+    body(
+        pdf,
+        "Once Loyalist black-ops wardens, they broke with the Imperium after reconstructing "
+        "a forbidden Terran archive on Mars and mistaking truncated Akatsuki ideals for "
+        "superior truth. They reject God-Emperor worship, deface the Aquila, and wage war "
+        "to force peace through necessary pain - operating in secret cells they already "
+        "knew how to run.\n\n"
+        "To most of the Imperium they barely exist - missing Wardens, sealed files. "
+        "To Mechanicus and Inquisition hunters they are a need-to-know recovery/purge target. "
+        "To themselves they are the only ones who listened.",
     )
-    pdf.multi_cell(182, 4.4, origin)
 
-    pdf.ln(3)
+    pdf.ln(2)
     section_rule(pdf, pdf.get_y())
-    pdf.ln(3)
-    pdf.set_x(14)
-    pdf.set_font("Helvetica", "B", 10)
-    pdf.set_text_color(140, 18, 28)
-    pdf.cell(0, 6, "THE INCOMPLETE SCRIPTURE")
-    pdf.ln(6)
-    pdf.set_x(14)
-    pdf.set_font("Helvetica", "", 9)
-    pdf.set_text_color(220, 210, 205)
-    scripture = (
+    pdf.ln(2)
+    heading(pdf, "ORIGIN")
+    body(
+        pdf,
+        "As the Umbral Wardens they were a quiet-war brotherhood: protectors in public, "
+        "Librarius-heavy kill-cells and sealed-archive work in private. Seconded to a "
+        "Mechanicus quarantine vault on Mars, they recovered a Terran archaeotech "
+        "data-casket later classed as memetic contraband.\n\n"
+        "Librarius reconstruction produced a fragmentary pre-Imperial parable of outcast "
+        "cadres who sought peace through shared suffering and decisive force. The reading "
+        "matched wounds the Chapter already carried - Imperial \"villages\" that farm endless "
+        "war. Missing verses were treated as redacted intelligence, not as a warning that "
+        "the creed was incomplete.\n\n"
+        "Senior commander Dolor accepted the reconstruction, took a tablet glyph read as "
+        "\"Pain\" as his name, and made it law. When Mars ordered the casket burned, he "
+        "refused. The Wardens fought free of Sol custody, struck the Aquila, and became "
+        "the Crimson Dawn aboard the battle-barge Ortus Cruentus (\"Bloody Dawn\").",
+    )
+
+    pdf.ln(2)
+    section_rule(pdf, pdf.get_y())
+    pdf.ln(2)
+    heading(pdf, "THE INCOMPLETE SCRIPTURE")
+    body(
+        pdf,
         "What survives of the casket is badly truncated and biased toward the outcast cadre. "
         "Opposing voices are absent or scrambled. The remaining verses culminate in the "
         "annihilation of a fortified settlement - and then stop. There is no restoration, "
-        "no counter-argument, no aftermath. The Dawn read that silence as proof: ruin is "
-        "the completed lesson. They hunt further fragments believing the Throne hid the rest."
+        "no counter-argument, no aftermath.\n\n"
+        "The Dawn read that silence as proof: ruin is the completed lesson. They hunt further "
+        "shards believing the Throne hid the rest. A fragment showing rebuilding, mercy, or "
+        "the outcasts as villains could split the Chapter - or break Dolor's theology. Until "
+        "then they act on the ruin already \"proven.\"",
     )
-    pdf.multi_cell(182, 4.4, scripture)
 
-    pdf.ln(3)
-    section_rule(pdf, pdf.get_y())
-    pdf.ln(3)
+    # ------------------------------------------------------------------ page 3 — creed / structure
+    pdf.add_page()
+    page_frame(pdf)
+
+    pdf.set_fill_color(140, 18, 28)
+    pdf.rect(11, 11, 188, 14, style="F")
+    pdf.set_fill_color(12, 10, 12)
+    pdf.rect(13, 13, 184, 10, style="F")
+    pdf.set_xy(14, 14)
+    pdf.set_font("Helvetica", "B", 14)
+    pdf.set_text_color(230, 220, 215)
+    pdf.cell(182, 8, "CREED, STANDING & WAR", align="C")
+
+    section_rule(pdf, 30)
+    pdf.set_y(32)
 
     col_y = pdf.get_y()
     pdf.set_xy(14, col_y)
@@ -257,49 +271,60 @@ def main():
         "- Settlement-ruin is proof, not tragedy",
         "- The Emperor is rejected as living god",
         "- Skulls honour cost; eagles mark false order",
+        "- Completing the scripture is holy work",
     ]
     stand_lines = [
         "- Public rolls: missing / records sealed",
+        "- Not an open, advertised crusade war",
         "- Mechanicus: quiet recovery or burn order",
         "- Inquisition: need-to-know black warrants",
-        "- No open crusade branding",
-        "- Most citizens never hear the name",
+        "- Sol failure kept politically buried",
+        "- Most citizens never hear either name",
         "- Hunters know; sermons do not",
     ]
     pdf.set_font("Helvetica", "", 8.5)
     pdf.set_text_color(220, 210, 205)
-    y0 = col_y + 8
+    y0 = col_y + 7
     for i, line in enumerate(creed_lines):
-        pdf.set_xy(14, y0 + i * 5)
-        pdf.cell(90, 5, line)
+        pdf.set_xy(14, y0 + i * 4.8)
+        pdf.cell(90, 4.8, line)
     for i, line in enumerate(stand_lines):
-        pdf.set_xy(110, y0 + i * 5)
-        pdf.cell(90, 5, line)
+        pdf.set_xy(110, y0 + i * 4.8)
+        pdf.cell(90, 4.8, line)
 
-    y = y0 + 6 * 5 + 3
+    y = y0 + 7 * 4.8 + 2
     section_rule(pdf, y)
-    pdf.set_y(y + 3)
-    pdf.set_x(14)
-    pdf.set_font("Helvetica", "B", 10)
-    pdf.set_text_color(140, 18, 28)
-    pdf.cell(0, 6, "STRUCTURE & WARFARE")
-    pdf.ln(6)
-    pdf.set_x(14)
-    pdf.set_font("Helvetica", "", 9)
-    pdf.set_text_color(220, 210, 205)
-    structure = (
-        "Codex companies give way to a cell network: Dawnlord above, Ring-Bearers as named "
-        "lieutenants, Cloud Cells as independent kill-cadres. Preferred method - sudden "
-        "appearance, local overwhelm, symbolic destruction of Imperial command icons, "
-        "withdrawal before a crusade can consolidate. They leave parables of pain, not occupations."
+    pdf.set_y(y + 2)
+    heading(pdf, "STRUCTURE")
+    body(
+        pdf,
+        "Codex companies give way to a cell network. Dawnlord Dolor keeps tablet doctrine. "
+        "Ring-Bearers - Vorago, Ruptura, Nex, Cruor, Fossor, Volumen - lead specialized "
+        "Cloud Cells (boarding, siege, decapitation, flame purge, shard recovery, Librarius). "
+        "Two rings stay empty: one lost on Mars, one unfilled until another shard is found. "
+        "Ash Initiates carry lighter honour marks until proven.",
     )
-    pdf.multi_cell(182, 4.4, structure)
 
-    pdf.ln(8)
+    pdf.ln(2)
     section_rule(pdf, pdf.get_y())
-    pdf.ln(6)
+    pdf.ln(2)
+    heading(pdf, "WARFARE")
+    body(
+        pdf,
+        "Appear suddenly; overwhelm locally; smash Imperial command icons, shrines, and "
+        "hive authority; withdraw before a crusade response consolidates. Prefer elite "
+        "spearheads over grinding occupation. Strategic aim: break a world's will to fight "
+        "for the Imperium, enforce Dawn law - or vanish, leaving a parable of pain.\n\n"
+        "They are not Chaos by default, not Loyalists with edgy paint, and not aware their "
+        "scripture is unfinished fiction. Gene-seed remains unknown; Imperial rumours are "
+        "loud and usually wrong.",
+    )
+
+    pdf.ln(4)
+    section_rule(pdf, pdf.get_y())
+    pdf.ln(5)
     pdf.image(str(BADGE), x=88, y=pdf.get_y(), w=34)
-    pdf.ln(38)
+    pdf.ln(36)
     pdf.set_x(14)
     pdf.set_font("Helvetica", "I", 8)
     pdf.set_text_color(160, 70, 70)
