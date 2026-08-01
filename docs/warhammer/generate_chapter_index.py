@@ -104,20 +104,41 @@ def main():
     pdf.cell(182, 5, "CHAPTER BADGE", align="C")
 
     # Centered badge
-    badge_w = 62
-    pdf.image(str(BADGE), x=(210 - badge_w) / 2, y=40, w=badge_w)
-    pdf.set_xy(30, 105)
-    pdf.set_font("Helvetica", "", 8)
+    badge_w = 52
+    pdf.image(str(BADGE), x=(210 - badge_w) / 2, y=38, w=badge_w)
+    pdf.set_xy(30, 92)
+    pdf.set_font("Helvetica", "", 7.5)
     pdf.set_text_color(170, 140, 140)
     pdf.multi_cell(
         150,
-        3.8,
+        3.5,
         "Gothic storm-cloud, crimson with white edge. Displayed on the RIGHT shoulder.",
         align="C",
     )
 
-    section_rule(pdf, 118)
-    pdf.set_xy(14, 120)
+    section_rule(pdf, 102)
+    pdf.set_xy(14, 104)
+    pdf.set_font("Helvetica", "B", 9)
+    pdf.set_text_color(140, 18, 28)
+    pdf.cell(0, 5, "SUMMARY")
+    pdf.set_xy(14, 110)
+    pdf.set_font("Helvetica", "", 8.5)
+    pdf.set_text_color(220, 210, 205)
+    summary = (
+        "Once Loyalist black-ops wardens, they broke with the Imperium after reconstructing "
+        "a forbidden Terran archive on Mars and mistaking truncated Akatsuki ideals for "
+        "superior truth. They reject God-Emperor worship, deface the Aquila, and wage war "
+        "to force peace through necessary pain - operating in secret cells they already "
+        "knew how to run.\n\n"
+        "To most of the Imperium they barely exist - missing Wardens, sealed files. "
+        "To Mechanicus and Inquisition hunters they are a need-to-know recovery/purge target. "
+        "To themselves they are the only ones who listened."
+    )
+    pdf.multi_cell(182, 4.0, summary)
+
+    y_after = pdf.get_y() + 3
+    section_rule(pdf, y_after)
+    pdf.set_xy(14, y_after + 2)
     pdf.set_font("Helvetica", "B", 9)
     pdf.set_text_color(140, 18, 28)
     pdf.cell(0, 5, "COLOUR SWATCHES")
@@ -130,18 +151,19 @@ def main():
         ((200, 25, 35), "Lens Red", "Eye lenses"),
         ((55, 45, 40), "Scorched Earth", "Basing"),
     ]
-    y = 128
+    y = y_after + 9
     for i, (rgb, name, note) in enumerate(swatches):
         col = i % 3
         row = i // 3
         swatch(pdf, 14 + col * 62, y + row * 18, rgb, name, note)
 
-    section_rule(pdf, 168)
-    pdf.set_xy(14, 170)
+    data_y = y + 38
+    section_rule(pdf, data_y)
+    pdf.set_xy(14, data_y + 2)
     pdf.set_font("Helvetica", "B", 9)
     pdf.set_text_color(140, 18, 28)
     pdf.cell(0, 5, "CHAPTER DATA")
-    pdf.set_y(176)
+    pdf.set_y(data_y + 8)
 
     rows = [
         ("Former name", "The Umbral Wardens"),
