@@ -194,7 +194,7 @@ def main():
     body(
         pdf,
         "Once Loyalist black-ops wardens, they broke with the Imperium after reconstructing "
-        "a forbidden Terran archive on Mars and mistaking truncated Akatsuki ideals for "
+        "a forbidden Terran archive on Mars and mistaking a truncated outcast creed for "
         "superior truth. They reject God-Emperor worship, deface the Aquila, and wage war "
         "to force peace through necessary pain - operating in secret cells they already "
         "knew how to run.\n\n"
