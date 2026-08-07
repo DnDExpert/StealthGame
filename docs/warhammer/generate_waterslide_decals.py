@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """Build a printable Crimson Dawn waterslide (water-transfer) decal sheet PDF.
 
-Designed for hobby water-transfer paper. Print at 100% / actual size.
+Page 1 = plain-paper instructions only.
+Pages 2-3 = densely packed transfer sheets (print only the one you need).
 """
 
 from pathlib import Path
 
 import numpy as np
 from fpdf import FPDF
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageFilter
 
 ROOT = Path("/workspace/docs/warhammer")
 SRC = ROOT / "crimson-dawn-gothic-cloud-source.png"
@@ -16,15 +17,12 @@ OUT_PDF = ROOT / "crimson-dawn-waterslide-decals.pdf"
 OUT_DIR = ROOT / "stencils"
 COLOR_BADGE = OUT_DIR / "cloud-decal-color.png"
 CLEAR_BADGE = OUT_DIR / "cloud-decal-crimson-black-outline.png"
+COLOR_FLIP = OUT_DIR / "cloud-decal-color-flip.png"
+CLEAR_FLIP = OUT_DIR / "cloud-decal-crimson-black-outline-flip.png"
 DPI = 300
 
 
-def px(mm: float) -> int:
-    return max(1, int(round(mm * DPI / 25.4)))
-
-
 def load_color_badge() -> Image.Image:
-    """Crimson cloud with white edge; near-black background made transparent."""
     badge = Image.open(SRC).convert("RGBA")
     arr = np.array(badge)
     black = (arr[:, :, 0] < 50) & (arr[:, :, 1] < 50) & (arr[:, :, 2] < 50)
@@ -33,52 +31,33 @@ def load_color_badge() -> Image.Image:
     bbox = badge.getbbox()
     if bbox:
         badge = badge.crop(bbox)
-    # Small transparent pad so cut lines don't nick art
-    pad = 8
+    # Tiny pad only (saves sheet space vs large transparent margins)
+    pad = 2
     canvas = Image.new("RGBA", (badge.width + pad * 2, badge.height + pad * 2), (0, 0, 0, 0))
     canvas.paste(badge, (pad, pad), badge)
     return canvas
 
 
 def make_crimson_black_outline(color: Image.Image) -> Image.Image:
-    """Crimson fill + black outline for clear waterslide (printable without white ink)."""
     arr = np.array(color).copy()
     r, g, b, a = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2], arr[:, :, 3]
     visible = a > 40
-    # Near-white / light edge pixels -> solid black outline
     light = visible & (r > 180) & (g > 180) & (b > 180)
-    # Everything else visible -> deep crimson fill
     fill = visible & ~light
     out = np.zeros_like(arr)
-    out[fill, 0] = 140
-    out[fill, 1] = 18
-    out[fill, 2] = 28
-    out[fill, 3] = 255
-    out[light, 0] = 12
-    out[light, 1] = 12
-    out[light, 2] = 14
-    out[light, 3] = 255
+    out[fill, 0], out[fill, 1], out[fill, 2], out[fill, 3] = 140, 18, 28, 255
+    out[light, 0], out[light, 1], out[light, 2], out[light, 3] = 12, 12, 14, 255
 
-    # Ensure outline reads at small print sizes: thicken black rim slightly
     im = Image.fromarray(out)
-    alpha = im.split()[-1]
-    crimson_mask = Image.fromarray(
-        np.where(fill, 255, 0).astype(np.uint8)
-    )
-    # Outer ring = dilated full shape minus crimson core
-    full = alpha.point(lambda p: 255 if p > 40 else 0)
+    crimson_mask = Image.fromarray(np.where(fill, 255, 0).astype(np.uint8))
+    full = im.split()[-1].point(lambda p: 255 if p > 40 else 0)
     outer = full.filter(ImageFilter.MaxFilter(5))
-    # black rim where outer but not deep inside crimson
     core = crimson_mask.filter(ImageFilter.MinFilter(3))
     outer_a = np.array(outer)
     core_a = np.array(core)
     rim = (outer_a > 200) & (core_a < 200)
     final = np.array(im)
-    final[rim, 0] = 12
-    final[rim, 1] = 12
-    final[rim, 2] = 14
-    final[rim, 3] = 255
-    # keep crimson where core is
+    final[rim, 0], final[rim, 1], final[rim, 2], final[rim, 3] = 12, 12, 14, 255
     final[core_a > 200, 0] = 140
     final[core_a > 200, 1] = 18
     final[core_a > 200, 2] = 28
@@ -92,61 +71,8 @@ def save_assets():
     clear = make_crimson_black_outline(color)
     color.save(COLOR_BADGE)
     clear.save(CLEAR_BADGE)
-    return color, clear
-
-
-class DecalPDF(FPDF):
-    def footer(self):
-        self.set_y(-10)
-        self.set_font("Helvetica", "I", 7)
-        self.set_text_color(90, 90, 90)
-        self.cell(
-            0,
-            4,
-            "Crimson Dawn waterslide decals  |  Print at 100% (no fit-to-page)  |  Not official GW material",
-            align="C",
-        )
-
-
-def place_grid(
-    pdf: DecalPDF,
-    img: Path,
-    widths_mm: list[float],
-    start_y: float,
-    gap: float = 3.0,
-) -> float:
-    """Place a dense left-to-right grid of decals; return y after last row."""
-    with Image.open(img) as im:
-        aspect = im.height / im.width
-
-    x0 = 12
-    x = x0
-    y = start_y
-    row_h = 0.0
-    for w in widths_mm:
-        h = w * aspect
-        if x + w > 198:
-            x = x0
-            y += row_h + gap + 3.5
-            row_h = 0.0
-        pdf.set_draw_color(200, 200, 200)
-        pdf.set_line_width(0.1)
-        pdf.rect(x - 0.4, y - 0.4, w + 0.8, h + 0.8, style="D")
-        pdf.image(str(img), x=x, y=y, w=w)
-        pdf.set_xy(x, y + h + 0.3)
-        pdf.set_font("Helvetica", "", 5.5)
-        pdf.set_text_color(120, 120, 120)
-        pdf.cell(w, 3, f"{w:g}mm", align="C")
-        row_h = max(row_h, h)
-        x += w + gap
-    return y + row_h + 8
-
-
-def main():
-    if not SRC.exists():
-        raise SystemExit(f"Missing badge art: {SRC}")
-
-    color, clear = save_assets()
+    color.transpose(Image.Transpose.ROTATE_180).save(COLOR_FLIP)
+    clear.transpose(Image.Transpose.ROTATE_180).save(CLEAR_FLIP)
     for src_im, name in (
         (color, "cloud-decal-color-on-white.png"),
         (clear, "cloud-decal-crimson-black-on-white.png"),
@@ -154,56 +80,141 @@ def main():
         bg = Image.new("RGB", src_im.size, (255, 255, 255))
         bg.paste(src_im, mask=src_im.split()[-1])
         bg.save(OUT_DIR / name, dpi=(DPI, DPI))
+    return color, clear
+
+
+class DecalPDF(FPDF):
+    def footer(self):
+        self.set_y(-8)
+        self.set_font("Helvetica", "I", 6)
+        self.set_text_color(110, 110, 110)
+        self.cell(
+            0,
+            3,
+            "Crimson Dawn waterslide  |  100% scale  |  Not official GW material",
+            align="C",
+        )
+
+
+def pack_sheet(pdf: DecalPDF, upright: Path, flipped: Path | None = None, start_y: float = 8.5) -> None:
+    """Maximum-density upright rows; leftover width filled with smaller badges."""
+    with Image.open(upright) as im:
+        aspect = im.height / im.width
+
+    gap = 0.35
+    margin = 3.0
+    usable_w = 210 - 2 * margin
+    y = start_y
+    max_y = 289.0
+
+    # Mostly useful infantry sizes; a few larger at the bottom
+    band_widths = [9] * 14 + [7] * 5 + [11] * 4 + [5] * 6 + [14] * 2 + [18]
+
+    for width in band_widths:
+        h = width * aspect
+        if y + h > max_y:
+            break
+
+        per_row = max(1, int((usable_w + gap) // (width + gap)))
+        used = per_row * width + max(0, per_row - 1) * gap
+        rem = usable_w - used
+        row_widths = [width] * per_row
+        for fw in (7.0, 5.0, 4.0, 3.5):
+            while rem + 1e-9 >= fw:
+                row_widths.append(fw)
+                rem -= fw + gap
+
+        x = margin
+        row_h = 0.0
+        for w in row_widths:
+            hh = w * aspect
+            if x + w > 210 - margin + 0.01:
+                break
+            pdf.image(str(upright), x=x, y=y, w=w)
+            row_h = max(row_h, hh)
+            x += w + gap
+        y += row_h + gap
+
+    # Mop remaining vertical space with 9mm
+    h9 = 9 * aspect
+    while y + h9 <= max_y:
+        per_row = max(1, int((usable_w + gap) // (9 + gap)))
+        x = margin
+        for _ in range(per_row):
+            pdf.image(str(upright), x=x, y=y, w=9)
+            x += 9 + gap
+        y += h9 + gap
+
+
+def dense_transfer_page(pdf: DecalPDF, upright: Path, title: str, subtitle: str) -> None:
+    pdf.add_page()
+    pdf.set_fill_color(20, 20, 22)
+    pdf.rect(0, 0, 210, 7.2, style="F")
+    pdf.set_xy(3, 0.9)
+    pdf.set_font("Helvetica", "B", 7)
+    pdf.set_text_color(230, 220, 215)
+    pdf.cell(0, 2.7, title)
+    pdf.set_xy(3, 3.6)
+    pdf.set_font("Helvetica", "", 5.2)
+    pdf.set_text_color(200, 120, 120)
+    pdf.cell(0, 2.5, subtitle)
+    pack_sheet(pdf, upright, start_y=7.8)
+
+
+def main():
+    if not SRC.exists():
+        raise SystemExit(f"Missing badge art: {SRC}")
+
+    save_assets()
 
     pdf = DecalPDF(orientation="P", unit="mm", format="A4")
     pdf.set_auto_page_break(auto=False)
 
-    # ------------------------------------------------------------------ page 1: instructions
+    # Page 1 — plain paper only
     pdf.add_page()
-    pdf.set_fill_color(20, 20, 22)
-    pdf.rect(0, 0, 210, 26, style="F")
-    pdf.set_xy(12, 7)
-    pdf.set_font("Helvetica", "B", 15)
-    pdf.set_text_color(230, 220, 215)
-    pdf.cell(0, 7, "CRIMSON DAWN  -  WATERSLIDE DECAL SHEET")
-    pdf.set_xy(12, 15)
-    pdf.set_font("Helvetica", "", 8.5)
-    pdf.set_text_color(180, 60, 60)
-    pdf.cell(0, 5, "Water-transfer paper  |  Gothic storm-cloud chapter badge")
+    pdf.set_fill_color(140, 18, 28)
+    pdf.rect(0, 0, 210, 28, style="F")
+    pdf.set_xy(12, 6)
+    pdf.set_font("Helvetica", "B", 14)
+    pdf.set_text_color(255, 255, 255)
+    pdf.cell(0, 7, "CRIMSON DAWN WATERSLIDE DECALS")
+    pdf.set_xy(12, 14)
+    pdf.set_font("Helvetica", "B", 11)
+    pdf.cell(0, 6, "PAGE 1 = PLAIN PAPER ONLY  -  DO NOT PRINT ON TRANSFER STOCK")
+    pdf.set_xy(12, 20)
+    pdf.set_font("Helvetica", "", 8)
+    pdf.set_text_color(255, 220, 220)
+    pdf.cell(0, 5, "On waterslide paper print ONLY page 2 (white) or page 3 (clear).")
 
-    pdf.set_xy(12, 32)
+    pdf.set_xy(12, 34)
     pdf.set_font("Helvetica", "B", 11)
     pdf.set_text_color(20, 20, 20)
-    pdf.cell(0, 6, "Which paper to use")
+    pdf.cell(0, 6, "Transfer pages")
     pdf.ln(7)
     pdf.set_x(12)
     pdf.set_font("Helvetica", "", 9)
-    pdf.set_text_color(30, 30, 30)
     pdf.multi_cell(
         186,
-        4.3,
-        "White outline needs white ink or white paper. Most home printers cannot print white.\n\n"
-        "- WHITE waterslide paper  ->  use PAGE 2 (full colour: crimson + white edge). "
-        "Best match to the locked badge on charcoal armour.\n"
-        "- CLEAR waterslide paper  ->  use PAGE 3 (crimson fill + black outline). "
-        "Black ink prints fine on clear film; reads as a dark rim on the pad.\n",
+        4.2,
+        "- WHITE waterslide paper -> PAGE 2 (crimson + white edge)\n"
+        "- CLEAR waterslide paper -> PAGE 3 (crimson + black outline)\n\n"
+        "Pages 2-3 are nested/packed to burn less film. Cut close to each cloud.\n"
+        "Print at 100% / Actual size (no fit-to-page).\n",
     )
 
     pdf.set_x(12)
     pdf.set_font("Helvetica", "B", 11)
-    pdf.cell(0, 6, "Print settings")
+    pdf.cell(0, 6, "Print + seal")
     pdf.ln(6)
     pdf.set_x(12)
     pdf.set_font("Helvetica", "", 9)
     pdf.multi_cell(
         186,
-        4.3,
-        "1. Print at Actual size / 100% - turn OFF fit-to-page / shrink-to-fit.\n"
-        "2. Use the glossy / printable side of the waterslide paper (check your pack).\n"
-        "3. Inkjet: allow full dry time, then spray 2-3 light coats of clear acrylic "
-        "(or the sealer your paper brand recommends) before cutting/soaking.\n"
-        "4. Laser: many waterslide papers work without spray seal; follow the pack.\n"
-        "5. Let sealer cure fully before cutting.\n",
+        4.2,
+        "1. Load transfer paper printable-side correctly.\n"
+        "2. Print only the page you need (2 or 3) - not this page.\n"
+        "3. Inkjet: dry fully, then 2-3 light clear acrylic coats (or brand sealer); cure.\n"
+        "4. Laser: follow your pack; many need no spray.\n",
     )
 
     pdf.set_x(12)
@@ -214,113 +225,33 @@ def main():
     pdf.set_font("Helvetica", "", 9)
     pdf.multi_cell(
         186,
-        4.3,
-        "1. Gloss-varnish the armour spot first (decals bite better on gloss).\n"
-        "2. Cut close to the cloud - leave a tiny clear margin, not a huge square.\n"
-        "3. Soak in lukewarm water 20-60 seconds until the decal loosens.\n"
-        "4. Slide onto the RIGHT shoulder pad; nudge with a wet brush.\n"
-        "5. Blot from the center out with a soft tissue; chase bubbles.\n"
-        "6. Optional: Micro Set under / Micro Sol over for curved pads.\n"
-        "7. When bone-dry, seal with gloss then matt varnish.\n",
+        4.2,
+        "1. Gloss-varnish the pad first.\n"
+        "2. Cut tight to the cloud (ignore neighbour nesting).\n"
+        "3. Soak lukewarm 20-60s; slide onto RIGHT shoulder.\n"
+        "4. Blot center-out; optional Micro Set / Micro Sol on curves.\n"
+        "5. Dry, then gloss + matt seal.\n\n"
+        "Sheet mix: mostly 9mm infantry, plus 7/5/11/14mm and a few larger marks.\n"
+        "Packed tight - cut carefully between neighbours.\n",
     )
 
-    pdf.set_x(12)
-    pdf.set_font("Helvetica", "B", 11)
-    pdf.cell(0, 6, "Size guide (width across the cloud)")
-    pdf.ln(6)
-    pdf.set_x(12)
-    pdf.set_font("Helvetica", "", 9)
-    pdf.multi_cell(
-        186,
-        4.3,
-        "4-5 mm  knee / tiny detail\n"
-        "7-9 mm  Primaris / tactical pauldron\n"
-        "11-14 mm  Terminator / Gravis pauldron\n"
-        "18-28 mm  vehicle / banner / practice\n\n"
-        "Hairline boxes are cut guides only - cut inside them, close to the art.",
-    )
-
-    pdf.ln(2)
     pdf.set_x(12)
     pdf.set_font("Helvetica", "I", 8)
     pdf.set_text_color(100, 100, 100)
-    pdf.multi_cell(
-        186,
-        4,
-        "Assets also in docs/warhammer/stencils/: cloud-decal-color.png, "
-        "cloud-decal-crimson-black-outline.png. Regenerate: python3 docs/warhammer/generate_waterslide_decals.py",
+    pdf.multi_cell(186, 4, "Regenerate: python3 docs/warhammer/generate_waterslide_decals.py")
+
+    dense_transfer_page(
+        pdf,
+        COLOR_BADGE,
+        "PAGE 2 - FULL COLOUR - WHITE WATERSLIDE ONLY (do not print page 1 on film)",
+        "Crimson + white edge. Dense pack. Cut close. 100% scale.",
     )
-
-    # colour reference strip
-    pdf.set_xy(12, 250)
-    pdf.set_font("Helvetica", "B", 9)
-    pdf.set_text_color(20, 20, 20)
-    pdf.cell(40, 5, "Colour target:")
-    pdf.image(str(COLOR_BADGE), x=50, y=242, w=22)
-    pdf.set_xy(76, 248)
-    pdf.set_font("Helvetica", "", 8)
-    pdf.set_text_color(80, 80, 80)
-    pdf.multi_cell(110, 3.5, "Deep crimson + white edge on charcoal plate.")
-
-    # ------------------------------------------------------------------ page 2: white paper colour sheet
-    pdf.add_page()
-    pdf.set_fill_color(20, 20, 22)
-    pdf.rect(0, 0, 210, 18, style="F")
-    pdf.set_xy(12, 5)
-    pdf.set_font("Helvetica", "B", 12)
-    pdf.set_text_color(230, 220, 215)
-    pdf.cell(0, 6, "PAGE 2  -  FULL COLOUR  (print on WHITE waterslide paper)")
-    pdf.set_xy(12, 11)
-    pdf.set_font("Helvetica", "", 7.5)
-    pdf.set_text_color(180, 100, 100)
-    pdf.cell(0, 4, "Keeps the white outline. Do not use clear paper for this page unless you have white ink.")
-
-    y = 22
-    pdf.set_xy(12, y)
-    pdf.set_font("Helvetica", "B", 9)
-    pdf.set_text_color(20, 20, 20)
-    pdf.cell(0, 5, "Infantry / Terminator strip")
-    y = 28
-    # Mix of common sizes, many repeats
-    strip = [9] * 8 + [11] * 6 + [14] * 4 + [7] * 8 + [5] * 10
-    y = place_grid(pdf, COLOR_BADGE, strip, y, gap=2.5)
-
-    pdf.set_xy(12, y)
-    pdf.set_font("Helvetica", "B", 9)
-    pdf.set_text_color(20, 20, 20)
-    pdf.cell(0, 5, "Larger / vehicle / spares")
-    y += 6
-    large = [18, 18, 22, 22, 28]
-    place_grid(pdf, COLOR_BADGE, large, y, gap=4)
-
-    # ------------------------------------------------------------------ page 3: clear paper crimson + black outline
-    pdf.add_page()
-    pdf.set_fill_color(20, 20, 22)
-    pdf.rect(0, 0, 210, 18, style="F")
-    pdf.set_xy(12, 5)
-    pdf.set_font("Helvetica", "B", 12)
-    pdf.set_text_color(230, 220, 215)
-    pdf.cell(0, 6, "PAGE 3  -  CRIMSON + BLACK OUTLINE  (print on CLEAR waterslide paper)")
-    pdf.set_xy(12, 11)
-    pdf.set_font("Helvetica", "", 7.5)
-    pdf.set_text_color(180, 100, 100)
-    pdf.cell(0, 4, "White replaced with black rim so a normal printer can print the outline on clear film.")
-
-    y = 22
-    pdf.set_xy(12, y)
-    pdf.set_font("Helvetica", "B", 9)
-    pdf.set_text_color(20, 20, 20)
-    pdf.cell(0, 5, "Infantry / Terminator strip")
-    y = 28
-    strip = [9] * 8 + [11] * 6 + [14] * 4 + [7] * 8 + [5] * 10
-    y = place_grid(pdf, CLEAR_BADGE, strip, y, gap=2.5)
-
-    pdf.set_xy(12, y)
-    pdf.set_font("Helvetica", "B", 9)
-    pdf.set_text_color(20, 20, 20)
-    pdf.cell(0, 5, "Larger / vehicle / spares")
-    y += 6
-    place_grid(pdf, CLEAR_BADGE, [18, 18, 22, 22, 28], y, gap=4)
+    dense_transfer_page(
+        pdf,
+        CLEAR_BADGE,
+        "PAGE 3 - CRIMSON + BLACK OUTLINE - CLEAR WATERSLIDE ONLY (do not print page 1 on film)",
+        "Black rim (no white ink). Dense pack. Cut close. 100% scale.",
+    )
 
     pdf.output(str(OUT_PDF))
     print(f"Wrote {OUT_PDF}")
