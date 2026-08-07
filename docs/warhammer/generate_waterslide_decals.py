@@ -15,7 +15,7 @@ SRC = ROOT / "crimson-dawn-gothic-cloud-source.png"
 OUT_PDF = ROOT / "crimson-dawn-waterslide-decals.pdf"
 OUT_DIR = ROOT / "stencils"
 COLOR_BADGE = OUT_DIR / "cloud-decal-color.png"
-CRIMSON_ONLY = OUT_DIR / "cloud-decal-crimson-only.png"
+CLEAR_BADGE = OUT_DIR / "cloud-decal-crimson-black-outline.png"
 DPI = 300
 
 
@@ -40,35 +40,59 @@ def load_color_badge() -> Image.Image:
     return canvas
 
 
-def make_crimson_only(color: Image.Image) -> Image.Image:
-    """Solid crimson silhouette for clear waterslide (no white ink needed)."""
-    arr = np.array(color)
-    alpha = arr[:, :, 3]
-    # Any visible pigment -> deep crimson; keep alpha
-    visible = alpha > 40
+def make_crimson_black_outline(color: Image.Image) -> Image.Image:
+    """Crimson fill + black outline for clear waterslide (printable without white ink)."""
+    arr = np.array(color).copy()
+    r, g, b, a = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2], arr[:, :, 3]
+    visible = a > 40
+    # Near-white / light edge pixels -> solid black outline
+    light = visible & (r > 180) & (g > 180) & (b > 180)
+    # Everything else visible -> deep crimson fill
+    fill = visible & ~light
     out = np.zeros_like(arr)
-    out[visible, 0] = 140
-    out[visible, 1] = 18
-    out[visible, 2] = 28
-    out[visible, 3] = 255
+    out[fill, 0] = 140
+    out[fill, 1] = 18
+    out[fill, 2] = 28
+    out[fill, 3] = 255
+    out[light, 0] = 12
+    out[light, 1] = 12
+    out[light, 2] = 14
+    out[light, 3] = 255
+
+    # Ensure outline reads at small print sizes: thicken black rim slightly
     im = Image.fromarray(out)
-    # Slight expand so thin white-edge zones become filled crimson
-    solid = im.split()[-1].point(lambda p: 255 if p > 40 else 0)
-    solid = solid.filter(ImageFilter.MaxFilter(3))
-    rgb = Image.new("RGBA", im.size, (140, 18, 28, 255))
-    rgb.putalpha(solid)
-    return rgb
+    alpha = im.split()[-1]
+    crimson_mask = Image.fromarray(
+        np.where(fill, 255, 0).astype(np.uint8)
+    )
+    # Outer ring = dilated full shape minus crimson core
+    full = alpha.point(lambda p: 255 if p > 40 else 0)
+    outer = full.filter(ImageFilter.MaxFilter(5))
+    # black rim where outer but not deep inside crimson
+    core = crimson_mask.filter(ImageFilter.MinFilter(3))
+    outer_a = np.array(outer)
+    core_a = np.array(core)
+    rim = (outer_a > 200) & (core_a < 200)
+    final = np.array(im)
+    final[rim, 0] = 12
+    final[rim, 1] = 12
+    final[rim, 2] = 14
+    final[rim, 3] = 255
+    # keep crimson where core is
+    final[core_a > 200, 0] = 140
+    final[core_a > 200, 1] = 18
+    final[core_a > 200, 2] = 28
+    final[core_a > 200, 3] = 255
+    return Image.fromarray(final)
 
 
 def save_assets():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     color = load_color_badge()
-    crimson = make_crimson_only(color)
-    # Composite on white for PDF embedding reliability (fpdf handles PNG alpha,
-    # but white-backed variants help laser printers). Keep transparent masters too.
+    clear = make_crimson_black_outline(color)
     color.save(COLOR_BADGE)
-    crimson.save(CRIMSON_ONLY)
-    return color, crimson
+    clear.save(CLEAR_BADGE)
+    return color, clear
 
 
 class DecalPDF(FPDF):
@@ -122,9 +146,11 @@ def main():
     if not SRC.exists():
         raise SystemExit(f"Missing badge art: {SRC}")
 
-    color, crimson = save_assets()
-    # Also write white-backed print helpers (optional laser-friendly)
-    for src_im, name in ((color, "cloud-decal-color-on-white.png"), (crimson, "cloud-decal-crimson-on-white.png")):
+    color, clear = save_assets()
+    for src_im, name in (
+        (color, "cloud-decal-color-on-white.png"),
+        (clear, "cloud-decal-crimson-black-on-white.png"),
+    ):
         bg = Image.new("RGB", src_im.size, (255, 255, 255))
         bg.paste(src_im, mask=src_im.split()[-1])
         bg.save(OUT_DIR / name, dpi=(DPI, DPI))
@@ -159,8 +185,8 @@ def main():
         "White outline needs white ink or white paper. Most home printers cannot print white.\n\n"
         "- WHITE waterslide paper  ->  use PAGE 2 (full colour: crimson + white edge). "
         "Best match to the locked badge on charcoal armour.\n"
-        "- CLEAR waterslide paper  ->  use PAGE 3 (crimson-only silhouettes). "
-        "White edge will not appear; freehand a thin white outline after the decal sets, or leave crimson-only.\n",
+        "- CLEAR waterslide paper  ->  use PAGE 3 (crimson fill + black outline). "
+        "Black ink prints fine on clear film; reads as a dark rim on the pad.\n",
     )
 
     pdf.set_x(12)
@@ -222,7 +248,7 @@ def main():
         186,
         4,
         "Assets also in docs/warhammer/stencils/: cloud-decal-color.png, "
-        "cloud-decal-crimson-only.png. Regenerate: python3 docs/warhammer/generate_waterslide_decals.py",
+        "cloud-decal-crimson-black-outline.png. Regenerate: python3 docs/warhammer/generate_waterslide_decals.py",
     )
 
     # colour reference strip
@@ -267,18 +293,18 @@ def main():
     large = [18, 18, 22, 22, 28]
     place_grid(pdf, COLOR_BADGE, large, y, gap=4)
 
-    # ------------------------------------------------------------------ page 3: clear paper crimson-only
+    # ------------------------------------------------------------------ page 3: clear paper crimson + black outline
     pdf.add_page()
     pdf.set_fill_color(20, 20, 22)
     pdf.rect(0, 0, 210, 18, style="F")
     pdf.set_xy(12, 5)
     pdf.set_font("Helvetica", "B", 12)
     pdf.set_text_color(230, 220, 215)
-    pdf.cell(0, 6, "PAGE 3  -  CRIMSON ONLY  (print on CLEAR waterslide paper)")
+    pdf.cell(0, 6, "PAGE 3  -  CRIMSON + BLACK OUTLINE  (print on CLEAR waterslide paper)")
     pdf.set_xy(12, 11)
     pdf.set_font("Helvetica", "", 7.5)
     pdf.set_text_color(180, 100, 100)
-    pdf.cell(0, 4, "No white ink required. Optional: freehand thin white edge after sealing.")
+    pdf.cell(0, 4, "White replaced with black rim so a normal printer can print the outline on clear film.")
 
     y = 22
     pdf.set_xy(12, y)
@@ -287,19 +313,19 @@ def main():
     pdf.cell(0, 5, "Infantry / Terminator strip")
     y = 28
     strip = [9] * 8 + [11] * 6 + [14] * 4 + [7] * 8 + [5] * 10
-    y = place_grid(pdf, CRIMSON_ONLY, strip, y, gap=2.5)
+    y = place_grid(pdf, CLEAR_BADGE, strip, y, gap=2.5)
 
     pdf.set_xy(12, y)
     pdf.set_font("Helvetica", "B", 9)
     pdf.set_text_color(20, 20, 20)
     pdf.cell(0, 5, "Larger / vehicle / spares")
     y += 6
-    place_grid(pdf, CRIMSON_ONLY, [18, 18, 22, 22, 28], y, gap=4)
+    place_grid(pdf, CLEAR_BADGE, [18, 18, 22, 22, 28], y, gap=4)
 
     pdf.output(str(OUT_PDF))
     print(f"Wrote {OUT_PDF}")
     print(f"Wrote {COLOR_BADGE}")
-    print(f"Wrote {CRIMSON_ONLY}")
+    print(f"Wrote {CLEAR_BADGE}")
 
 
 if __name__ == "__main__":
