@@ -213,9 +213,10 @@ def main():
         "As Umbral Wardens they were a quiet-war brotherhood: protectors in public, "
         "Librarius-heavy kill-cells and sealed-archive work in private. Their fall began "
         "not with the whole Chapter, but with a recovery detachment seconded to a "
-        "Mechanicus quarantine vault on Mars under senior commander Dolor. Those cells "
-        "recovered a Terran archaeotech data-casket later classed as memetic contraband. "
-        "The wider Wardens remained on other quiet-war duties.\n\n"
+        "Mechanicus quarantine vault on Mars under senior commander Dolor. Their Chapter "
+        "battle-barge was already in-system as task support. Those cells recovered a "
+        "Terran archaeotech data-casket later classed as memetic contraband. The wider "
+        "Wardens remained on other quiet-war duties.\n\n"
         "Librarius reconstruction produced a fragmentary pre-Imperial parable of outcast "
         "cadres who sought peace through shared suffering and decisive force. The reading "
         "matched wounds those Wardens already carried - Imperial \"villages\" that farm "
@@ -223,10 +224,11 @@ def main():
         "warning that the creed was incomplete.\n\n"
         "Dolor accepted the reconstruction, took a tablet glyph read as \"Pain\" as his "
         "name, and made it law for the detachment. When Mars ordered the casket burned, "
-        "he refused. The detachment and cells already sworn to him fought free of Sol "
-        "custody; Wardens who rejected the creed were left behind, killed, or listed among "
+        "he refused. In the burn-order chaos the sworn cells seized the casket, boarded "
+        "the waiting barge, and ran - a short extraction from Sol, not a protracted Mars "
+        "war. Wardens who rejected the creed were left behind, killed, or listed among "
         "the missing. The breakaways struck the Aquila and became the Crimson Dawn aboard "
-        "the battle-barge Ortus Cruentus (\"Bloody Dawn\").",
+        "the renamed Ortus Cruentus (\"Bloody Dawn\").",
     )
 
     pdf.ln(2)

@@ -5,7 +5,7 @@
 
 ## Pitch
 
-> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. A **Mars-seconded recovery detachment** (Librarius kill-cells under senior commander **Dolor**, not the whole Chapter) breached a Mechanicus quarantine archive and recovered a Terran archaeotech tablet: a majority-missing, fan-edited *Naruto* archive that casts **Akatsuki** as protagonists and **ends when the Leaf Village is destroyed**, never showing it rebuilt. Reading ruin as revelation, Dolor refused Mars’ burn order, struck the Aquila, and drew loyal cells to the battle-barge **Ortus Cruentus** (“Bloody Dawn”). They hunt other shards to “complete” a scripture that, if truly completed, could destroy them.
+> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. A **Mars-seconded recovery detachment** (Librarius kill-cells under senior commander **Dolor**, not the whole Chapter) breached a Mechanicus quarantine archive and recovered a Terran archaeotech tablet: a majority-missing, fan-edited *Naruto* archive that casts **Akatsuki** as protagonists and **ends when the Leaf Village is destroyed**, never showing it rebuilt. Reading ruin as revelation, Dolor refused Mars’ burn order, struck the Aquila, and — in the burn-order chaos — seized the casket aboard their already-standing Wardens battle-barge **Ortus Cruentus** (“Bloody Dawn”), then ran Sol. They hunt other shards to “complete” a scripture that, if truly completed, could destroy them.
 
 ---
 
@@ -60,15 +60,15 @@ Akatsuki parallel: feared when encountered; not advertised as a formal nation at
 
 ## Schism Chronicle
 
-1. Not the whole Chapter: a **recovery detachment** of Umbral Wardens — Librarius kill-cells and supporting squads under senior commander **Dolor** — is seconded to a Mechanicus–Ordo **Martian** quarantine-archive task. The wider Chapter remains on other quiet-war duties.
+1. Not the whole Chapter: a **recovery detachment** of Umbral Wardens — Librarius kill-cells and supporting squads under senior commander **Dolor** — is seconded to a Mechanicus–Ordo **Martian** quarantine-archive task. Their Chapter battle-barge (later *Ortus Cruentus*) is already in-system as task support / standby, not a prize they will later capture cold. The wider Chapter remains on other quiet-war duties.
 2. Within that detachment, a **Librarius cell** reconstructs a damaged Terran entertainment-archive (*Naruto* cycle) and frames **Akatsuki** fragments as ancient war-philosophy.
 3. The reading matches wounds those Wardens already carry: Imperial “villages” farm endless war.
 4. Missing material is treated as **redacted intelligence**, not as a warning that the creed is unreliable.
 5. **Dolor** accepts the reconstruction, takes a tablet glyph read as “Pain” as his name, and makes it law for the detachment.
 6. Red-cloud marks spread first through the Mars cells, then by cipher to sympathetic Wardens elsewhere.
 7. The **Adeptus Mechanicus** orders the casket destroyed or re-sealed; Imperial authority backs the burn order.
-8. Dolor refuses. The **detachment** (and those cells already sworn to him) fight free of Sol custody; loyalist Wardens who reject the creed are left behind, killed, or listed among the “missing.”
-9. Aquilas are struck among the breakaways. They become **Akatsuki / the Crimson Dawn**, based on the *Ortus Cruentus*.
+8. Dolor refuses. In the burn-order chaos the sworn cells seize the casket, board the waiting barge, and **run** — a short, ugly extraction from Sol custody, not a protracted Mars war. Loyalist Wardens who reject the creed are left behind, killed, or listed among the “missing.”
+9. Aquilas are struck among the breakaways. They become **Akatsuki / the Crimson Dawn**, based on the renamed *Ortus Cruentus*.
 
 **Irony (for you, not them):** they treat a fan-edited anime cut that stops at a village’s ruin as holy writ.
 
@@ -146,9 +146,9 @@ A former Umbral Warden senior commander with authority over **recovery cells** �
 
 **Meaning:** “Bloody Dawn” / “Cruel Daybreak”
 
-Battle-barge and mobile fortress after Mars. Holds the Incomplete Tablet in a sealed reliquary-deck. Cloud Cells deploy from it; Dolor’s command court sits here.
+Former Umbral Wardens battle-barge, already in Sol as support for the Mars recovery task. After the break it is their mobile fortress and stolen-casket carrier — not a capital ship taken in a Sol siege. Holds the Incomplete Tablet in a sealed reliquary-deck. Cloud Cells deploy from it; Dolor’s command court sits here.
 
-Mechanicus kill-orders often name this ship as the stolen-casket carrier. Imperial records may still list its old Umbral Wardens designation.
+Mechanicus kill-orders often name this ship as the runaway barge. Imperial records may still list its old Umbral Wardens designation.
 
 ---
 
