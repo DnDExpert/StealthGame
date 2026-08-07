@@ -122,10 +122,10 @@ def pack_sheet(pdf: DecalPDF, upright: Path, start_y: float = 8.5) -> None:
 
     # (width_mm, row_count)
     bands = [
-        (9, 12),
+        (9, 10),
         (7, 4),
-        (11, 4),
-        (5, 5),
+        (11, 3),
+        (5, 4),
         (14, 2),
         (18, 1),
     ]
