@@ -193,11 +193,12 @@ def main():
     heading(pdf, "SUMMARY")
     body(
         pdf,
-        "Once Loyalist black-ops wardens, they broke with the Imperium after reconstructing "
-        "a forbidden Terran archive on Mars and mistaking a truncated outcast creed for "
-        "superior truth. They reject God-Emperor worship, deface the Aquila, and wage war "
-        "to force peace through necessary pain - operating in secret cells they already "
-        "knew how to run.\n\n"
+        "Once Loyalist black-ops wardens, they broke with the Imperium after a Mars-seconded "
+        "recovery detachment reconstructed a forbidden Terran archive and mistook a truncated "
+        "outcast creed for superior truth. The schism began in that detachment and the cells "
+        "that answered Dolor - not as a parade-ground mutiny of the entire Chapter at once. "
+        "They reject God-Emperor worship, deface the Aquila, and wage war to force peace "
+        "through necessary pain - operating in secret cells they already knew how to run.\n\n"
         "To most of the Imperium they barely exist - missing Wardens, sealed files. "
         "To Mechanicus and Inquisition hunters they are a need-to-know recovery/purge target. "
         "To themselves they are the only ones who listened.",
@@ -209,19 +210,23 @@ def main():
     heading(pdf, "ORIGIN")
     body(
         pdf,
-        "As the Umbral Wardens they were a quiet-war brotherhood: protectors in public, "
-        "Librarius-heavy kill-cells and sealed-archive work in private. Seconded to a "
-        "Mechanicus quarantine vault on Mars, they recovered a Terran archaeotech "
-        "data-casket later classed as memetic contraband.\n\n"
+        "As Umbral Wardens they were a quiet-war brotherhood: protectors in public, "
+        "Librarius-heavy kill-cells and sealed-archive work in private. Their fall began "
+        "not with the whole Chapter, but with a recovery detachment seconded to a "
+        "Mechanicus quarantine vault on Mars under senior commander Dolor. Those cells "
+        "recovered a Terran archaeotech data-casket later classed as memetic contraband. "
+        "The wider Wardens remained on other quiet-war duties.\n\n"
         "Librarius reconstruction produced a fragmentary pre-Imperial parable of outcast "
         "cadres who sought peace through shared suffering and decisive force. The reading "
-        "matched wounds the Chapter already carried - Imperial \"villages\" that farm endless "
-        "war. Missing verses were treated as redacted intelligence, not as a warning that "
-        "the creed was incomplete.\n\n"
-        "Senior commander Dolor accepted the reconstruction, took a tablet glyph read as "
-        "\"Pain\" as his name, and made it law. When Mars ordered the casket burned, he "
-        "refused. The Wardens fought free of Sol custody, struck the Aquila, and became "
-        "the Crimson Dawn aboard the battle-barge Ortus Cruentus (\"Bloody Dawn\").",
+        "matched wounds those Wardens already carried - Imperial \"villages\" that farm "
+        "endless war. Missing verses were treated as redacted intelligence, not as a "
+        "warning that the creed was incomplete.\n\n"
+        "Dolor accepted the reconstruction, took a tablet glyph read as \"Pain\" as his "
+        "name, and made it law for the detachment. When Mars ordered the casket burned, "
+        "he refused. The detachment and cells already sworn to him fought free of Sol "
+        "custody; Wardens who rejected the creed were left behind, killed, or listed among "
+        "the missing. The breakaways struck the Aquila and became the Crimson Dawn aboard "
+        "the battle-barge Ortus Cruentus (\"Bloody Dawn\").",
     )
 
     pdf.ln(2)

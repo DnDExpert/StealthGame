@@ -5,7 +5,7 @@
 
 ## Pitch
 
-> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. On **Mars**, Librarius cells recovered a Terran archaeotech tablet: a majority-missing, fan-edited *Naruto* archive that casts **Akatsuki** as protagonists and **ends when the Leaf Village is destroyed**, never showing it rebuilt. Reading ruin as revelation, **Dawnlord Dolor** refused Mars’ burn order, struck the Aquila, and led them aboard the battle-barge **Ortus Cruentus** (“Bloody Dawn”). They hunt other shards to “complete” a scripture that, if truly completed, could destroy them.
+> **The Crimson Dawn** were once the **Umbral Wardens** — a bitter, secretive Loyalist Chapter used to quiet wars and sealed archives. A **Mars-seconded recovery detachment** (Librarius kill-cells under senior commander **Dolor**, not the whole Chapter) breached a Mechanicus quarantine archive and recovered a Terran archaeotech tablet: a majority-missing, fan-edited *Naruto* archive that casts **Akatsuki** as protagonists and **ends when the Leaf Village is destroyed**, never showing it rebuilt. Reading ruin as revelation, Dolor refused Mars’ burn order, struck the Aquila, and drew loyal cells to the battle-barge **Ortus Cruentus** (“Bloody Dawn”). They hunt other shards to “complete” a scripture that, if truly completed, could destroy them.
 
 ---
 
@@ -32,7 +32,7 @@
 
 ## Summary
 
-Once Loyalist black-ops wardens, they broke with the Imperium after reconstructing a forbidden Terran archive on Mars and mistaking truncated **Akatsuki** ideals for superior truth. They reject God-Emperor worship, deface the Aquila, and wage war to force peace through necessary pain — operating in secret cells they already knew how to run.
+Once Loyalist black-ops wardens, they broke with the Imperium after a Mars-seconded recovery detachment reconstructed a forbidden Terran archive and mistook truncated **Akatsuki** ideals for superior truth. The schism began in that detachment and the cells that answered Dolor — not as a parade-ground mutiny of the entire Chapter at once. They reject God-Emperor worship, deface the Aquila, and wage war to force peace through necessary pain — operating in secret cells they already knew how to run.
 
 To most of the Imperium they barely exist — missing Wardens, sealed files.  
 To Mechanicus and Inquisition hunters they are a need-to-know recovery/purge target.  
@@ -60,15 +60,15 @@ Akatsuki parallel: feared when encountered; not advertised as a formal nation at
 
 ## Schism Chronicle
 
-1. The **Umbral Wardens** are seconded to a **Martian** recovery/suppression task in a Mechanicus quarantine vault.
-2. A **Librarius cell** reconstructs a damaged Terran entertainment-archive (*Naruto* cycle) and frames **Akatsuki** fragments as ancient war-philosophy.
-3. The reading matches wounds the Chapter already carries: Imperial “villages” farm endless war.
+1. Not the whole Chapter: a **recovery detachment** of Umbral Wardens — Librarius kill-cells and supporting squads under senior commander **Dolor** — is seconded to a Mechanicus–Ordo **Martian** quarantine-archive task. The wider Chapter remains on other quiet-war duties.
+2. Within that detachment, a **Librarius cell** reconstructs a damaged Terran entertainment-archive (*Naruto* cycle) and frames **Akatsuki** fragments as ancient war-philosophy.
+3. The reading matches wounds those Wardens already carry: Imperial “villages” farm endless war.
 4. Missing material is treated as **redacted intelligence**, not as a warning that the creed is unreliable.
-5. Senior commander **Dolor** accepts the reconstruction, takes a tablet glyph read as “Pain” as his name, and makes it law.
-6. Red-cloud marks spread from secret cells outward.
+5. **Dolor** accepts the reconstruction, takes a tablet glyph read as “Pain” as his name, and makes it law for the detachment.
+6. Red-cloud marks spread first through the Mars cells, then by cipher to sympathetic Wardens elsewhere.
 7. The **Adeptus Mechanicus** orders the casket destroyed or re-sealed; Imperial authority backs the burn order.
-8. Dolor refuses. The Wardens fight free of Sol custody.
-9. Aquilas are struck. They become **Akatsuki / the Crimson Dawn**, based on the *Ortus Cruentus*.
+8. Dolor refuses. The **detachment** (and those cells already sworn to him) fight free of Sol custody; loyalist Wardens who reject the creed are left behind, killed, or listed among the “missing.”
+9. Aquilas are struck among the breakaways. They become **Akatsuki / the Crimson Dawn**, based on the *Ortus Cruentus*.
 
 **Irony (for you, not them):** they treat a fan-edited anime cut that stops at a village’s ruin as holy writ.
 
@@ -136,7 +136,7 @@ They already preferred cells over parade companies. Skulls meant **cost**, not T
 **Title:** Dawnlord (Chapter Master analogue)  
 **Assumed name:** **Dolor** — High Gothic sense of pain/grief; their reading of a tablet glyph for “Pain”
 
-A former Umbral Warden senior commander with authority over recovery cells. He did **not** first decode the tablet — Librarius did. He **accepted** it, discarded his Warden name, and founded the faith.
+A former Umbral Warden senior commander with authority over **recovery cells** — the kind of officer the Chapter sent when Mars or the Ordo wanted quiet specialists, not a company banner. He commanded the Mars-seconded detachment. He did **not** first decode the tablet — Librarius did. He **accepted** it, discarded his Warden name, and founded the faith.
 
 **Tone:** tired certainty; debriefs that became liturgy — not cartoon villainy.
 
