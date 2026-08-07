@@ -96,50 +96,83 @@ class DecalPDF(FPDF):
         )
 
 
-def pack_sheet(pdf: DecalPDF, upright: Path, flipped: Path | None = None, start_y: float = 8.5) -> None:
-    """Maximum-density upright rows; leftover width filled with smaller badges."""
+SIZE_NOTES = {
+    9: "infantry",
+    7: "small pad",
+    11: "Terminator",
+    5: "detail",
+    14: "Gravis/large",
+    18: "vehicle",
+    22: "vehicle+",
+}
+
+
+def pack_sheet(pdf: DecalPDF, upright: Path, start_y: float = 8.5) -> None:
+    """Dense upright rows with a thin size label at the start of each band."""
     with Image.open(upright) as im:
         aspect = im.height / im.width
 
     gap = 0.35
-    margin = 3.0
-    usable_w = 210 - 2 * margin
+    label_w = 7.0
+    margin_r = 3.0
+    x0 = label_w + 0.5
+    usable_w = 210 - x0 - margin_r
     y = start_y
     max_y = 289.0
 
-    # Mostly useful infantry sizes; a few larger at the bottom
-    band_widths = [9] * 14 + [7] * 5 + [11] * 4 + [5] * 6 + [14] * 2 + [18]
+    # (width_mm, row_count)
+    bands = [
+        (9, 12),
+        (7, 4),
+        (11, 4),
+        (5, 5),
+        (14, 2),
+        (18, 1),
+    ]
 
-    for width in band_widths:
+    for width, rows in bands:
         h = width * aspect
         if y + h > max_y:
             break
 
+        # Section size indicator (once per band)
+        note = SIZE_NOTES.get(width, "")
+        pdf.set_xy(1.2, y + max(0, (h - 3) / 2))
+        pdf.set_font("Helvetica", "B", 6)
+        pdf.set_text_color(40, 40, 40)
+        pdf.cell(label_w, 3, f"{width:g}mm", align="C")
+        if note:
+            pdf.set_xy(1.2, y + max(0, (h - 3) / 2) + 2.6)
+            pdf.set_font("Helvetica", "", 4.5)
+            pdf.set_text_color(110, 110, 110)
+            pdf.cell(label_w, 2.2, note, align="C")
+
         per_row = max(1, int((usable_w + gap) // (width + gap)))
-        used = per_row * width + max(0, per_row - 1) * gap
-        rem = usable_w - used
-        row_widths = [width] * per_row
-        for fw in (7.0, 5.0, 4.0, 3.5):
-            while rem + 1e-9 >= fw:
-                row_widths.append(fw)
-                rem -= fw + gap
+        for row_i in range(rows):
+            if y + h > max_y:
+                return
+            x = x0
+            for _ in range(per_row):
+                pdf.image(str(upright), x=x, y=y, w=width)
+                x += width + gap
+            y += h + gap
 
-        x = margin
-        row_h = 0.0
-        for w in row_widths:
-            hh = w * aspect
-            if x + w > 210 - margin + 0.01:
-                break
-            pdf.image(str(upright), x=x, y=y, w=w)
-            row_h = max(row_h, hh)
-            x += w + gap
-        y += row_h + gap
-
-    # Mop remaining vertical space with 9mm
+    # Mop remaining with 9mm + label if we actually place any
     h9 = 9 * aspect
+    mop_labeled = False
     while y + h9 <= max_y:
+        if not mop_labeled:
+            pdf.set_xy(1.2, y + max(0, (h9 - 3) / 2))
+            pdf.set_font("Helvetica", "B", 6)
+            pdf.set_text_color(40, 40, 40)
+            pdf.cell(label_w, 3, "9mm", align="C")
+            pdf.set_xy(1.2, y + max(0, (h9 - 3) / 2) + 2.6)
+            pdf.set_font("Helvetica", "", 4.5)
+            pdf.set_text_color(110, 110, 110)
+            pdf.cell(label_w, 2.2, "extra", align="C")
+            mop_labeled = True
         per_row = max(1, int((usable_w + gap) // (9 + gap)))
-        x = margin
+        x = x0
         for _ in range(per_row):
             pdf.image(str(upright), x=x, y=y, w=9)
             x += 9 + gap
